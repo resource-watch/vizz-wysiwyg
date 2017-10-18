@@ -1,0 +1,17 @@
+.c-wysiwyg-item-content {
+  margin: 0 $space-1 * 5;
+  padding: $space-1;
+  display: inline-flex;
+  border: 2px dashed transparent;
+  border-top: none;
+  transition: all $animation-time $ease-in-out-sine;
+
+  &.-isHover {
+    border-color: $color-primary;
+  }
+
+  .medium-editor-element {
+    outline: none;
+    min-width: 160px;
+  }
+}

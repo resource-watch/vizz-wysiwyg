@@ -1,0 +1,17 @@
+@media print {
+  @page {
+    size: A4 portrait;
+    -webkit-print-color-adjust: exact;
+    color-adjust: exact;
+    margin: 2cm;
+  }
+
+  body {
+    -webkit-print-color-adjust: exact;
+    color-adjust: exact;
+  }
+
+  .p-widget {
+    padding-top: 0 !important;
+  }
+}

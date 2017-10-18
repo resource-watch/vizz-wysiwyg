@@ -1,0 +1,35 @@
+.c-header {
+  background: $color-bg-cream;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  display: none;
+
+  .header-logo {
+    display: flex;
+    align-items: center;
+    text-indent: -9999px;
+    width: 50px;
+    height: 50px;
+  }
+
+  .header-nav {
+    ul {
+      display: flex;
+
+      li {
+        a {
+          display: block;
+          position: relative;
+          color: $color-text-1;
+          border-bottom: 2px solid transparent;
+          padding: $space-1 * 2;
+
+          &.-active {
+            border-color: $color-primary;
+          }
+        }
+      }
+    }
+  }
+}

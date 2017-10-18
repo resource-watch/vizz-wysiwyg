@@ -1,0 +1,38 @@
+.c-wysiwyg-list-item {
+  width: 100%;
+  position: relative;
+  list-style: none;
+
+  &.-isHover {
+    z-index: $z-index-2;
+
+    .list-item-container:after {
+      width: 100%;
+      opacity: 1;
+    }
+  }
+
+  &.-isDragging {
+    pointer-events: all !important;
+
+    .c-wysiwyg-item-content {
+      background: $color-primary;
+      color: $color-white;
+    }
+  }
+
+  .list-item-container {
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: calc(100% - (#{$space-1 * 10}));
+      height: 2px;
+      opacity: 0;
+      background: $color-primary;
+      transform: translate(-50%, 0);
+      transition: all $animation-time-2 $ease-in-out-sine;
+    }
+  }
+}

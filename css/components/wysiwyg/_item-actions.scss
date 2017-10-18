@@ -1,0 +1,43 @@
+.c-wysiwyg-item-actions {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  transition: all $animation-time-2 $ease-in-out-sine;
+  transform: translate(4px, -$space-1 * 2);
+
+  .item-actions {
+    > li {
+      margin: 4px 0 0;
+      &:first-child {
+        margin: 0;
+      }
+    }
+  }
+
+  &.-entering {
+    opacity: 1;
+    transform: translate(0px, -$space-1 * 2);
+  }
+
+  &.-entered {
+    opacity: 1;
+    transform: translate(0px, -$space-1 * 2);
+  }
+
+  &.-exiting {
+    opacity: 0;
+    transform: translate(4px, -$space-1 * 2);
+    transition: all $animation-time-2 $ease-in-out-sine 0.1s;
+  }
+
+  &.-exited {
+    opacity: 0;
+    transform: translate(4px, -$space-1 * 2);
+    transition: all $animation-time-2 $ease-in-out-sine 0.1s;
+  }
+
+  svg {
+    fill: $color-primary;
+  }
+}

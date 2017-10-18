@@ -1,0 +1,26 @@
+.c-wysiwyg-toolbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: $space-1 * 2;
+  position: fixed;
+  z-index: $z-index-3;
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%, 0);
+  background: $color-white;
+  box-shadow: 0 0px 4px rgba($color-dark, 0.25);
+
+  ul {
+    display: flex;
+
+    li {
+      margin: 0 0 0 $space-1;
+
+      &:first-child {
+        margin: 0;
+      }
+    }
+  }
+}

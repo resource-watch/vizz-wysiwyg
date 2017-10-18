@@ -1,0 +1,47 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+import classnames from 'classnames';
+
+// Drag and drop
+import { SortableHandle } from 'react-sortable-hoc';
+
+// Components
+import Icon from 'components/Wysiwyg/UI/Icon/Icon';
+
+class WysiwygItemDrag extends React.Component {
+  static propTypes = {
+    prov: PropTypes.object,
+    className: PropTypes.string
+  }
+
+  static defaultProps = {
+    item: {},
+    prov: {},
+    className: '',
+    removeItem: null
+  }
+
+  render() {
+    const { prov, className } = this.props;
+    const classNames = classnames({
+      [className]: !!className
+    });
+
+    return (
+      <div className={`c-wysiwyg-item-drag ${classNames}`}>
+        <ul className="item-drag">
+          <li>
+            <button
+              className="c-button -primary -icon"
+              {...prov.dragHandleProps}
+            >
+              <Icon name="icon-drag_handle" />
+            </button>
+          </li>
+        </ul>
+      </div>
+    );
+  }
+}
+
+export default SortableHandle(WysiwygItemDrag);

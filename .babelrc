@@ -1,0 +1,29 @@
+{
+  "plugins": [
+    "add-react-displayname",
+    "transform-decorators-legacy",
+    [
+      "module-resolver", {
+        "root": ["."],
+        "alias": {
+          "components": "./components",
+          "constants": "./constants",
+          "cosmos": "./cosmos",
+          "css": "./css",
+          "modules": "./modules",
+          "services": "./services",
+          "utils": "./utils"
+        },
+    }],
+    [
+      "wrap-in-js",
+      {
+        "extensions": ["css$", "scss$"]
+      }
+    ]
+  ],
+  "presets": [
+    "next/babel"
+  ],
+  "ignore": []
+}
