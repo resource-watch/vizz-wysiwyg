@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { connect } from 'react-redux';
-
 // Blocks
 import WysiwygTitle from 'components/Wysiwyg/Blocks/WysiwygTitle';
 import WysiwygParagraph from 'components/Wysiwyg/Blocks/WysiwygParagraph';
@@ -50,8 +48,4 @@ class WysiwygItemContent extends React.Component {
   }
 }
 
-export default connect(
-  state => ({
-    blocks: state.wysiwyg.blocks
-  })
-)(WysiwygItemContent);
+export default WysiwygItemContent;

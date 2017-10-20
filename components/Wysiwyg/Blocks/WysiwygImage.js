@@ -1,19 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// Redux
-import { connect } from 'react-redux';
-import { updateItem } from 'components/Wysiwyg/reducer';
+// Recompose
+import { getContext } from 'recompose';
 
 class WysiwygImage extends React.Component {
   static propTypes = {
     item: PropTypes.object,
-    image: PropTypes.object
+    blocks: PropTypes.object
   }
 
   static defaultProps = {
     item: {},
-    image: {}
+    blocks: {}
   }
 
   state = {
@@ -28,7 +27,7 @@ class WysiwygImage extends React.Component {
   }
 
   render() {
-    const { image } = this.props;
+    const { image } = this.props.blocks;
     const { src, alt } = this.state;
     return (
       <div className="c-wysiwyg-image">
@@ -41,9 +40,7 @@ class WysiwygImage extends React.Component {
   }
 }
 
-export default connect(
-  state => ({
-    image: state.wysiwyg.blocks.image
-  }),
-  { updateItem }
-)(WysiwygImage);
+export default getContext({
+  blocks: PropTypes.object,
+  updateItem: PropTypes.func
+})(WysiwygImage);

@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// Redux
-import { connect } from 'react-redux';
-import { updateItem } from 'components/Wysiwyg/reducer';
+// Recompose
+import { getContext } from 'recompose';
 
 // Components
 import ReactPlayer from 'react-player';
@@ -11,12 +10,12 @@ import ReactPlayer from 'react-player';
 class WysiwygVideo extends React.Component {
   static propTypes = {
     item: PropTypes.object,
-    video: PropTypes.object
+    blocks: PropTypes.object
   }
 
   static defaultProps = {
     item: {},
-    video: {}
+    blocks: {}
   }
 
   state = {
@@ -30,7 +29,7 @@ class WysiwygVideo extends React.Component {
   }
 
   render() {
-    const { video } = this.props;
+    const { video } = this.props.blocks;
     const { url } = this.state;
 
     return (
@@ -44,9 +43,7 @@ class WysiwygVideo extends React.Component {
   }
 }
 
-export default connect(
-  state => ({
-    video: state.wysiwyg.blocks.video
-  }),
-  { updateItem }
-)(WysiwygVideo);
+export default getContext({
+  blocks: PropTypes.object,
+  updateItem: PropTypes.func
+})(WysiwygVideo);

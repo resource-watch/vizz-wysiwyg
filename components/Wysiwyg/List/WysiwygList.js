@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// Redux
-import { connect } from 'react-redux';
+// Recompose
+import { getContext } from 'recompose';
 
 // Drag and drop
 import { SortableContainer } from 'react-sortable-hoc';
@@ -11,18 +11,18 @@ import WysiwygListItem from 'components/Wysiwyg/ListItem/WysiwygListItem';
 
 class WysiwygList extends React.Component {
   static propTypes = {
-    wysiwyg: PropTypes.object
+    items: PropTypes.array
   }
 
   static defaultProps = {
-    wysiwyg: {}
+    items: []
   }
 
   render() {
-    const { wysiwyg } = this.props;
+    const { items } = this.props;
     return (
       <ul className="c-wysiwyg-list">
-        {wysiwyg.items.map((item, index) => (
+        {items.map((item, index) => (
           <WysiwygListItem
             key={`item-${item.id}`}
             index={index}
@@ -34,8 +34,6 @@ class WysiwygList extends React.Component {
   }
 }
 
-export default SortableContainer(connect(
-  state => ({
-    wysiwyg: state.wysiwyg
-  })
-)(WysiwygList));
+export default SortableContainer(getContext({
+  items: PropTypes.array
+})(WysiwygList));

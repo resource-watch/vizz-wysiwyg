@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// Redux
-import { connect } from 'react-redux';
-import { updateItem } from 'components/Wysiwyg/reducer';
+// Recompose
+import { getContext } from 'recompose';
 
 // Components
 import Editor from 'react-medium-editor';
@@ -11,13 +10,13 @@ import Editor from 'react-medium-editor';
 class WysiwygTitle extends React.Component {
   static propTypes = {
     item: PropTypes.object,
-    title: PropTypes.object,
+    blocks: PropTypes.object,
     updateItem: PropTypes.func
   }
 
   static defaultProps = {
     item: {},
-    title: {},
+    blocks: {},
     updateItem: null
   }
 
@@ -37,7 +36,7 @@ class WysiwygTitle extends React.Component {
   }
 
   render() {
-    const { title } = this.props;
+    const { title } = this.props.blocks;
     const { content } = this.state;
 
     return (
@@ -52,9 +51,7 @@ class WysiwygTitle extends React.Component {
   }
 }
 
-export default connect(
-  state => ({
-    title: state.wysiwyg.blocks.title
-  }),
-  { updateItem }
-)(WysiwygTitle);
+export default getContext({
+  blocks: PropTypes.object,
+  updateItem: PropTypes.func
+})(WysiwygTitle);

@@ -2,9 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-// Redux
-import { connect } from 'react-redux';
-import { removeItem } from 'components/Wysiwyg/reducer';
+// Recompose
+import { getContext } from 'recompose';
 
 // Components
 import Icon from 'components/Wysiwyg/UI/Icon/Icon';
@@ -56,7 +55,6 @@ class WysiwygItemActions extends React.Component {
   }
 }
 
-export default connect(
-  null,
-  { removeItem }
-)(WysiwygItemActions);
+export default getContext({
+  removeItem: PropTypes.func
+})(WysiwygItemActions);

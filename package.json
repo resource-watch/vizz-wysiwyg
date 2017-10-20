@@ -54,6 +54,7 @@
     "react-redux": "5.0.5",
     "react-sortable-hoc": "^0.6.8",
     "react-transition-group": "^2.2.0",
+    "recompose": "^0.26.0",
     "redis": "2.8.0",
     "redux": "3.6.0",
     "redux-devtools-extension": "2.13.2",

@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { connect } from 'react-redux';
-import { addItem } from 'components/Wysiwyg/reducer';
+import { getContext } from 'recompose';
 
 class WysiwygToobar extends React.Component {
   static propTypes = {
@@ -28,6 +27,7 @@ class WysiwygToobar extends React.Component {
 
   render() {
     const { toolbar } = this.props;
+
     return (
       <div className="c-wysiwyg-toolbar">
         <ul>
@@ -51,9 +51,7 @@ class WysiwygToobar extends React.Component {
   }
 }
 
-export default connect(
-  state => ({
-    toolbar: state.wysiwyg.toolbar
-  }),
-  { addItem }
-)(WysiwygToobar);
+export default getContext({
+  toolbar: PropTypes.object,
+  addItem: PropTypes.func
+})(WysiwygToobar);

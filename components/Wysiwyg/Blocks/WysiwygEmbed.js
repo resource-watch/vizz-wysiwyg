@@ -1,19 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// Redux
-import { connect } from 'react-redux';
-import { updateItem } from 'components/Wysiwyg/reducer';
+// Recompose
+import { getContext } from 'recompose';
 
 class WysiwygEmbed extends React.Component {
   static propTypes = {
     item: PropTypes.object,
-    embed: PropTypes.object
+    blocks: PropTypes.object
   }
 
   static defaultProps = {
     item: {},
-    embed: {}
+    blocks: {}
   }
 
   state = {
@@ -29,7 +28,7 @@ class WysiwygEmbed extends React.Component {
   }
 
   render() {
-    const { embed } = this.props;
+    const { embed } = this.props.blocks;
     const { src, width, height } = this.state;
     return (
       <div className="c-wysiwyg-embed">
@@ -44,9 +43,7 @@ class WysiwygEmbed extends React.Component {
   }
 }
 
-export default connect(
-  state => ({
-    embed: state.wysiwyg.blocks.embed
-  }),
-  { updateItem }
-)(WysiwygEmbed);
+export default getContext({
+  blocks: PropTypes.object,
+  updateItem: PropTypes.func
+})(WysiwygEmbed);
