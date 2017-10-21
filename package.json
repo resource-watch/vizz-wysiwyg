@@ -47,7 +47,6 @@
     "prop-types": "15.5.7",
     "raw-loader": "0.5.1",
     "react": "15.6.1",
-    "react-beautiful-dnd": "^2.3.0",
     "react-dom": "15.6.1",
     "react-medium-editor": "^1.8.1",
     "react-player": "^0.24.6",
@@ -74,16 +73,13 @@
     "eslint-import-resolver-babel-module": "3.0.0",
     "eslint-plugin-babel": "4.1.1",
     "html-webpack-plugin": "^2.30.1",
-    "react-cosmos-redux-proxy": "^2.0.0-rc.1",
-    "react-cosmos-webpack": "^2.0.0-rc.1",
     "why-did-you-update": "0.0.8"
   },
   "scripts": {
     "dev": "NODE_ENV=development node index.js",
     "test": "eslint .",
     "build": "next build",
-    "start": "node index.js",
-    "cosmos": "NODE_ENV=development cosmos"
+    "start": "node index.js"
   },
   "engines": {
     "node": "8.x.x"
