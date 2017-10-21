@@ -16,6 +16,7 @@ const DEFAULT_BLOCKS = {
     },
     // Medium editor props
     options: {
+      extensions: {},
       toolbar: { buttons: ['bold', 'italic', 'underline', 'anchor'] },
       paste: {
         forcePlainText: false,
@@ -32,6 +33,7 @@ const DEFAULT_BLOCKS = {
     // Medium editor props
     // https://github.com/yabwe/medium-editor#mediumeditor-options
     options: {
+      extensions: {},
       toolbar: { buttons: ['h1', 'h2', 'h3'] }
     }
   },

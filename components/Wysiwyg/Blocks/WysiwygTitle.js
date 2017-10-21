@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { getContext } from 'recompose';
 
 // Components
-import Editor from 'react-medium-editor';
+import WysiwygEditor from 'components/Wysiwyg/Editor/WysiwygEditor';
 
 class WysiwygTitle extends React.Component {
   static propTypes = {
@@ -41,7 +41,7 @@ class WysiwygTitle extends React.Component {
 
     return (
       <div className="c-wysiwyg-title">
-        <Editor
+        <WysiwygEditor
           {...title}
           text={content || title.placeholder.text}
           onChange={this.handleChange}
