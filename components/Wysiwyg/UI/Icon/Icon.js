@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 
 class Icon extends React.Component {
   static propTypes = {
-    name: PropTypes.string,
-    className: PropTypes.string
+    /** Name of the icon definition. Check it in icons.js */
+    name: PropTypes.string.isRequired,
+    className: PropTypes.oneOf(['', '-tiny', '-smaller', '-small', '-medium', '-big', '-huge'])
   }
 
   static defaultProps = {
