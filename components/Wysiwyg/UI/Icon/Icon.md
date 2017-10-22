@@ -1,3 +1,3 @@
 ```js
-<Icon name="icon-drag_handle" />
+<Icon name="icon-add" />
 ```
