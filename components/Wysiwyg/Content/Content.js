@@ -7,9 +7,9 @@ import { getContext } from 'recompose';
 // Drag and drop
 import { arrayMove } from 'react-sortable-hoc';
 
-import WysiwygList from 'components/Wysiwyg/List/WysiwygList';
+import List from 'components/Wysiwyg/List/List';
 
-class WysiwygContent extends React.Component {
+class Content extends React.Component {
   static propTypes = {
     items: PropTypes.array,
     setItems: PropTypes.func
@@ -36,7 +36,7 @@ class WysiwygContent extends React.Component {
 
   render() {
     return (
-      <WysiwygList
+      <List
         useDragHandle
         helperClass="-isDragging"
         onSortEnd={this.onSortEnd}
@@ -48,4 +48,4 @@ class WysiwygContent extends React.Component {
 export default getContext({
   items: PropTypes.array,
   setItems: PropTypes.func
-})(WysiwygContent);
+})(Content);

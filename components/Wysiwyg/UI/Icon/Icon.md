@@ -1,3 +1,3 @@
 ```js
-<Icon name="icon-add" />
+<Icon name="icon-add" className="-huge" />
 ```

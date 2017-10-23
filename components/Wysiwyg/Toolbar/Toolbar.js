@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { getContext } from 'recompose';
 
-class WysiwygToobar extends React.Component {
+class Toolbar extends React.Component {
   static propTypes = {
     toolbar: PropTypes.object,
     addItem: PropTypes.func
@@ -27,6 +27,7 @@ class WysiwygToobar extends React.Component {
 
   render() {
     const { toolbar } = this.props;
+    console.log(toolbar);
 
     return (
       <div className="c-wysiwyg-toolbar">
@@ -54,4 +55,4 @@ class WysiwygToobar extends React.Component {
 export default getContext({
   toolbar: PropTypes.object,
   addItem: PropTypes.func
-})(WysiwygToobar);
+})(Toolbar);

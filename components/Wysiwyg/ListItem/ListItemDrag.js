@@ -8,7 +8,7 @@ import { SortableHandle } from 'react-sortable-hoc';
 // Components
 import Icon from 'components/Wysiwyg/UI/Icon/Icon';
 
-class WysiwygItemDrag extends React.Component {
+class ListItemDrag extends React.Component {
   static propTypes = {
     prov: PropTypes.object,
     className: PropTypes.string
@@ -44,4 +44,4 @@ class WysiwygItemDrag extends React.Component {
   }
 }
 
-export default SortableHandle(WysiwygItemDrag);
+export default SortableHandle(ListItemDrag);

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 // Recompose
 import { getContext } from 'recompose';
 
-class WysiwygEmbed extends React.Component {
+class Embed extends React.Component {
   static propTypes = {
     item: PropTypes.object,
     blocks: PropTypes.object
@@ -46,4 +46,4 @@ class WysiwygEmbed extends React.Component {
 export default getContext({
   blocks: PropTypes.object,
   updateItem: PropTypes.func
-})(WysiwygEmbed);
+})(Embed);

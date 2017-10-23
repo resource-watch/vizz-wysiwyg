@@ -9,11 +9,11 @@ import { Transition } from 'react-transition-group';
 import { SortableElement } from 'react-sortable-hoc';
 
 // Components
-import WysiwygItemDrag from 'components/Wysiwyg/ListItem/WysiwygItemDrag';
-import WysiwygItemActions from 'components/Wysiwyg/ListItem/WysiwygItemActions';
-import WysiwygItemContent from 'components/Wysiwyg/ListItem/WysiwygItemContent';
+import ListItemDrag from 'components/Wysiwyg/ListItem/ListItemDrag';
+import ListItemActions from 'components/Wysiwyg/ListItem/ListItemActions';
+import ListItemContent from 'components/Wysiwyg/ListItem/ListItemContent';
 
-class WysiwygListItem extends React.Component {
+class ListItem extends React.Component {
   static propTypes = {
     item: PropTypes.object,
     prov: PropTypes.object,
@@ -86,7 +86,7 @@ class WysiwygListItem extends React.Component {
           {/* Drag handler */}
           <Transition in={(isHover || snap.isDragging)} timeout={150}>
             {status => (
-              <WysiwygItemDrag
+              <ListItemDrag
                 item={item}
                 prov={prov}
                 className={`-${status}`}
@@ -97,7 +97,7 @@ class WysiwygListItem extends React.Component {
           {/* Block Actions */}
           <Transition in={(isHover || snap.isDragging)} timeout={150}>
             {status => (
-              <WysiwygItemActions
+              <ListItemActions
                 item={item}
                 className={`-${status}`}
               />
@@ -105,7 +105,7 @@ class WysiwygListItem extends React.Component {
           </Transition>
 
           {/* Content */}
-          <WysiwygItemContent
+          <ListItemContent
             item={item}
             className={this.getContentClasses()}
           />
@@ -117,4 +117,4 @@ class WysiwygListItem extends React.Component {
   }
 }
 
-export default SortableElement(WysiwygListItem);
+export default SortableElement(ListItem);

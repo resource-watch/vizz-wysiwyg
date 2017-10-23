@@ -8,7 +8,7 @@ import { getContext } from 'recompose';
 // Components
 import Icon from 'components/Wysiwyg/UI/Icon/Icon';
 
-class WysiwygItemActions extends React.Component {
+class ListItemActions extends React.Component {
   static propTypes = {
     item: PropTypes.object,
     className: PropTypes.string,
@@ -57,4 +57,4 @@ class WysiwygItemActions extends React.Component {
 
 export default getContext({
   removeItem: PropTypes.func
-})(WysiwygItemActions);
+})(ListItemActions);

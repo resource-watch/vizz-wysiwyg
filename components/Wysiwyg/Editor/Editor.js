@@ -8,7 +8,7 @@ if (typeof document !== 'undefined') {
   var MediumEditor = require('medium-editor');
 }
 
-export default class ReactMediumEditor extends React.Component {
+export default class Editor extends React.Component {
   static propTypes = {
     tag: PropTypes.string,
     text: PropTypes.string,

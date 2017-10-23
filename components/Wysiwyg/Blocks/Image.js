@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 // Recompose
 import { getContext } from 'recompose';
 
-class WysiwygImage extends React.Component {
+class Image extends React.Component {
   static propTypes = {
     item: PropTypes.object,
     blocks: PropTypes.object
@@ -43,4 +43,4 @@ class WysiwygImage extends React.Component {
 export default getContext({
   blocks: PropTypes.object,
   updateItem: PropTypes.func
-})(WysiwygImage);
+})(Image);

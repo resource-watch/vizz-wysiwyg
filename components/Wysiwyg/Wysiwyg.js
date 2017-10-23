@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import { DEFAULT_TOOLBAR, DEFAULT_BLOCKS } from 'components/Wysiwyg/constants';
 
 import WysiwygProvider from 'components/Wysiwyg/WysiwygProvider';
-import WysiwygContent from 'components/Wysiwyg/Content/WysiwygContent';
-import WysiwygToolbar from 'components/Wysiwyg/Toolbar/WysiwygToolbar';
+import Content from 'components/Wysiwyg/Content/Content';
+import Toolbar from 'components/Wysiwyg/Toolbar/Toolbar';
 
 class Wysiwyg extends React.Component {
   static propTypes = {
@@ -76,8 +76,8 @@ class Wysiwyg extends React.Component {
           updateItem={this.updateItem}
           removeItem={this.removeItem}
         >
-          <WysiwygContent />
-          <WysiwygToolbar />
+          <Content />
+          <Toolbar />
         </WysiwygProvider>
       </div>
     );

@@ -5,9 +5,9 @@ import PropTypes from 'prop-types';
 import { getContext } from 'recompose';
 
 // Components
-import WysiwygEditor from 'components/Wysiwyg/Editor/WysiwygEditor';
+import Editor from 'components/Wysiwyg/Editor/Editor';
 
-class WysiwygTitle extends React.Component {
+class Paragraph extends React.Component {
   static propTypes = {
     item: PropTypes.object,
     blocks: PropTypes.object,
@@ -36,14 +36,14 @@ class WysiwygTitle extends React.Component {
   }
 
   render() {
-    const { title } = this.props.blocks;
+    const { paragraph } = this.props.blocks;
     const { content } = this.state;
 
     return (
-      <div className="c-wysiwyg-title">
-        <WysiwygEditor
-          {...title}
-          text={content || title.placeholder.text}
+      <div className="c-wysiwyg-paragraph">
+        <Editor
+          {...paragraph}
+          text={content || paragraph.placeholder.text}
           onChange={this.handleChange}
         />
       </div>
@@ -54,4 +54,4 @@ class WysiwygTitle extends React.Component {
 export default getContext({
   blocks: PropTypes.object,
   updateItem: PropTypes.func
-})(WysiwygTitle);
+})(Paragraph);

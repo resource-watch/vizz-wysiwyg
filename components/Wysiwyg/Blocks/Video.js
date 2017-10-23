@@ -7,7 +7,7 @@ import { getContext } from 'recompose';
 // Components
 import ReactPlayer from 'react-player';
 
-class WysiwygVideo extends React.Component {
+class Video extends React.Component {
   static propTypes = {
     item: PropTypes.object,
     blocks: PropTypes.object
@@ -46,4 +46,4 @@ class WysiwygVideo extends React.Component {
 export default getContext({
   blocks: PropTypes.object,
   updateItem: PropTypes.func
-})(WysiwygVideo);
+})(Video);
