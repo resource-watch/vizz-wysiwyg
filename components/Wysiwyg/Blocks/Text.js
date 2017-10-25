@@ -7,7 +7,7 @@ import { getContext } from 'recompose';
 // Components
 import Editor from 'components/Wysiwyg/Editor/Editor';
 
-class Paragraph extends React.Component {
+class Text extends React.Component {
   static propTypes = {
     item: PropTypes.object,
     blocks: PropTypes.object,
@@ -36,13 +36,13 @@ class Paragraph extends React.Component {
   }
 
   render() {
-    const { paragraph } = this.props.blocks;
+    const { text } = this.props.blocks;
     const { content } = this.state;
 
     return (
-      <div className="c-wysiwyg-paragraph">
+      <div className="c-wysiwyg-text">
         <Editor
-          {...paragraph}
+          {...text}
           text={content}
           onChange={this.handleChange}
         />
@@ -54,4 +54,4 @@ class Paragraph extends React.Component {
 export default getContext({
   blocks: PropTypes.object,
   updateItem: PropTypes.func
-})(Paragraph);
+})(Text);

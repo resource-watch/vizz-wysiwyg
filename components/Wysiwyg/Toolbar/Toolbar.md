@@ -2,8 +2,7 @@
 <Toolbar
   toolbar={{
     buttons: [
-      { block: 'title' },
-      { block: 'paragraph' },
+      { block: 'text' },
       { block: 'image' },
       { block: 'video' },
       { block: 'embed' }

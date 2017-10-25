@@ -2,8 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // Blocks
-import Title from 'components/Wysiwyg/Blocks/Title';
-import Paragraph from 'components/Wysiwyg/Blocks/Paragraph';
+import Text from 'components/Wysiwyg/Blocks/Text';
 import Image from 'components/Wysiwyg/Blocks/Image';
 import Video from 'components/Wysiwyg/Blocks/Video';
 import Embed from 'components/Wysiwyg/Blocks/Embed';
@@ -24,12 +23,8 @@ class ListItemContent extends React.Component {
 
     return (
       <div className={`c-wysiwyg-item-content ${className}`}>
-        {item.type === 'title' &&
-          <Title item={item} />
-        }
-
-        {item.type === 'paragraph' &&
-          <Paragraph item={item} />
+        {item.type === 'text' &&
+          <Text item={item} />
         }
 
         {item.type === 'image' &&

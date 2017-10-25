@@ -1,7 +1,6 @@
 const DEFAULT_TOOLBAR = {
   buttons: [
-    { block: 'title' },
-    { block: 'paragraph' },
+    { block: 'text' },
     { block: 'image' },
     { block: 'video' },
     { block: 'embed' }
@@ -9,7 +8,7 @@ const DEFAULT_TOOLBAR = {
 };
 
 const DEFAULT_BLOCKS = {
-  paragraph: {
+  text: {
     // Placeholder
     placeholder: {
       text: '<p>Type your text</p>'
@@ -17,24 +16,11 @@ const DEFAULT_BLOCKS = {
     // Medium editor props
     options: {
       extensions: {},
-      toolbar: { buttons: ['bold', 'italic', 'underline', 'anchor', 'unorderedlist', 'orderedlist'] },
+      toolbar: { buttons: ['bold', 'italic', 'underline', 'anchor', 'unorderedlist', 'orderedlist', 'h1', 'h2', 'h3'] },
       paste: {
         forcePlainText: false,
         cleanPastedHTML: true
       }
-    }
-  },
-
-  title: {
-    // Placeholder
-    placeholder: {
-      text: '<h1>Type your title</h1>'
-    },
-    // Medium editor props
-    // https://github.com/yabwe/medium-editor#mediumeditor-options
-    options: {
-      extensions: {},
-      toolbar: { buttons: ['h1', 'h2', 'h3'] }
     }
   },
 
