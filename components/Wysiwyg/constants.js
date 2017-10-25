@@ -17,7 +17,7 @@ const DEFAULT_BLOCKS = {
     // Medium editor props
     options: {
       extensions: {},
-      toolbar: { buttons: ['bold', 'italic', 'underline', 'anchor'] },
+      toolbar: { buttons: ['bold', 'italic', 'underline', 'anchor', 'unorderedlist', 'orderedlist'] },
       paste: {
         forcePlainText: false,
         cleanPastedHTML: true

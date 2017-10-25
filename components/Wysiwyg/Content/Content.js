@@ -38,6 +38,8 @@ class Content extends React.Component {
     return (
       <List
         useDragHandle
+        // pressDelay={200}
+        // pressThreshold={3}
         helperClass="-isDragging"
         onSortEnd={this.onSortEnd}
       />

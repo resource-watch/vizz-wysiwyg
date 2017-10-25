@@ -43,7 +43,7 @@ class Paragraph extends React.Component {
       <div className="c-wysiwyg-paragraph">
         <Editor
           {...paragraph}
-          text={content || paragraph.placeholder.text}
+          text={content}
           onChange={this.handleChange}
         />
       </div>

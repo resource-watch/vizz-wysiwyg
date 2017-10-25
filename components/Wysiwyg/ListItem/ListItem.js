@@ -32,14 +32,14 @@ class ListItem extends React.Component {
 
   /**
    * UI EVENTS
-   * - onMouseOver
-   * - onMouseOut
+   * - onMouseEnter
+   * - onMouseLeave
   */
-  onMouseOver = () => {
+  onMouseEnter = () => {
     this.setState({ isHover: true });
   }
 
-  onMouseOut = () => {
+  onMouseLeave = () => {
     this.setState({ isHover: false });
   }
 
@@ -72,16 +72,14 @@ class ListItem extends React.Component {
     const { item, prov, snap } = this.props;
     const { isHover } = this.state;
 
-    // List classnames
-
     return (
       <li className={`c-wysiwyg-list-item ${this.getClasses()}`}>
         <div
           className="list-item-container"
           ref={prov.innerRef}
           style={prov.draggableStyle}
-          onMouseOver={this.onMouseOver}
-          onMouseOut={this.onMouseOut}
+          onMouseEnter={this.onMouseEnter}
+          onMouseLeave={this.onMouseLeave}
         >
           {/* Drag handler */}
           <Transition in={(isHover || snap.isDragging)} timeout={150}>

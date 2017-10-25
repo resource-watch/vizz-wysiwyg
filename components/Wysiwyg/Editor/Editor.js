@@ -4,8 +4,11 @@ import PropTypes from 'prop-types';
 
 import omit from 'lodash/omit';
 
+let MediumEditor;
 if (typeof document !== 'undefined') {
-  var MediumEditor = require('medium-editor');
+  /* eslint-disable */
+  MediumEditor = require('medium-editor');
+  /* eslint-enable */
 }
 
 export default class Editor extends React.Component {
@@ -13,6 +16,8 @@ export default class Editor extends React.Component {
     tag: PropTypes.string,
     text: PropTypes.string,
     options: PropTypes.object,
+
+    // Functions
     onChange: PropTypes.func
   };
 
@@ -34,9 +39,10 @@ export default class Editor extends React.Component {
     const dom = ReactDOM.findDOMNode(this);
 
     this.medium = new MediumEditor(dom, this.props.options);
-    this.medium.subscribe('editableInput', (e) => {
+
+    this.medium.subscribe('editableInput', () => {
       this._updated = true;
-      this.change(dom.innerHTML);
+      if (this.props.onChange) this.props.onChange(dom.innerHTML, this.medium);
     });
   }
 
@@ -54,10 +60,6 @@ export default class Editor extends React.Component {
 
   componentWillUnmount() {
     this.medium.destroy();
-  }
-
-  change(text) {
-    if (this.props.onChange) this.props.onChange(text, this.medium);
   }
 
   render() {
