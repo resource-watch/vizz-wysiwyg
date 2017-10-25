@@ -27,7 +27,6 @@ class Toolbar extends React.Component {
 
   render() {
     const { toolbar } = this.props;
-    console.log(toolbar);
 
     return (
       <div className="c-wysiwyg-toolbar">
