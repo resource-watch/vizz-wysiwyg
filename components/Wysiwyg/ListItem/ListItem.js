@@ -32,14 +32,14 @@ class ListItem extends React.Component {
 
   /**
    * UI EVENTS
-   * - onMouseEnter
-   * - onMouseLeave
+   * - onMouseOver
+   * - onMouseOut
   */
-  onMouseEnter = () => {
+  onMouseOver = () => {
     this.setState({ isHover: true });
   }
 
-  onMouseLeave = () => {
+  onMouseOut = () => {
     this.setState({ isHover: false });
   }
 
@@ -78,8 +78,8 @@ class ListItem extends React.Component {
           className="list-item-container"
           ref={prov.innerRef}
           style={prov.draggableStyle}
-          onMouseEnter={this.onMouseEnter}
-          onMouseLeave={this.onMouseLeave}
+          onMouseOver={this.onMouseOver}
+          onMouseOut={this.onMouseOut}
         >
           {/* Drag handler */}
           <Transition in={(isHover || snap.isDragging)} timeout={150}>
