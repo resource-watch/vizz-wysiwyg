@@ -33,7 +33,7 @@ class ListItemActions extends React.Component {
         <ul className="item-actions">
           {/* <li>
             <button
-              className="c-button -primary -icon"
+              className="c-button -primary -small"
               onClick={() => { console.log(item); }}
             >
               <Icon name="icon-add" />
@@ -42,7 +42,7 @@ class ListItemActions extends React.Component {
 
           <li>
             <button
-              className="c-button -primary -icon"
+              className="c-button -primary -small"
               onClick={() => { this.props.removeItem(item); }}
             >
               <Icon name="icon-delete" />

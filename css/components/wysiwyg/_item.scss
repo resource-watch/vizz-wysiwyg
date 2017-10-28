@@ -22,17 +22,7 @@
   }
 
   .list-item-container {
-    &:after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 50%;
-      width: calc(100% - (#{$space-1 * 10}));
-      height: 2px;
-      opacity: 0;
-      background: $color-primary;
-      transform: translate(-50%, 0);
-      transition: all $animation-time-2 $ease-in-out-sine;
-    }
+    position: relative;
+    display: inline-block;
   }
 }

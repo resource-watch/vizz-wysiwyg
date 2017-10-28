@@ -41,7 +41,7 @@ class Toolbar extends React.Component {
                 key={t.block}
               >
                 <button
-                  className="c-button -icon -primary"
+                  className="c-button -small -round -primary"
                   onClick={() => this.handleClick(t.block)}
                 >
                   <Icon name={`icon-${t.block}`} />

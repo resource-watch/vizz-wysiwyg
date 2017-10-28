@@ -17,23 +17,23 @@
 
   &.-entering {
     opacity: 1;
-    transform: translate(0px, -$space-1 * 2);
+    transform: translate(0px, 0);
   }
 
   &.-entered {
     opacity: 1;
-    transform: translate(0px, -$space-1 * 2);
+    transform: translate(0px, 0);
   }
 
   &.-exiting {
     opacity: 0;
-    transform: translate(-4px, -$space-1 * 2);
+    transform: translate(-4px, 0);
     transition: all $animation-time-2 $ease-in-out-sine 0.1s;
   }
 
   &.-exited {
     opacity: 0;
-    transform: translate(-4px, -$space-1 * 2);
+    transform: translate(-4px, 0);
     transition: all $animation-time-2 $ease-in-out-sine 0.1s;
   }
 
