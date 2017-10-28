@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import debounce from 'lodash/debounce';
+import throttle from 'lodash/throttle';
 
 // Recompose
 import { getContext } from 'recompose';
@@ -13,6 +13,7 @@ import { Transition } from 'react-transition-group';
 import { SortableElement } from 'react-sortable-hoc';
 
 // Components
+import Toolbar from 'components/Wysiwyg/Toolbar/Toolbar';
 import ListItemDrag from 'components/Wysiwyg/ListItem/ListItemDrag';
 import ListItemActions from 'components/Wysiwyg/ListItem/ListItemActions';
 import ListItemContent from 'components/Wysiwyg/ListItem/ListItemContent';
@@ -20,30 +21,15 @@ import ListItemContent from 'components/Wysiwyg/ListItem/ListItemContent';
 class ListItem extends React.Component {
   static propTypes = {
     item: PropTypes.object,
+    cursor: PropTypes.number,
     position: PropTypes.number,
     setCursor: PropTypes.func
   }
 
   static defaultProps = {
     item: {},
+    cursor: 0,
     position: 0
-  }
-
-  state = {
-    isHover: false
-  }
-
-  /**
-   * UI EVENTS
-   * - onMouseOver
-   * - onMouseOut
-  */
-  onMouseOver = () => {
-    this.setState({ isHover: true });
-  }
-
-  onMouseOut = () => {
-    this.setState({ isHover: false });
   }
 
   /**
@@ -52,41 +38,42 @@ class ListItem extends React.Component {
    * - getContentClasses
   */
   getClasses() {
-    const { isHover } = this.state;
+    const { cursor, position } = this.props;
 
     return classnames({
       '-isDragging': false,
-      '-isHover': isHover
+      '-isHover': (position === cursor)
     });
   }
 
   getContentClasses() {
-    const { isHover } = this.state;
+    const { cursor, position } = this.props;
 
     return classnames({
       '-isDragging': false,
-      '-isHover': isHover
+      '-isHover': (position === cursor)
     });
   }
 
   render() {
-    const { item, position } = this.props;
-    const { isHover } = this.state;
+    const { item, cursor, position } = this.props;
 
     return (
       <li
         className={`c-wysiwyg-list-item ${this.getClasses()}`}
-        onMouseOver={debounce(() => {
+        onMouseOver={throttle(() => {
           this.props.setCursor(position);
         }, 100)}
       >
+
+        {(position === cursor) &&
+          <Toolbar />
+        }
         <div
           className="list-item-container"
-          onMouseOver={this.onMouseOver}
-          onMouseOut={this.onMouseOut}
         >
           {/* Drag handler */}
-          <Transition in={(isHover)} timeout={150}>
+          <Transition in={(position === cursor)} timeout={150}>
             {status => (
               <ListItemDrag
                 item={item}
@@ -96,7 +83,7 @@ class ListItem extends React.Component {
           </Transition>
 
           {/* Block Actions */}
-          <Transition in={(isHover)} timeout={150}>
+          <Transition in={(position === cursor)} timeout={150}>
             {status => (
               <ListItemActions
                 item={item}
@@ -117,5 +104,6 @@ class ListItem extends React.Component {
 }
 
 export default SortableElement(getContext({
+  cursor: PropTypes.number,
   setCursor: PropTypes.func
 })(ListItem));

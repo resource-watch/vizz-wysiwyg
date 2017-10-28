@@ -5,7 +5,7 @@ import { withContext } from 'recompose';
 
 class WysiwygProvider extends React.Component {
   static propTypes = {
-    children: PropTypes.array
+    children: PropTypes.oneOf([PropTypes.array, PropTypes.object])
   }
 
   render() {
@@ -23,6 +23,7 @@ export default withContext({
   toolbar: PropTypes.object,
   blocks: PropTypes.object,
   items: PropTypes.array,
+  cursor: PropTypes.number,
   setToolbar: PropTypes.func,
   setCursor: PropTypes.func,
   setItems: PropTypes.func,
@@ -34,6 +35,7 @@ export default withContext({
     toolbar: props.toolbar,
     blocks: props.blocks,
     items: props.items,
+    cursor: props.cursor,
     setToolbar: props.setToolbar,
     setCursor: props.setCursor,
     setItems: props.setItems,

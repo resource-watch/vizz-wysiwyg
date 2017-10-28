@@ -34,23 +34,34 @@ class Toolbar extends React.Component {
 
     return (
       <div className="c-wysiwyg-toolbar">
-        <ul>
-          {toolbar.buttons.map((t) => {
-            return (
-              <li
-                key={t.block}
-              >
-                <button
-                  className="c-button -small -round -primary"
-                  onClick={() => this.handleClick(t.block)}
+        <div className="toolbar-handler">
+          {/* <ul>
+            {toolbar.buttons.map((t) => {
+              return (
+                <li
+                  key={t.block}
                 >
-                  <Icon name={`icon-${t.block}`} />
+                  <button
+                    className="c-button -small -round -primary"
+                    onClick={() => this.handleClick(t.block)}
+                  >
+                    <Icon name={`icon-${t.block}`} />
 
-                </button>
-              </li>
-            );
-          })}
-        </ul>
+                  </button>
+                </li>
+              );
+            })}
+          </ul> */}
+
+          <button
+            className="c-button -primary"
+            // onClick={() => this.handleClick(t.block)}
+          >
+            Add
+            <Icon name="icon-add" />
+
+          </button>
+        </div>
       </div>
     );
   }

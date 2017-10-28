@@ -2,6 +2,10 @@
   outline: none;
   min-width: 200px;
 
+  .ql-bubble .ql-tooltip {
+    z-index: $z-index-4;
+  }
+
   .ql-editor {
     padding: 0;
   }

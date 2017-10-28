@@ -7,6 +7,7 @@ import { getContext } from 'recompose';
 // Drag and drop
 import { SortableContainer } from 'react-sortable-hoc';
 
+import Toolbar from 'components/Wysiwyg/Toolbar/Toolbar';
 import ListItem from 'components/Wysiwyg/ListItem/ListItem';
 
 class List extends React.Component {
@@ -30,6 +31,7 @@ class List extends React.Component {
             item={item}
           />
         ))}
+        <Toolbar />
       </ul>
     );
   }

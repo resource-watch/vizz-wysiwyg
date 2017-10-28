@@ -12,12 +12,14 @@ import List from 'components/Wysiwyg/List/List';
 class Content extends React.Component {
   static propTypes = {
     items: PropTypes.array,
-    setItems: PropTypes.func
+    setItems: PropTypes.func,
+    setCursor: PropTypes.func
   }
 
   static defaultProps = {
     items: [],
-    setItems: null
+    setItems: null,
+    setCursor: null
   }
 
   /**
@@ -32,6 +34,7 @@ class Content extends React.Component {
     const items = [...this.props.items];
 
     this.props.setItems(arrayMove(items, oldIndex, newIndex));
+    this.props.setCursor(newIndex);
   }
 
   render() {
@@ -47,5 +50,6 @@ class Content extends React.Component {
 
 export default getContext({
   items: PropTypes.array,
-  setItems: PropTypes.func
+  setItems: PropTypes.func,
+  setCursor: PropTypes.func
 })(Content);

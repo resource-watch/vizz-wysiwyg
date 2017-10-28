@@ -50,7 +50,7 @@ class Text extends React.Component {
           <Editor
             {...text}
             className="c-quill"
-            value={content}
+            defaultValue={content}
             onChange={this.handleChange}
           />
         }

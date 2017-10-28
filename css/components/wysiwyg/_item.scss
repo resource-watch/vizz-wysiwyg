@@ -1,15 +1,10 @@
 .c-wysiwyg-list-item {
   width: 100%;
+  // padding: $space-1 * 3 0;
   position: relative;
   list-style: none;
 
   &.-isHover {
-    z-index: $z-index-2;
-
-    .list-item-container:after {
-      width: 100%;
-      opacity: 1;
-    }
   }
 
   &.-isDragging {
