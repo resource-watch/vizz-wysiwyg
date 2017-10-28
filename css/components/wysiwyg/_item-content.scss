@@ -10,8 +10,16 @@
     border-color: $color-primary;
   }
 
-  .medium-editor-element {
+  .quill {
     outline: none;
-    min-width: 160px;
+    min-width: 200px;
+
+    .ql-toolbar {
+      display: flex;
+
+      .ql-formats {
+        display: inline-flex;
+      }
+    }
   }
 }

@@ -3,24 +3,24 @@ const DEFAULT_TOOLBAR = {
     { block: 'text' },
     { block: 'image' },
     { block: 'video' },
-    { block: 'embed' }
+    { block: 'embed' },
+    { block: 'grid' }
   ]
 };
 
 const DEFAULT_BLOCKS = {
   text: {
     // Placeholder
-    placeholder: {
-      text: '<p>Type your text</p>'
-    },
-    // Medium editor props
-    options: {
-      extensions: {},
-      toolbar: { buttons: ['bold', 'italic', 'underline', 'anchor', 'unorderedlist', 'orderedlist', 'h1', 'h2', 'h3'] },
-      paste: {
-        forcePlainText: false,
-        cleanPastedHTML: true
-      }
+    placeholder: 'Type your text',
+    theme: 'bubble',
+    modules: {
+      toolbar: [
+        [{ header: [1, 2, false] }],
+        ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+        [{ list: 'ordered' }, { list: 'bullet' }, { indent: '-1' }, { indent: '+1' }],
+        ['link', 'image'],
+        ['clean']
+      ]
     }
   },
 

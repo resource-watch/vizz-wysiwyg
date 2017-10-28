@@ -5,7 +5,12 @@ import PropTypes from 'prop-types';
 import { getContext } from 'recompose';
 
 // Components
-import Editor from 'components/Wysiwyg/Editor/Editor';
+let Editor;
+if (typeof document !== 'undefined') {
+  /* eslint-disable */
+  Editor = require('react-quill');
+  /* eslint-enable */
+}
 
 class Text extends React.Component {
   static propTypes = {

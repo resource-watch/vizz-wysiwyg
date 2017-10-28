@@ -1,7 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// Recompose
 import { getContext } from 'recompose';
+
+// Components
+import Icon from 'components/Wysiwyg/UI/Icon/Icon';
 
 class Toolbar extends React.Component {
   static propTypes = {
@@ -37,10 +41,11 @@ class Toolbar extends React.Component {
                 key={t.block}
               >
                 <button
-                  className="c-button -primary"
+                  className="c-button -icon -primary"
                   onClick={() => this.handleClick(t.block)}
                 >
-                  {t.block}
+                  <Icon name={`icon-${t.block}`} />
+
                 </button>
               </li>
             );
