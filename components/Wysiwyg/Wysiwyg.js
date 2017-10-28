@@ -23,7 +23,8 @@ class Wysiwyg extends React.Component {
   state = {
     toolbar: this.props.toolbar,
     blocks: this.props.blocks,
-    items: this.props.items
+    items: this.props.items,
+    cursor: 0
   }
 
   // Toolbar
@@ -31,6 +32,14 @@ class Wysiwyg extends React.Component {
     this.setState({
       toolbar: { ...this.state.toolbar, ...toolbar }
     });
+  }
+
+  setCursor = (cursor) => {
+    this.setState({
+      cursor
+    });
+
+    console.log(cursor);
   }
 
   // Items
@@ -71,6 +80,7 @@ class Wysiwyg extends React.Component {
         <WysiwygProvider
           {...this.state}
           setToolbar={this.setToolbar}
+          setCursor={this.setCursor}
           setItems={this.setItems}
           addItem={this.addItem}
           updateItem={this.updateItem}

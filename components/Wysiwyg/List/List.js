@@ -26,6 +26,7 @@ class List extends React.Component {
           <ListItem
             key={`item-${item.id}`}
             index={index}
+            position={index}
             item={item}
           />
         ))}

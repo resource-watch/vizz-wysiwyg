@@ -44,18 +44,16 @@ class Text extends React.Component {
     const { text } = this.props.blocks;
     const { content } = this.state;
 
-    if (!Editor) {
-      return null;
-    }
-
     return (
       <div className="c-wysiwyg-text">
-        <Editor
-          {...text}
-          className="c-quill"
-          value={content}
-          onChange={this.handleChange}
-        />
+        {!!Editor &&
+          <Editor
+            {...text}
+            className="c-quill"
+            value={content}
+            onChange={this.handleChange}
+          />
+        }
       </div>
     );
   }
