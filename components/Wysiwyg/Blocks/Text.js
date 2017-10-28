@@ -52,6 +52,7 @@ class Text extends React.Component {
       <div className="c-wysiwyg-text">
         <Editor
           {...text}
+          className="c-quill"
           value={content}
           onChange={this.handleChange}
         />

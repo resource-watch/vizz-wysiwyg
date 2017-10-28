@@ -39,7 +39,6 @@
 @import 'components/wysiwyg/blocks/text';
 @import 'components/wysiwyg/blocks/image';
 
-// Medium editor
-@import '../node_modules/react-quill/dist/quill.bubble.css';
-// @import '../node_modules/medium-editor/dist/css/medium-editor';
-// @import '../node_modules/medium-editor/dist/css/themes/default';
+// Quill editor
+@import '../node_modules/react-quill/dist/quill.bubble';
+@import 'components/wysiwyg/quill';
