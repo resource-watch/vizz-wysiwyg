@@ -31,18 +31,9 @@ class ListItemActions extends React.Component {
     return (
       <div className={`c-wysiwyg-item-actions ${classNames}`}>
         <ul className="item-actions">
-          {/* <li>
-            <button
-              className="c-button -primary -small"
-              onClick={() => { console.log(item); }}
-            >
-              <Icon name="icon-add" />
-            </button>
-          </li> */}
-
           <li>
             <button
-              className="c-button -primary -small"
+              className="c-button -primary -round -small"
               onClick={() => { this.props.removeItem(item); }}
             >
               <Icon name="icon-delete" />

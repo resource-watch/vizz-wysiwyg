@@ -31,7 +31,8 @@ class List extends React.Component {
             item={item}
           />
         ))}
-        <Toolbar />
+
+        <Toolbar fixedCursor={items.length} />
       </ul>
     );
   }

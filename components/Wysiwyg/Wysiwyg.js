@@ -37,9 +37,7 @@ class Wysiwyg extends React.Component {
   }
 
   setCursor = (cursor) => {
-    this.setState({
-      cursor
-    });
+    this.setState({ cursor });
   }
 
   // Items
@@ -49,9 +47,10 @@ class Wysiwyg extends React.Component {
     });
   }
 
-  addItem = (item) => {
+  addItem = (item, index) => {
     const items = [...this.state.items];
-    items.push(item);
+    const cursor = index || this.state.cursor;
+    items.splice(cursor, 0, item);
 
     this.setItems(items);
   }
