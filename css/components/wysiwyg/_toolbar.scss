@@ -3,6 +3,28 @@
   position: relative;
   z-index: $z-index-3;
   height: $space-1 * 6;
+  transition: all $animation-time $ease-in-out-sine;
+
+  // Animations
+  &.-entering {
+    opacity: 1;
+    height: $space-1 * 6;
+  }
+
+  &.-entered {
+    opacity: 1;
+    height: $space-1 * 6;
+  }
+
+  &.-exiting {
+    opacity: 0;
+    height: 0;
+  }
+
+  &.-exited {
+    opacity: 0;
+    height: 0;
+  }
 
 
   .toolbar-handler {

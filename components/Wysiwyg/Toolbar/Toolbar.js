@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
 // Recompose
 import { getContext } from 'recompose';
@@ -13,12 +14,14 @@ import Icon from 'components/Wysiwyg/UI/Icon/Icon';
 class Toolbar extends React.Component {
   static propTypes = {
     fixedCursor: PropTypes.number,
+    className: PropTypes.string,
     toolbar: PropTypes.object,
     addItem: PropTypes.func
   }
 
   static defaultProps = {
     fixedCursor: null,
+    className: '',
     toolbar: {},
     addItem: null
   }
@@ -49,11 +52,15 @@ class Toolbar extends React.Component {
   }
 
   render() {
-    const { toolbar } = this.props;
+    const { toolbar, className } = this.props;
     const { opened } = this.state;
 
+    const classNames = classnames({
+      [className]: !!className
+    });
+
     return (
-      <div className="c-wysiwyg-toolbar">
+      <div className={`c-wysiwyg-toolbar ${classNames}`}>
         <div className="toolbar-handler">
           {/* Drag handler */}
           <Transition in={(!opened)} timeout={150}>

@@ -61,14 +61,18 @@ class ListItem extends React.Component {
     return (
       <li
         className={`c-wysiwyg-list-item ${this.getClasses()}`}
-        onMouseOver={throttle(() => {
+        onMouseOver={() => {
           this.props.setCursor(position);
-        }, 100)}
+        }}
       >
 
-        {(position === cursor) &&
-          <Toolbar />
-        }
+        {/* Drag handler */}
+        <Transition in={(position === cursor)} timeout={150}>
+          {status => (
+            <Toolbar className={`-${status}`} />
+          )}
+        </Transition>
+
         <div
           className="list-item-container"
         >
