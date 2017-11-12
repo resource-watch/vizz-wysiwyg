@@ -5,7 +5,7 @@ import { withContext } from 'recompose';
 
 class WysiwygProvider extends React.Component {
   static propTypes = {
-    children: PropTypes.oneOf([PropTypes.array, PropTypes.object])
+    children: PropTypes.any
   }
 
   render() {

@@ -8,4 +8,8 @@
   &.-isHover {
     box-shadow: 0 0 0 1px $color-primary;
   }
+
+  &.-grid {
+    display: flex;
+  }
 }

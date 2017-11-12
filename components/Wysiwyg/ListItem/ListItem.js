@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import throttle from 'lodash/throttle';
 
 // Recompose
 import { getContext } from 'recompose';
@@ -29,7 +28,8 @@ class ListItem extends React.Component {
   static defaultProps = {
     item: {},
     cursor: 0,
-    position: 0
+    position: 0,
+    setCursor: null
   }
 
   /**
@@ -38,20 +38,22 @@ class ListItem extends React.Component {
    * - getContentClasses
   */
   getClasses() {
-    const { cursor, position } = this.props;
+    const { item, cursor, position } = this.props;
 
     return classnames({
       '-isDragging': false,
-      '-isHover': (position === cursor)
+      '-isHover': (position === cursor),
+      [`-${item.type}`]: !!item.type
     });
   }
 
   getContentClasses() {
-    const { cursor, position } = this.props;
+    const { item, cursor, position } = this.props;
 
     return classnames({
       '-isDragging': false,
-      '-isHover': (position === cursor)
+      '-isHover': (position === cursor),
+      [`-${item.type}`]: !!item.type
     });
   }
 

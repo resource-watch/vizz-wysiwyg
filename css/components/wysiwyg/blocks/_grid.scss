@@ -1,0 +1,7 @@
+.c-wysiwyg-grid {
+  width: 100%;
+
+  .wysiwyg-grid-row {
+    @include flex-grid-row(nest, expand, null, false, $grid-column-gutter);
+  }
+}

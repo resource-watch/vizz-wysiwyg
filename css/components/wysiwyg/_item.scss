@@ -20,4 +20,12 @@
     position: relative;
     display: inline-block;
   }
+
+  // Blocks
+  &.-grid {
+    .list-item-container {
+      position: relative;
+      display: block;
+    }
+  }
 }
