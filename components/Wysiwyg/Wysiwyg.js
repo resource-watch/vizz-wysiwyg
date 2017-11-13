@@ -75,7 +75,12 @@ class Wysiwyg extends React.Component {
 
   render() {
     return (
-      <div className="c-wysiwyg">
+      <div
+        className="c-wysiwyg"
+        onMouseLeave={() => {
+          this.setCursor(null);
+        }}
+      >
         <WysiwygProvider
           {...this.state}
           setToolbar={this.setToolbar}

@@ -12,8 +12,7 @@ import ListItem from 'components/Wysiwyg/ListItem/ListItem';
 
 class List extends React.Component {
   static propTypes = {
-    items: PropTypes.array,
-    setCursor: PropTypes.func
+    items: PropTypes.array
   }
 
   static defaultProps = {
@@ -23,12 +22,7 @@ class List extends React.Component {
   render() {
     const { items } = this.props;
     return (
-      <ul
-        className="c-wysiwyg-list"
-        onMouseLeave={() => {
-          this.props.setCursor(null);
-        }}
-      >
+      <ul className="c-wysiwyg-list">
         {items.map((item, index) => (
           <ListItem
             key={`item-${item.id}`}
@@ -45,6 +39,5 @@ class List extends React.Component {
 }
 
 export default SortableContainer(getContext({
-  items: PropTypes.array,
-  setCursor: PropTypes.func
+  items: PropTypes.array
 })(List));

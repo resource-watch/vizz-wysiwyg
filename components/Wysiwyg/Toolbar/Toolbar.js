@@ -14,7 +14,6 @@ import { Manager, Target, Popper, Arrow } from 'react-popper';
 
 // Components
 import Icon from 'components/Wysiwyg/UI/Icon/Icon';
-import Tooltip from 'components/Wysiwyg/UI/Tooltip/Tooltip';
 
 class Toolbar extends React.Component {
   static propTypes = {
