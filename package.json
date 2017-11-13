@@ -84,6 +84,7 @@
     "test": "eslint .",
     "build": "next build",
     "start": "node index.js",
+    "heroku-postbuild": "next build",
     "styleguide": "styleguidist server",
     "styleguide:build": "styleguidist build"
   },
