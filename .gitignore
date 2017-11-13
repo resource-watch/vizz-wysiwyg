@@ -5,4 +5,5 @@ node_modules/
 .DS_Store
 .data
 <restPath>/*/*/*/mock/response.txt
-.yarn.lock
+package-lock.json
+yarn.lock
