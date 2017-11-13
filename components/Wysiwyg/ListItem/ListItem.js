@@ -67,13 +67,10 @@ class ListItem extends React.Component {
           this.props.setCursor(position);
         }}
       >
-
-        {/* Drag handler */}
-        <Transition in={(position === cursor)} timeout={150}>
-          {status => (
-            <Toolbar className={`-${status}`} />
-          )}
-        </Transition>
+        {/* Toolbar */}
+        {(position === cursor) &&
+          <Toolbar />
+        }
 
         <div
           className="list-item-container"
