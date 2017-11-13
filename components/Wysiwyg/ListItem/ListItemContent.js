@@ -2,6 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
+// Recompose
+import { getContext } from 'recompose';
+
 // Blocks
 import Text from 'components/Wysiwyg/Blocks/Text';
 import Image from 'components/Wysiwyg/Blocks/Image';
@@ -13,12 +16,18 @@ import Grid from 'components/Wysiwyg/Blocks/Grid';
 class ListItemContent extends React.Component {
   static propTypes = {
     item: PropTypes.object,
-    className: PropTypes.string
+    className: PropTypes.string,
+    updateItem: PropTypes.func
   }
 
   static defaultProps = {
     item: {},
     className: ''
+  }
+
+  onChange = (payload) => {
+    const item = { ...this.props.item, ...payload };
+    this.props.updateItem(item);
   }
 
   render() {
@@ -31,27 +40,29 @@ class ListItemContent extends React.Component {
     return (
       <div className={`c-wysiwyg-item-content ${classNames}`}>
         {item.type === 'text' &&
-          <Text item={item} />
+          <Text item={item} onChange={this.onChange} />
         }
 
         {item.type === 'image' &&
-          <Image item={item} />
+          <Image item={item} onChange={this.onChange} />
         }
 
         {item.type === 'video' &&
-          <Video item={item} />
+          <Video item={item} onChange={this.onChange} />
         }
 
         {item.type === 'embed' &&
-          <Embed item={item} />
+          <Embed item={item} onChange={this.onChange} />
         }
 
         {item.type === 'grid' &&
-          <Grid item={item} />
+          <Grid item={item} onChange={this.onChange} />
         }
       </div>
     );
   }
 }
 
-export default ListItemContent;
+export default getContext({
+  updateItem: PropTypes.func
+})(ListItemContent);

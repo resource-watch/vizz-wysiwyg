@@ -22,6 +22,7 @@ class ListItem extends React.Component {
     item: PropTypes.object,
     cursor: PropTypes.number,
     position: PropTypes.number,
+    addItem: PropTypes.func,
     setCursor: PropTypes.func
   }
 
@@ -29,7 +30,16 @@ class ListItem extends React.Component {
     item: {},
     cursor: 0,
     position: 0,
+    addItem: null,
     setCursor: null
+  }
+
+  /**
+   * UI EVENTS
+   * - onAddItem
+  */
+  onAddItem = (payload) => {
+    this.props.addItem(payload);
   }
 
   /**
@@ -37,7 +47,7 @@ class ListItem extends React.Component {
    * - getClasses
    * - getContentClasses
   */
-  getClasses() {
+  getClasses = () => {
     const { item, cursor, position } = this.props;
 
     return classnames({
@@ -47,7 +57,7 @@ class ListItem extends React.Component {
     });
   }
 
-  getContentClasses() {
+  getContentClasses = () => {
     const { item, cursor, position } = this.props;
 
     return classnames({
@@ -69,7 +79,7 @@ class ListItem extends React.Component {
       >
         {/* Toolbar */}
         {(position === cursor) &&
-          <Toolbar />
+          <Toolbar onAdd={this.onAddItem} />
         }
 
         <div
@@ -108,5 +118,6 @@ class ListItem extends React.Component {
 
 export default SortableElement(getContext({
   cursor: PropTypes.number,
+  addItem: PropTypes.func,
   setCursor: PropTypes.func
 })(ListItem));

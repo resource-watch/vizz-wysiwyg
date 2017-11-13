@@ -66,14 +66,10 @@ const DEFAULT_BLOCKS = {
   grid: {
     // Placeholder
     placeholder: {
-      content: [
-        { id: 1234, type: 'text', content: '<h1>This is a title</h1>' },
-        { id: 5345, type: 'image', src: 'http://cine.netknowsl.netdna-cdn.com/cine/wp-content/uploads/2016/09/1-11.jpg', alt: 'Narcos' }
-      ]
     },
 
     options: {
-
+      columns: 2
     }
   }
 };

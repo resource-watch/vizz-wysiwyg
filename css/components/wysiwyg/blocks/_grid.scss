@@ -2,6 +2,11 @@
   width: 100%;
 
   .wysiwyg-grid-row {
-    @include flex-grid-row(nest, expand, null, false, $grid-column-gutter);
+    @include flex-grid-row(nest, expand, null, false, $space-1);
+  }
+
+  .wysiwyg-grid-placeholder {
+    padding: $space-1 * 5;
+    background: rgba($color-primary, 0.15);
   }
 }

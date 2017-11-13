@@ -5,6 +5,13 @@
   height: $space-1 * 6;
   transition: all $animation-time $ease-in-out-sine;
 
+  // State
+  &.-no-cursor {
+    .toolbar-handler {
+      &:after { display: none; }
+    }
+  }
+
   // Animations
   &.-entering {
     opacity: 1;

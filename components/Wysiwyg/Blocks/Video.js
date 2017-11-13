@@ -44,6 +44,5 @@ class Video extends React.Component {
 }
 
 export default getContext({
-  blocks: PropTypes.object,
-  updateItem: PropTypes.func
+  blocks: PropTypes.object
 })(Video);

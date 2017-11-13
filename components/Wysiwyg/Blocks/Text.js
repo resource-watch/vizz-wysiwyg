@@ -16,13 +16,13 @@ class Text extends React.Component {
   static propTypes = {
     item: PropTypes.object,
     blocks: PropTypes.object,
-    updateItem: PropTypes.func
+    onChange: PropTypes.func
   }
 
   static defaultProps = {
     item: {},
     blocks: {},
-    updateItem: null
+    onChange: null
   }
 
   state = {
@@ -31,11 +31,8 @@ class Text extends React.Component {
 
   handleChange = (content) => {
     this.setState({ content }, () => {
-      if (this.props.updateItem) {
-        this.props.updateItem({
-          ...this.props.item,
-          content
-        });
+      if (this.props.onChange) {
+        this.props.onChange({ content });
       }
     });
   }
@@ -60,6 +57,5 @@ class Text extends React.Component {
 }
 
 export default getContext({
-  blocks: PropTypes.object,
-  updateItem: PropTypes.func
+  blocks: PropTypes.object
 })(Text);

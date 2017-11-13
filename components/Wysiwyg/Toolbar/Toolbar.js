@@ -17,17 +17,17 @@ import Icon from 'components/Wysiwyg/UI/Icon/Icon';
 
 class Toolbar extends React.Component {
   static propTypes = {
-    fixedCursor: PropTypes.number,
     className: PropTypes.string,
     toolbar: PropTypes.object,
-    addItem: PropTypes.func
+    exclude: PropTypes.array,
+    onAdd: PropTypes.func
   }
 
   static defaultProps = {
-    fixedCursor: null,
     className: '',
     toolbar: {},
-    addItem: null
+    exclude: [],
+    onAdd: null
   }
 
   state = {
@@ -45,19 +45,17 @@ class Toolbar extends React.Component {
   }
 
   triggerAddBlock = (block) => {
-    const { fixedCursor } = this.props;
-
-    this.props.addItem({
+    this.props.onAdd && this.props.onAdd({
       id: Date.now(),
       type: block
-    }, fixedCursor);
+    });
 
     // Close options
     this.setState({ opened: false });
   }
 
   render() {
-    const { toolbar, className } = this.props;
+    const { toolbar, exclude, className } = this.props;
     const { opened, tooltip } = this.state;
 
     const classNames = classnames({
@@ -85,7 +83,7 @@ class Toolbar extends React.Component {
           <Transition in={(opened)} timeout={150}>
             {status => (
               <ul className={`toolbar-handler-list -${status}`}>
-                {toolbar.buttons.map((t) => {
+                {toolbar.buttons.filter(t => !exclude.includes(t.block)).map((t) => {
                   return (
                     <li
                       key={t.block}
@@ -121,6 +119,5 @@ class Toolbar extends React.Component {
 }
 
 export default getContext({
-  toolbar: PropTypes.object,
-  addItem: PropTypes.func
+  toolbar: PropTypes.object
 })(Toolbar);

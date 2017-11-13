@@ -12,11 +12,21 @@ import ListItem from 'components/Wysiwyg/ListItem/ListItem';
 
 class List extends React.Component {
   static propTypes = {
-    items: PropTypes.array
+    items: PropTypes.array,
+    addItem: PropTypes.func
   }
 
   static defaultProps = {
     items: []
+  }
+
+  /**
+   * UI EVENTS
+   * - onAddItem
+  */
+  onAddItem = (payload) => {
+    const { items } = this.props;
+    this.props.addItem(payload, items.length);
   }
 
   render() {
@@ -32,12 +42,13 @@ class List extends React.Component {
           />
         ))}
 
-        <Toolbar fixedCursor={items.length} />
+        <Toolbar onAdd={this.onAddItem} />
       </ul>
     );
   }
 }
 
 export default SortableContainer(getContext({
-  items: PropTypes.array
+  items: PropTypes.array,
+  addItem: PropTypes.func
 })(List));

@@ -61,6 +61,8 @@ class Wysiwyg extends React.Component {
 
     items[index] = item;
 
+    console.log(item);
+
     this.setItems(items);
   }
 
