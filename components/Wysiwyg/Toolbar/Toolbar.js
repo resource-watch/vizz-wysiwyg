@@ -13,30 +13,50 @@ import { Transition } from 'react-transition-group';
 import { Manager, Target, Popper, Arrow } from 'react-popper';
 
 // Components
-import Edition from 'components/Wysiwyg/Blocks/Edition/Edition';
 import Icon from 'components/Wysiwyg/UI/Icon/Icon';
+import ImageEdition from 'components/Wysiwyg/Blocks/Edition/ImageEdition';
+import VideoEdition from 'components/Wysiwyg/Blocks/Edition/VideoEdition';
+import EmbedEdition from 'components/Wysiwyg/Blocks/Edition/EmbedEdition';
+import GridEdition from 'components/Wysiwyg/Blocks/Edition/GridEdition';
 
 class Toolbar extends React.Component {
   static propTypes = {
     className: PropTypes.string,
     toolbar: PropTypes.object,
     blocks: PropTypes.object,
+    editionMode: PropTypes.bool,
     exclude: PropTypes.array,
-    onAdd: PropTypes.func
+    onAdd: PropTypes.func,
+    setEditionMode: PropTypes.func
   }
 
   static defaultProps = {
     className: '',
     toolbar: {},
     blocks: {},
+    editionMode: false,
     exclude: [],
-    onAdd: null
+    onAdd: null,
+    setEditionMode: null
   }
 
   state = {
     opened: false,
     tooltip: null,
     edition: null
+  }
+
+  BLOCK_EDITION_TYPES = {
+    image: ImageEdition,
+    video: VideoEdition,
+    embed: EmbedEdition,
+    grid: GridEdition
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.editionMode !== nextProps.editionMode && !nextProps.editionMode) {
+      this.triggerClose();
+    }
   }
 
   /**
@@ -53,15 +73,15 @@ class Toolbar extends React.Component {
 
     // Check if block has model to fill
     if (blocks[block] && blocks[block].model) {
-      this.setState({ edition: block });
+      this.setState({ tooltip: block, edition: block });
+      this.props.setEditionMode && this.props.setEditionMode(true);
     } else {
       this.props.onAdd && this.props.onAdd({
         id: Date.now(),
         type: block
       });
 
-      // Close options
-      this.setState({ opened: false, tooltip: null, edition: null });
+      this.triggerClose();
     }
   }
 
@@ -72,16 +92,23 @@ class Toolbar extends React.Component {
       content
     });
 
-    // Close options
-    this.setState({ opened: false, tooltip: null, edition: null });
+    this.triggerClose();
   }
 
+  // Helpers
+  triggerClose = () => {
+    // Close options
+    this.setState({ opened: false, tooltip: null, edition: null });
+
+    this.props.setEditionMode && this.props.setEditionMode(false);
+  }
 
   render() {
-    const { toolbar, exclude, className } = this.props;
+    const { toolbar, editionMode, exclude, className } = this.props;
     const { opened, tooltip, edition } = this.state;
 
     const classNames = classnames({
+      '-edition': edition,
       [className]: !!className
     });
 
@@ -107,11 +134,15 @@ class Toolbar extends React.Component {
             {status => (
               <ul className={`toolbar-handler-list -${status}`}>
                 {toolbar.buttons.filter(t => !exclude.includes(t.block)).map((t) => {
+                  const btnClassNames = classnames({
+                    '-active': t.block === edition
+                  });
+
                   return (
                     <li
                       key={t.block}
                       onMouseLeave={() => {
-                        if (!edition) {
+                        if (!edition && !editionMode) {
                           this.setState({ tooltip: null });
                         }
                       }}
@@ -119,9 +150,9 @@ class Toolbar extends React.Component {
                       <Manager>
                         <Target>
                           <button
-                            className="c-button -small -round -primary"
+                            className={`c-button -small -round -primary ${btnClassNames}`}
                             onClick={() => this.triggerAddBlock(t.block)}
-                            onMouseEnter={() => this.setState({ tooltip: t.block, edition: null })}
+                            onMouseEnter={() => !editionMode && this.setState({ tooltip: t.block, edition: null })}
                           >
                             <Icon name={`icon-${t.block}`} />
                           </button>
@@ -137,11 +168,22 @@ class Toolbar extends React.Component {
 
                         {/* Model tooltip */}
                         {t.block === tooltip && t.block === edition &&
-                          <Popper placement="top" className="c-tooltip -light">
-                            <Edition
-                              block={t.block}
-                              onSubmit={content => this.triggerSubmitBlock(t.block, content)}
-                            />
+                          <Popper
+                            className="c-tooltip -light"
+                            placement="bottom"
+                            modifiers={{
+                              preventOverflow: {
+                                boundariesElement: 'viewport'
+                              }
+                            }}
+                          >
+                            {React.createElement(
+                              this.BLOCK_EDITION_TYPES[t.block],
+                              {
+                                onSubmit: content => this.triggerSubmitBlock(t.block, content),
+                                block: t.block
+                              }
+                            )}
                             <Arrow className="tooltip-arrow" />
                           </Popper>
                         }
@@ -149,6 +191,14 @@ class Toolbar extends React.Component {
                     </li>
                   );
                 })}
+                <li key="close">
+                  <button
+                    className="c-button -small -round -close"
+                    onClick={this.triggerClose}
+                  >
+                    <Icon name="icon-close" />
+                  </button>
+                </li>
               </ul>
             )}
           </Transition>
@@ -160,5 +210,7 @@ class Toolbar extends React.Component {
 
 export default getContext({
   toolbar: PropTypes.object,
-  blocks: PropTypes.object
+  blocks: PropTypes.object,
+  editionMode: PropTypes.bool,
+  setEditionMode: PropTypes.func
 })(Toolbar);

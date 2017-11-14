@@ -8,6 +8,7 @@ import WysiwygProvider from 'components/Wysiwyg/WysiwygProvider';
 
 // Components
 import Content from 'components/Wysiwyg/Content/Content';
+import Backdrop from 'components/Wysiwyg/UI/Backdrop/Backdrop';
 
 class Wysiwyg extends React.Component {
   static propTypes = {
@@ -26,6 +27,7 @@ class Wysiwyg extends React.Component {
     toolbar: this.props.toolbar,
     blocks: this.props.blocks,
     items: this.props.items,
+    editionMode: false,
     cursor: 0
   }
 
@@ -38,6 +40,12 @@ class Wysiwyg extends React.Component {
 
   setCursor = (cursor) => {
     this.setState({ cursor });
+  }
+
+  setEditionMode = (mode) => {
+    this.setState({
+      editionMode: mode
+    });
   }
 
   // Items
@@ -61,8 +69,6 @@ class Wysiwyg extends React.Component {
 
     items[index] = item;
 
-    console.log(item);
-
     this.setItems(items);
   }
 
@@ -80,13 +86,14 @@ class Wysiwyg extends React.Component {
       <div
         className="c-wysiwyg"
         onMouseLeave={() => {
-          this.setCursor(null);
+          !this.state.editionMode && this.setCursor(null);
         }}
       >
         <WysiwygProvider
           {...this.state}
           setToolbar={this.setToolbar}
           setCursor={this.setCursor}
+          setEditionMode={this.setEditionMode}
           setItems={this.setItems}
           addItem={this.addItem}
           updateItem={this.updateItem}
@@ -94,6 +101,8 @@ class Wysiwyg extends React.Component {
         >
           <Content />
         </WysiwygProvider>
+
+        <Backdrop isActive={this.state.editionMode} onClick={() => this.setEditionMode(false)} />
       </div>
     );
   }

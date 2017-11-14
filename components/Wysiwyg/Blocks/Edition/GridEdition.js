@@ -10,7 +10,7 @@ import { getContext } from 'recompose';
 
 import { Form, Text, Select } from 'react-form';
 
-class ImageEdition extends React.Component {
+class GridEdition extends React.Component {
   static propTypes = {
     block: PropTypes.string,
     blocks: PropTypes.object,
@@ -34,7 +34,9 @@ class ImageEdition extends React.Component {
   }
 
   handleSubmit = (values) => {
-    if (this.props.onSubmit) this.props.onSubmit(values);
+    const content = Array(values.columns).fill();
+
+    if (this.props.onSubmit) this.props.onSubmit(content);
   }
 
   handleValidateError = (values) => {
@@ -115,4 +117,4 @@ class ImageEdition extends React.Component {
 
 export default getContext({
   blocks: PropTypes.object
-})(ImageEdition);
+})(GridEdition);
