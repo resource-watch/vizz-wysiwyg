@@ -6,34 +6,26 @@ import { getContext } from 'recompose';
 
 class Image extends React.Component {
   static propTypes = {
-    item: PropTypes.object,
-    blocks: PropTypes.object
+    item: PropTypes.object
   }
 
   static defaultProps = {
-    item: {},
-    blocks: {}
+    item: {}
   }
 
   state = {
-    src: this.props.item.src,
-    alt: this.props.item.alt
-  }
-
-  handleChange = () => {
-    // this.setState({ src }, () => {
-    //   if (this.props.onChange) this.props.onChange(src);
-    // });
+    src: this.props.item.content.src,
+    alt: this.props.item.content.alt
   }
 
   render() {
-    const { image } = this.props.blocks;
+    // const { image } = this.props.blocks;
     const { src, alt } = this.state;
     return (
       <div className="c-wysiwyg-image">
         <img
-          src={src || image.placeholder.src}
-          alt={alt || image.placeholder.alt}
+          src={src}
+          alt={alt}
         />
       </div>
     );

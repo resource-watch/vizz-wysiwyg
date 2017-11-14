@@ -26,12 +26,31 @@ const DEFAULT_BLOCKS = {
   image: {
     // Placeholder
     placeholder: {
-      src: 'http://lorempixel.com/1280/720/nature',
+      src: '/static/images/placeholder.png',
       alt: 'Placeholder image'
     },
 
-    options: {
+    model: {
+      src: {
+        type: 'text',
+        id: 'src',
+        label: 'Src',
+        validations: {
+          presence: { allowEmpty: false },
+          url: true
+        }
+      },
+      alt: {
+        type: 'text',
+        id: 'alt',
+        label: 'Alt',
+        validations: {
+          presence: { allowEmpty: false }
+        }
+      }
+    },
 
+    options: {
     }
   },
 
@@ -39,6 +58,18 @@ const DEFAULT_BLOCKS = {
     // Placeholder
     placeholder: {
       url: 'https://vimeo.com/90509568'
+    },
+
+    model: {
+      url: {
+        type: 'text',
+        id: 'url',
+        label: 'Url',
+        validations: {
+          presence: { allowEmpty: false },
+          url: true
+        }
+      }
     },
 
     // react player props
@@ -56,10 +87,19 @@ const DEFAULT_BLOCKS = {
       height: '400px'
     },
 
-    // react player props
-    // https://github.com/CookPete/react-player#props
+    model: {
+      src: {
+        type: 'text',
+        id: 'src',
+        label: 'Src',
+        validations: {
+          presence: { allowEmpty: false },
+          url: true
+        }
+      }
+    },
+
     options: {
-      controls: true
     }
   },
 
@@ -68,8 +108,19 @@ const DEFAULT_BLOCKS = {
     placeholder: {
     },
 
+    model: {
+      columns: {
+        type: 'number',
+        id: 'columns',
+        label: 'Columns',
+        validations: {
+          presence: { allowEmpty: false },
+          inclusion: [2, 3]
+        }
+      }
+    },
+
     options: {
-      columns: 2
     }
   }
 };

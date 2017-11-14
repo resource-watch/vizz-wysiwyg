@@ -1,0 +1,85 @@
+.c-field {
+  flex: 1;
+
+  .label {
+    font-size: 14px;
+    display: block;
+    position: relative;
+    padding: 0 0 5px;
+    color: $color-text-1;
+    background: none;
+  }
+
+  .hint {
+    font-style: italic;
+    padding: 0 0 5px;
+    font-size: 12px;
+    margin: 0;
+  }
+
+  .error {
+    color: $color-error;
+    margin: 3px 0 0;
+    font-size: 12px;
+  }
+
+  > input[type=text],
+  > input[type=password],
+  > input[type=email],
+  > input[type=number],
+  > input[type=tel],
+  > input[type=date],
+  > input[type=time],
+  > input[type=url],
+  > input,
+  > textarea {
+    display: inline-block;
+    border: 1px solid $border-color-2;
+    box-shadow: none;
+    outline: none;
+    font-size: 14px;
+    padding: 10px;
+    width: 100%;
+    font-family: inherit;
+    background: rgba(0,0,0,0.04);
+    color: $color-text-1;
+    margin: 0;
+
+    &:hover {
+      border-color: darken($border-color-2, 10%);
+    }
+  }
+
+  &.-valid {
+    > input[type=text],
+    > input[type=password],
+    > input[type=email],
+    > input[type=number],
+    > input[type=tel],
+    > input[type=date],
+    > input[type=time],
+    > input[type=url],
+    > input,
+    > textarea,
+    > select {
+      border-color: $color-success;
+    }
+  }
+
+
+  &.-error {
+    > input[type=text],
+    > input[type=password],
+    > input[type=email],
+    > input[type=number],
+    > input[type=tel],
+    > input[type=date],
+    > input[type=time],
+    > input[type=url],
+    > input,
+    > textarea,
+    > select {
+      border-color: $color-error;
+    }
+  }
+}

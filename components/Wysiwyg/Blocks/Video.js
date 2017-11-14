@@ -19,13 +19,7 @@ class Video extends React.Component {
   }
 
   state = {
-    url: this.props.item.url
-  }
-
-  handleChange = () => {
-    // this.setState({ src }, () => {
-    //   if (this.props.onChange) this.props.onChange(src);
-    // });
+    url: this.props.item.content.url
   }
 
   render() {
@@ -36,7 +30,7 @@ class Video extends React.Component {
       <div className="c-wysiwyg-video">
         <ReactPlayer
           {...video.options}
-          url={url || video.placeholder.url}
+          url={url}
         />
       </div>
     );

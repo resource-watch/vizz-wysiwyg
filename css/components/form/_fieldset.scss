@@ -1,0 +1,13 @@
+.c-fieldset {
+  margin: 0;
+  padding: 0;
+  border: none;
+
+  > div {
+    margin: $space-1 * 2 0 0;
+
+    &:first-child {
+      margin: 0;
+    }
+  }
+}
