@@ -2,6 +2,19 @@
   background: $color-primary;
   color: $color-white;
   padding: $space-1;
+  max-width: 400px;
+  box-shadow: 0 2px 8px rgba($color-black, 0.15);
+
+  &:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 100%;
+    height: 10px;
+    z-index: 1;
+    background: transparent;
+  }
 
   .tooltip-arrow {
     width: 0;
@@ -62,4 +75,26 @@
     margin-left: 0;
     margin-right: 0;
   }
+
+  &.-light {
+    background: $color-white;
+    color: $color-text-1;
+
+    &[data-placement^="top"] .tooltip-arrow {
+      border-color: $color-white transparent transparent transparent;
+    }
+
+    &[data-placement^="bottom"] .tooltip-arrow {
+      border-color: transparent transparent $color-white transparent;
+    }
+
+    &[data-placement^="right"] .tooltip-arrow {
+      border-color: transparent $color-white transparent transparent;
+    }
+
+    &[data-placement^="left"] .tooltip-arrow {
+      border-color: transparent transparent transparent $color-white;
+    }
+  }
+
 }

@@ -6,37 +6,29 @@ import { getContext } from 'recompose';
 
 class Embed extends React.Component {
   static propTypes = {
-    item: PropTypes.object,
-    blocks: PropTypes.object
+    item: PropTypes.object
   }
 
   static defaultProps = {
-    item: {},
-    blocks: {}
+    item: {}
   }
 
   state = {
-    src: this.props.item.src,
-    width: this.props.item.width,
-    height: this.props.item.height
-  }
-
-  handleChange = () => {
-    // this.setState({ src }, () => {
-    //   if (this.props.onChange) this.props.onChange(src);
-    // });
+    src: this.props.item.content.src,
+    width: this.props.item.content.width,
+    height: this.props.item.content.height
   }
 
   render() {
-    const { embed } = this.props.blocks;
     const { src, width, height } = this.state;
+
     return (
       <div className="c-wysiwyg-embed">
         <iframe
           frameBorder="0"
-          src={src || embed.placeholder.src}
-          width={width || embed.placeholder.width}
-          height={height || embed.placeholder.height}
+          src={src}
+          width={width}
+          height={height}
         />
       </div>
     );

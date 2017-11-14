@@ -13,12 +13,14 @@ import { Transition } from 'react-transition-group';
 import { Manager, Target, Popper, Arrow } from 'react-popper';
 
 // Components
+import Edition from 'components/Wysiwyg/Blocks/Edition/Edition';
 import Icon from 'components/Wysiwyg/UI/Icon/Icon';
 
 class Toolbar extends React.Component {
   static propTypes = {
     className: PropTypes.string,
     toolbar: PropTypes.object,
+    blocks: PropTypes.object,
     exclude: PropTypes.array,
     onAdd: PropTypes.func
   }
@@ -26,13 +28,15 @@ class Toolbar extends React.Component {
   static defaultProps = {
     className: '',
     toolbar: {},
+    blocks: {},
     exclude: [],
     onAdd: null
   }
 
   state = {
     opened: false,
-    tooltip: null
+    tooltip: null,
+    edition: null
   }
 
   /**
@@ -45,18 +49,37 @@ class Toolbar extends React.Component {
   }
 
   triggerAddBlock = (block) => {
+    const { blocks } = this.props;
+
+    // Check if block has model to fill
+    if (blocks[block] && blocks[block].model) {
+      this.setState({ edition: block });
+    } else {
+      this.props.onAdd && this.props.onAdd({
+        id: Date.now(),
+        type: block
+      });
+
+      // Close options
+      this.setState({ opened: false, tooltip: null, edition: null });
+    }
+  }
+
+  triggerSubmitBlock = (block, content) => {
     this.props.onAdd && this.props.onAdd({
       id: Date.now(),
-      type: block
+      type: block,
+      content
     });
 
     // Close options
-    this.setState({ opened: false });
+    this.setState({ opened: false, tooltip: null, edition: null });
   }
+
 
   render() {
     const { toolbar, exclude, className } = this.props;
-    const { opened, tooltip } = this.state;
+    const { opened, tooltip, edition } = this.state;
 
     const classNames = classnames({
       [className]: !!className
@@ -87,21 +110,38 @@ class Toolbar extends React.Component {
                   return (
                     <li
                       key={t.block}
+                      onMouseLeave={() => {
+                        if (!edition) {
+                          this.setState({ tooltip: null });
+                        }
+                      }}
                     >
                       <Manager>
                         <Target>
                           <button
                             className="c-button -small -round -primary"
                             onClick={() => this.triggerAddBlock(t.block)}
-                            onMouseEnter={() => this.setState({ tooltip: t.block })}
-                            onMouseLeave={() => this.setState({ tooltip: null })}
+                            onMouseEnter={() => this.setState({ tooltip: t.block, edition: null })}
                           >
                             <Icon name={`icon-${t.block}`} />
                           </button>
                         </Target>
-                        {t.block === tooltip &&
+
+                        {/* Info tooltip */}
+                        {t.block === tooltip && !edition &&
                           <Popper placement="top" className="c-tooltip">
                             {upperFirst(t.block)}
+                            <Arrow className="tooltip-arrow" />
+                          </Popper>
+                        }
+
+                        {/* Model tooltip */}
+                        {t.block === tooltip && t.block === edition &&
+                          <Popper placement="top" className="c-tooltip -light">
+                            <Edition
+                              block={t.block}
+                              onSubmit={content => this.triggerSubmitBlock(t.block, content)}
+                            />
                             <Arrow className="tooltip-arrow" />
                           </Popper>
                         }
@@ -119,5 +159,6 @@ class Toolbar extends React.Component {
 }
 
 export default getContext({
-  toolbar: PropTypes.object
+  toolbar: PropTypes.object,
+  blocks: PropTypes.object
 })(Toolbar);

@@ -17,6 +17,11 @@
 @import 'animations';
 @import 'print';
 
+// Form
+@import 'components/form/field';
+@import 'components/form/fieldset';
+@import 'components/form/form';
+
 // Layout
 @import 'components/layout/header';
 
