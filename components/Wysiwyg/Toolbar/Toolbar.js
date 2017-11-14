@@ -24,16 +24,20 @@ class Toolbar extends React.Component {
     className: PropTypes.string,
     toolbar: PropTypes.object,
     blocks: PropTypes.object,
+    editionMode: PropTypes.bool,
     exclude: PropTypes.array,
-    onAdd: PropTypes.func
+    onAdd: PropTypes.func,
+    setEditionMode: PropTypes.func
   }
 
   static defaultProps = {
     className: '',
     toolbar: {},
     blocks: {},
+    editionMode: false,
     exclude: [],
-    onAdd: null
+    onAdd: null,
+    setEditionMode: null
   }
 
   state = {
@@ -63,15 +67,15 @@ class Toolbar extends React.Component {
 
     // Check if block has model to fill
     if (blocks[block] && blocks[block].model) {
-      this.setState({ edition: block });
+      this.setState({ tooltip: block, edition: block });
+      this.props.setEditionMode && this.props.setEditionMode(true);
     } else {
       this.props.onAdd && this.props.onAdd({
         id: Date.now(),
         type: block
       });
 
-      // Close options
-      this.setState({ opened: false, tooltip: null, edition: null });
+      this.triggerClose();
     }
   }
 
@@ -82,16 +86,23 @@ class Toolbar extends React.Component {
       content
     });
 
-    // Close options
-    this.setState({ opened: false, tooltip: null, edition: null });
+    this.triggerClose();
   }
 
+  // Helpers
+  triggerClose = () => {
+    // Close options
+    this.setState({ opened: false, tooltip: null, edition: null });
+
+    this.props.setEditionMode && this.props.setEditionMode(false);
+  }
 
   render() {
-    const { toolbar, exclude, className } = this.props;
+    const { toolbar, editionMode, exclude, className } = this.props;
     const { opened, tooltip, edition } = this.state;
 
     const classNames = classnames({
+      '-edition': edition,
       [className]: !!className
     });
 
@@ -117,11 +128,15 @@ class Toolbar extends React.Component {
             {status => (
               <ul className={`toolbar-handler-list -${status}`}>
                 {toolbar.buttons.filter(t => !exclude.includes(t.block)).map((t) => {
+                  const btnClassNames = classnames({
+                    '-active': t.block === edition
+                  });
+
                   return (
                     <li
                       key={t.block}
                       onMouseLeave={() => {
-                        if (!edition) {
+                        if (!edition && !editionMode) {
                           this.setState({ tooltip: null });
                         }
                       }}
@@ -129,9 +144,9 @@ class Toolbar extends React.Component {
                       <Manager>
                         <Target>
                           <button
-                            className="c-button -small -round -primary"
+                            className={`c-button -small -round -primary ${btnClassNames}`}
                             onClick={() => this.triggerAddBlock(t.block)}
-                            onMouseEnter={() => this.setState({ tooltip: t.block, edition: null })}
+                            onMouseEnter={() => !editionMode && this.setState({ tooltip: t.block, edition: null })}
                           >
                             <Icon name={`icon-${t.block}`} />
                           </button>
@@ -147,7 +162,15 @@ class Toolbar extends React.Component {
 
                         {/* Model tooltip */}
                         {t.block === tooltip && t.block === edition &&
-                          <Popper placement="top" className="c-tooltip -light">
+                          <Popper
+                            className="c-tooltip -light"
+                            placement="bottom"
+                            modifiers={{
+                              preventOverflow: {
+                                boundariesElement: 'viewport'
+                              }
+                            }}
+                          >
                             {React.createElement(
                               this.BLOCK_EDITION_TYPES[t.block],
                               {
@@ -162,6 +185,14 @@ class Toolbar extends React.Component {
                     </li>
                   );
                 })}
+                <li key="close">
+                  <button
+                    className="c-button -small -round -close"
+                    onClick={this.triggerClose}
+                  >
+                    <Icon name="icon-close" />
+                  </button>
+                </li>
               </ul>
             )}
           </Transition>
@@ -173,5 +204,7 @@ class Toolbar extends React.Component {
 
 export default getContext({
   toolbar: PropTypes.object,
-  blocks: PropTypes.object
+  blocks: PropTypes.object,
+  editionMode: PropTypes.bool,
+  setEditionMode: PropTypes.func
 })(Toolbar);

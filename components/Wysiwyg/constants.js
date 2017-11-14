@@ -113,6 +113,7 @@ const DEFAULT_BLOCKS = {
         type: 'select',
         id: 'columns',
         label: 'Columns',
+        defaultValue: 2,
         options: [
           { label: 2, value: 2 },
           { label: 3, value: 3 }

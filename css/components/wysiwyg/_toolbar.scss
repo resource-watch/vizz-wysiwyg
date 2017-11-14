@@ -12,6 +12,11 @@
     }
   }
 
+  &.-edition {
+    z-index: $z-index-4;
+  }
+
+
   // Animations
   &.-entering {
     opacity: 1;

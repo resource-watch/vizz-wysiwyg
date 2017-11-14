@@ -51,7 +51,7 @@ class EmbedEdition extends React.Component {
     return (
       <div className="c-wysiwyg-edition">
         <Form
-          // defaultValues={}
+          defaultValues={mapValues(this.MODEL, m => m.defaultValue)}
           onSubmit={this.handleSubmit}
           // validateSuccess={this.handleValidate}
           validateError={this.handleValidateError}
@@ -73,7 +73,7 @@ class EmbedEdition extends React.Component {
                     });
 
                     return (
-                      <div className={`c-field ${fieldClassNames}`}>
+                      <div key={this.MODEL[f].id} className={`c-field ${fieldClassNames}`}>
                         <label
                           className="label"
                           htmlFor={this.MODEL[f].id}
@@ -90,7 +90,7 @@ class EmbedEdition extends React.Component {
                           }
                         )}
 
-                        {!!touched[f] && !!errors[f] && errors[f].map(e => <div className="error">{e}</div>)}
+                        {!!touched[f] && !!errors[f] && errors[f].map((e, i) => <div key={i} className="error">{e}</div>)}
                       </div>
                     );
                   })}

@@ -26,6 +26,7 @@ class Wysiwyg extends React.Component {
     toolbar: this.props.toolbar,
     blocks: this.props.blocks,
     items: this.props.items,
+    editionMode: false,
     cursor: 0
   }
 
@@ -38,6 +39,12 @@ class Wysiwyg extends React.Component {
 
   setCursor = (cursor) => {
     this.setState({ cursor });
+  }
+
+  setEditionMode = (mode) => {
+    this.setState({
+      editionMode: mode
+    });
   }
 
   // Items
@@ -60,8 +67,6 @@ class Wysiwyg extends React.Component {
     const index = items.findIndex(i => i.id === item.id);
 
     items[index] = item;
-
-    console.log(item);
 
     this.setItems(items);
   }
@@ -87,6 +92,7 @@ class Wysiwyg extends React.Component {
           {...this.state}
           setToolbar={this.setToolbar}
           setCursor={this.setCursor}
+          setEditionMode={this.setEditionMode}
           setItems={this.setItems}
           addItem={this.addItem}
           updateItem={this.updateItem}
@@ -94,6 +100,10 @@ class Wysiwyg extends React.Component {
         >
           <Content />
         </WysiwygProvider>
+
+        {this.state.editionMode &&
+          <div className="c-wysiwyg-backdrop" />
+        }
       </div>
     );
   }
