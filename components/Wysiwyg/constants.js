@@ -26,7 +26,7 @@ const DEFAULT_BLOCKS = {
   image: {
     // Placeholder
     placeholder: {
-      src: 'http://lorempixel.com/1280/720/nature',
+      src: '/static/images/placeholder.png',
       alt: 'Placeholder image'
     },
 
