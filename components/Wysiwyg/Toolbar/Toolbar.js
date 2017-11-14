@@ -53,6 +53,12 @@ class Toolbar extends React.Component {
     grid: GridEdition
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (this.props.editionMode !== nextProps.editionMode && !nextProps.editionMode) {
+      this.triggerClose();
+    }
+  }
+
   /**
    * UI EVENTS
    * - triggerToggleOptions

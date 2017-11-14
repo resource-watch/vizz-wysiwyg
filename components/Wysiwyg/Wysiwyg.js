@@ -8,6 +8,7 @@ import WysiwygProvider from 'components/Wysiwyg/WysiwygProvider';
 
 // Components
 import Content from 'components/Wysiwyg/Content/Content';
+import Backdrop from 'components/Wysiwyg/UI/Backdrop/Backdrop';
 
 class Wysiwyg extends React.Component {
   static propTypes = {
@@ -85,7 +86,7 @@ class Wysiwyg extends React.Component {
       <div
         className="c-wysiwyg"
         onMouseLeave={() => {
-          this.setCursor(null);
+          !this.state.editionMode && this.setCursor(null);
         }}
       >
         <WysiwygProvider
@@ -101,9 +102,7 @@ class Wysiwyg extends React.Component {
           <Content />
         </WysiwygProvider>
 
-        {this.state.editionMode &&
-          <div className="c-wysiwyg-backdrop" />
-        }
+        <Backdrop isActive={this.state.editionMode} onClick={() => this.setEditionMode(false)} />
       </div>
     );
   }
