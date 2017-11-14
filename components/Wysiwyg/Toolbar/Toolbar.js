@@ -13,8 +13,11 @@ import { Transition } from 'react-transition-group';
 import { Manager, Target, Popper, Arrow } from 'react-popper';
 
 // Components
-import Edition from 'components/Wysiwyg/Blocks/Edition/Edition';
 import Icon from 'components/Wysiwyg/UI/Icon/Icon';
+import ImageEdition from 'components/Wysiwyg/Blocks/Edition/ImageEdition';
+import VideoEdition from 'components/Wysiwyg/Blocks/Edition/VideoEdition';
+import EmbedEdition from 'components/Wysiwyg/Blocks/Edition/EmbedEdition';
+import GridEdition from 'components/Wysiwyg/Blocks/Edition/GridEdition';
 
 class Toolbar extends React.Component {
   static propTypes = {
@@ -37,6 +40,13 @@ class Toolbar extends React.Component {
     opened: false,
     tooltip: null,
     edition: null
+  }
+
+  BLOCK_EDITION_TYPES = {
+    image: ImageEdition,
+    video: VideoEdition,
+    embed: EmbedEdition,
+    grid: GridEdition
   }
 
   /**
@@ -138,10 +148,13 @@ class Toolbar extends React.Component {
                         {/* Model tooltip */}
                         {t.block === tooltip && t.block === edition &&
                           <Popper placement="top" className="c-tooltip -light">
-                            <Edition
-                              block={t.block}
-                              onSubmit={content => this.triggerSubmitBlock(t.block, content)}
-                            />
+                            {React.createElement(
+                              this.BLOCK_EDITION_TYPES[t.block],
+                              {
+                                onSubmit: content => this.triggerSubmitBlock(t.block, content),
+                                block: t.block
+                              }
+                            )}
                             <Arrow className="tooltip-arrow" />
                           </Popper>
                         }

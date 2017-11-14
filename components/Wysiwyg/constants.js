@@ -110,12 +110,15 @@ const DEFAULT_BLOCKS = {
 
     model: {
       columns: {
-        type: 'number',
+        type: 'select',
         id: 'columns',
         label: 'Columns',
+        options: [
+          { label: 2, value: 2 },
+          { label: 3, value: 3 }
+        ],
         validations: {
-          presence: { allowEmpty: false },
-          inclusion: [2, 3]
+          presence: { allowEmpty: false }
         }
       }
     },
