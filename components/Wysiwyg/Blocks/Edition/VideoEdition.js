@@ -98,7 +98,7 @@ class VideoEdition extends React.Component {
 
                 <div className="form-actions">
                   <button
-                    type="submit"
+                    type="button"
                     className="c-button -primary"
                   >
                     Submit

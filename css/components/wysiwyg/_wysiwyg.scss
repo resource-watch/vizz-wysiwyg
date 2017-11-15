@@ -2,5 +2,38 @@
   width: 100%;
   max-width: 900px;
   margin: 0 auto;
-  margin-bottom: $space-1 * 8;
+
+  *, *:after, *:before {
+    box-sizing: border-box;
+  }
+
+  p {
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  img {
+    max-width:100% !important;
+    height:auto;
+    display:block;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  ul, ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Titles */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    margin: 0;
+  }
 }

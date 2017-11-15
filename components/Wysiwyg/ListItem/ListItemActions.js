@@ -33,6 +33,7 @@ class ListItemActions extends React.Component {
         <ul className="item-actions">
           <li>
             <button
+              type="button"
               className="c-button -primary -round -small"
               onClick={() => { this.props.removeItem(item); }}
             >

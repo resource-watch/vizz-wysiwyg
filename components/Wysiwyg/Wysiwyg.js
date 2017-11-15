@@ -8,7 +8,10 @@ import WysiwygProvider from 'components/Wysiwyg/WysiwygProvider';
 
 // Components
 import Content from 'components/Wysiwyg/Content/Content';
+import Icons from 'components/Wysiwyg/UI/Icons/Icons';
 import Backdrop from 'components/Wysiwyg/UI/Backdrop/Backdrop';
+
+import 'css/components/wysiwyg/index.scss';
 
 class Wysiwyg extends React.Component {
   static propTypes = {
@@ -89,6 +92,8 @@ class Wysiwyg extends React.Component {
           !this.state.editionMode && this.setCursor(null);
         }}
       >
+        <Icons />
+
         <WysiwygProvider
           {...this.state}
           setToolbar={this.setToolbar}

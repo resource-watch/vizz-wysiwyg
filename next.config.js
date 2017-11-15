@@ -12,13 +12,11 @@ module.exports = {
         options: {
           name: 'dist/[path][name].[ext]'
         }
-      }
-    ,
+      },
       {
         test: /\.css$/,
         use: ['babel-loader', 'raw-loader', 'postcss-loader']
-      }
-    ,
+      },
       {
         test: /\.s(a|c)ss$/,
         use: ['babel-loader', 'raw-loader', 'postcss-loader',

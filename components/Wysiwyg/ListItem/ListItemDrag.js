@@ -32,6 +32,7 @@ class ListItemDrag extends React.Component {
         <ul className="item-drag">
           <li>
             <button
+              type="button"
               className="c-button -primary -round -small"
               {...prov.dragHandleProps}
             >

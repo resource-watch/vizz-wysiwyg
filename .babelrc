@@ -1,7 +1,7 @@
 {
+  "presets": ["next/babel"],
   "plugins": [
     "add-react-displayname",
-    "transform-decorators-legacy",
     [
       "module-resolver", {
         "root": ["."],
@@ -21,9 +21,5 @@
         "extensions": ["css$", "scss$"]
       }
     ]
-  ],
-  "presets": [
-    "next/babel"
-  ],
-  "ignore": []
+  ]
 }
