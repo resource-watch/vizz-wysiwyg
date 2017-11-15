@@ -1,4 +1,4 @@
-.c-wysiwyg-list-item {
+.cw-wysiwyg-list-item {
   width: 100%;
   // padding: $space-1 * 3 0;
   position: relative;
@@ -10,7 +10,7 @@
   &.-isDragging {
     pointer-events: all !important;
 
-    .c-wysiwyg-item-content {
+    .cw-wysiwyg-item-content {
       background: $color-primary;
       color: $color-white;
     }

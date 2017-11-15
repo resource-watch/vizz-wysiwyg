@@ -42,11 +42,11 @@ class Text extends React.Component {
     const { content } = this.state;
 
     return (
-      <div className="c-wysiwyg-text">
+      <div className="cw-wysiwyg-text">
         {!!Editor &&
           <Editor
             {...text}
-            className="c-quill"
+            className="cw-quill"
             defaultValue={content}
             onChange={this.handleChange}
           />

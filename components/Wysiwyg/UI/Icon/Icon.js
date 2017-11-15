@@ -16,7 +16,7 @@ class Icon extends React.Component {
   render() {
     const { name, className } = this.props;
     return (
-      <svg className={`c-icon ${className || ''}`}>
+      <svg className={`cw-icon ${className || ''}`}>
         <use xlinkHref={`#${name}`} />
       </svg>
     );

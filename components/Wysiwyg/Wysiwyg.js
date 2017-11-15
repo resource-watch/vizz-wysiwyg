@@ -87,7 +87,7 @@ class Wysiwyg extends React.Component {
   render() {
     return (
       <div
-        className="c-wysiwyg"
+        className="cw-wysiwyg"
         onMouseLeave={() => {
           !this.state.editionMode && this.setCursor(null);
         }}

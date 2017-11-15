@@ -27,7 +27,7 @@ class Video extends React.Component {
     const { url } = this.state;
 
     return (
-      <div className="c-wysiwyg-video">
+      <div className="cw-wysiwyg-video">
         <ReactPlayer
           {...video.options}
           url={url}

@@ -72,7 +72,7 @@ class ListItem extends React.Component {
 
     return (
       <li
-        className={`c-wysiwyg-list-item ${this.getClasses()}`}
+        className={`cw-wysiwyg-list-item ${this.getClasses()}`}
         onMouseOver={() => {
           this.props.setCursor(position);
         }}

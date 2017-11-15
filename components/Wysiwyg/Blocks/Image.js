@@ -22,7 +22,7 @@ class Image extends React.Component {
     // const { image } = this.props.blocks;
     const { src, alt } = this.state;
     return (
-      <div className="c-wysiwyg-image">
+      <div className="cw-wysiwyg-image">
         <img
           src={src}
           alt={alt}

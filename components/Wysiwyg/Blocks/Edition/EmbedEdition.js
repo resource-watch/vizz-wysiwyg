@@ -49,7 +49,7 @@ class EmbedEdition extends React.Component {
 
   render() {
     return (
-      <div className="c-wysiwyg-edition">
+      <div className="cw-wysiwyg-edition">
         <Form
           defaultValues={mapValues(this.MODEL, m => m.defaultValue)}
           onSubmit={this.handleSubmit}
@@ -62,18 +62,18 @@ class EmbedEdition extends React.Component {
             return (
               <form
                 id="form"
-                className="c-form"
+                className="cw-form"
                 autoComplete="off"
                 onSubmit={formApi.submitForm}
               >
-                <fieldset className="c-fieldset">
+                <fieldset className="cw-fieldset">
                   {Object.keys(this.MODEL).map((f) => {
                     const fieldClassNames = classnames({
                       [`-${this.MODEL[f].type}`]: !!this.MODEL[f].type
                     });
 
                     return (
-                      <div key={this.MODEL[f].id} className={`c-field ${fieldClassNames}`}>
+                      <div key={this.MODEL[f].id} className={`cw-field ${fieldClassNames}`}>
                         <label
                           className="label"
                           htmlFor={this.MODEL[f].id}
@@ -99,7 +99,7 @@ class EmbedEdition extends React.Component {
                 <div className="form-actions">
                   <button
                     type="submit"
-                    className="c-button -primary"
+                    className="cw-button -primary"
                   >
                     Submit
                   </button>

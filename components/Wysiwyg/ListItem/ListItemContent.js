@@ -38,7 +38,7 @@ class ListItemContent extends React.Component {
     });
 
     return (
-      <div className={`c-wysiwyg-item-content ${classNames}`}>
+      <div className={`cw-wysiwyg-item-content ${classNames}`}>
         {item.type === 'text' &&
           <Text item={item} onChange={this.onChange} />
         }

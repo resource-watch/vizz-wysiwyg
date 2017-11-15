@@ -68,7 +68,7 @@ class Grid extends React.Component {
     });
 
     return (
-      <div className="c-wysiwyg-grid">
+      <div className="cw-wysiwyg-grid">
         <div className="wysiwyg-grid-row row">
           {content.map(((item, i) => {
             if (!item) {

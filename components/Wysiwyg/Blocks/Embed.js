@@ -23,7 +23,7 @@ class Embed extends React.Component {
     const { src, width, height } = this.state;
 
     return (
-      <div className="c-wysiwyg-embed">
+      <div className="cw-wysiwyg-embed">
         <iframe
           frameBorder="0"
           src={src}

@@ -113,7 +113,7 @@ class Toolbar extends React.Component {
     });
 
     return (
-      <div className={`c-wysiwyg-toolbar ${classNames}`}>
+      <div className={`cw-wysiwyg-toolbar ${classNames}`}>
         <div className="toolbar-handler">
           {/* Drag handler */}
           <Transition in={(!opened)} timeout={150}>
@@ -121,7 +121,7 @@ class Toolbar extends React.Component {
               <div className={`toolbar-handler-button -${status}`}>
                 <button
                   type="button"
-                  className="c-button -primary"
+                  className="cw-button -primary"
                   onClick={() => this.triggerToggleOptions()}
                 >
                   Add
@@ -152,7 +152,7 @@ class Toolbar extends React.Component {
                         <Target>
                           <button
                             type="button"
-                            className={`c-button -small -round -primary ${btnClassNames}`}
+                            className={`cw-button -small -round -primary ${btnClassNames}`}
                             onClick={() => this.triggerAddBlock(t.block)}
                             onMouseEnter={() => !editionMode && this.setState({ tooltip: t.block, edition: null })}
                           >
@@ -162,7 +162,7 @@ class Toolbar extends React.Component {
 
                         {/* Info tooltip */}
                         {t.block === tooltip && !edition &&
-                          <Popper placement="top" className="c-tooltip">
+                          <Popper placement="top" className="cw-tooltip">
                             {upperFirst(t.block)}
                             <Arrow className="tooltip-arrow" />
                           </Popper>
@@ -171,7 +171,7 @@ class Toolbar extends React.Component {
                         {/* Model tooltip */}
                         {t.block === tooltip && t.block === edition &&
                           <Popper
-                            className="c-tooltip -light"
+                            className="cw-tooltip -light"
                             placement="bottom"
                             modifiers={{
                               preventOverflow: {
@@ -196,7 +196,7 @@ class Toolbar extends React.Component {
                 <li key="close">
                   <button
                     type="button"
-                    className="c-button -small -round -close"
+                    className="cw-button -small -round -close"
                     onClick={this.triggerClose}
                   >
                     <Icon name="icon-close" />
