@@ -15,8 +15,8 @@ class Embed extends React.Component {
 
   state = {
     src: this.props.item.content.src,
-    width: this.props.item.content.width,
-    height: this.props.item.content.height
+    width: this.props.item.content.width || '100%',
+    height: this.props.item.content.height || '400px'
   }
 
   render() {
