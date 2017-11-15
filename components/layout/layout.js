@@ -38,8 +38,6 @@ class Layout extends React.Component {
           description={description}
         />
 
-        <Icons />
-
         <Header />
 
         {this.props.children}
