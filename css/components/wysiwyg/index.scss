@@ -116,7 +116,7 @@ $ease-in-out-sine: cubic-bezier(0.445, 0.050, 0.550, 0.950);
 
 
 // Foundation
-@import '../node_modules/foundation-sites/scss/foundation';
+@import '../../../node_modules/foundation-sites/scss/foundation';
 @import 'foundation_settings';
 @include foundation-flex-classes;
 @include foundation-flex-grid;
@@ -151,5 +151,5 @@ $ease-in-out-sine: cubic-bezier(0.445, 0.050, 0.550, 0.950);
 @import 'blocks/grid';
 
 // Quill editor
-@import '../node_modules/react-quill/dist/quill.bubble';
+@import '../../../node_modules/react-quill/dist/quill.bubble';
 @import 'quill';
