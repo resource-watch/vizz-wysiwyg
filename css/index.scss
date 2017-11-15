@@ -17,36 +17,8 @@
 @import 'animations';
 @import 'print';
 
-// Form
-@import 'components/form/field';
-@import 'components/form/fieldset';
-@import 'components/form/form';
-
 // Layout
 @import 'components/layout/header';
 
-// UI
-@import 'components/ui/button';
-@import 'components/ui/icon';
-@import 'components/ui/spinner';
-@import 'components/ui/tooltip';
-
-// Wysiwyg
-@import 'components/wysiwyg/wysiwyg';
-@import 'components/wysiwyg/backdrop';
-@import 'components/wysiwyg/toolbar';
-@import 'components/wysiwyg/list';
-@import 'components/wysiwyg/item';
-@import 'components/wysiwyg/item-drag';
-@import 'components/wysiwyg/item-actions';
-@import 'components/wysiwyg/item-content';
-
-// Wysiwyg blocks
-@import 'components/wysiwyg/blocks/title';
-@import 'components/wysiwyg/blocks/text';
-@import 'components/wysiwyg/blocks/image';
-@import 'components/wysiwyg/blocks/grid';
-
-// Quill editor
-@import '../node_modules/react-quill/dist/quill.bubble';
-@import 'components/wysiwyg/quill';
+// Wysigyg
+@import 'components/wysiwyg/index';

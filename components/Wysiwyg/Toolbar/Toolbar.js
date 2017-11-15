@@ -120,6 +120,7 @@ class Toolbar extends React.Component {
             {status => (
               <div className={`toolbar-handler-button -${status}`}>
                 <button
+                  type="button"
                   className="c-button -primary"
                   onClick={() => this.triggerToggleOptions()}
                 >
@@ -150,6 +151,7 @@ class Toolbar extends React.Component {
                       <Manager>
                         <Target>
                           <button
+                            type="button"
                             className={`c-button -small -round -primary ${btnClassNames}`}
                             onClick={() => this.triggerAddBlock(t.block)}
                             onMouseEnter={() => !editionMode && this.setState({ tooltip: t.block, edition: null })}
@@ -193,6 +195,7 @@ class Toolbar extends React.Component {
                 })}
                 <li key="close">
                   <button
+                    type="button"
                     className="c-button -small -round -close"
                     onClick={this.triggerClose}
                   >
