@@ -100,8 +100,9 @@ class GridEdition extends React.Component {
 
                 <div className="form-actions">
                   <button
-                    type="submit"
+                    type="button"
                     className="cw-button -primary"
+                    onClick={formApi.submitForm}
                   >
                     Submit
                   </button>

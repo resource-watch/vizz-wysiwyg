@@ -100,6 +100,7 @@ class VideoEdition extends React.Component {
                   <button
                     type="button"
                     className="cw-button -primary"
+                    onClick={formApi.submitForm}
                   >
                     Submit
                   </button>
