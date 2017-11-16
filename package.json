@@ -91,7 +91,7 @@
     "test": "eslint .",
     "build": "next build",
     "start": "node index.js",
-    "preinstall": "npm install --ignore-scripts && npm run component:build",
+    "postinstall": "npm run component:build",
 
     "styleguide": "styleguidist server",
     "styleguide:build": "styleguidist build",
