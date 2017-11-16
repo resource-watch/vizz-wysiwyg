@@ -91,7 +91,7 @@
     "test": "eslint .",
     "build": "next build",
     "start": "node index.js",
-    "precommit": "npm run component:build",
+    "precommit": "npm run component:build && git add .",
     "styleguide": "styleguidist server",
     "styleguide:build": "styleguidist build",
     "component": "NODE_ENV=development webpack --config component.webpack.js --watch",
