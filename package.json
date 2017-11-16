@@ -91,6 +91,7 @@
     "test": "eslint .",
     "build": "next build",
     "start": "node index.js",
+    "prepush": "npm run component:build",
     "styleguide": "styleguidist server",
     "styleguide:build": "styleguidist build",
     "component": "webpack --config component.webpack.js --watch",
