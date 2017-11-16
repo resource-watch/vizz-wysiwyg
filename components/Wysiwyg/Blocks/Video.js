@@ -18,13 +18,9 @@ class Video extends React.Component {
     blocks: {}
   }
 
-  state = {
-    url: this.props.item.content.url
-  }
-
   render() {
     const { video } = this.props.blocks;
-    const { url } = this.state;
+    const { url } = this.props.item.content;
 
     return (
       <div className="cw-wysiwyg-video">

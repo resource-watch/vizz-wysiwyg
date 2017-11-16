@@ -27,6 +27,7 @@ class ListItemContent extends React.Component {
 
   onChange = (payload) => {
     const item = { ...this.props.item, ...payload };
+
     this.props.updateItem(item);
   }
 

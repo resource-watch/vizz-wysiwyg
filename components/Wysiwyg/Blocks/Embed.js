@@ -13,22 +13,16 @@ class Embed extends React.Component {
     item: {}
   }
 
-  state = {
-    src: this.props.item.content.src,
-    width: this.props.item.content.width || '100%',
-    height: this.props.item.content.height || '400px'
-  }
-
   render() {
-    const { src, width, height } = this.state;
+    const { src, width, height } = this.props.item.content;
 
     return (
       <div className="cw-wysiwyg-embed">
         <iframe
           frameBorder="0"
           src={src}
-          width={width}
-          height={height}
+          width={width || '100%'}
+          height={height || '400px'}
         />
       </div>
     );

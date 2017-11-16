@@ -32,6 +32,10 @@
     border-top: 1px solid $border-color-2;
     padding-top: $space-1;
 
+    &.-active {
+      z-index: $z-index-4;
+    }
+
     > ul {
       display: inline-flex;
 

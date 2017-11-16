@@ -56,6 +56,7 @@ class Wysiwyg extends React.Component {
   // Items
   setItems = (items) => {
     this.setState({ items }, () => {
+      console.log(this.state.items);
       this.props.onChange && this.props.onChange(this.state.items);
     });
   }

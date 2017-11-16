@@ -13,14 +13,8 @@ class Image extends React.Component {
     item: {}
   }
 
-  state = {
-    src: this.props.item.content.src,
-    alt: this.props.item.content.alt
-  }
-
   render() {
-    // const { image } = this.props.blocks;
-    const { src, alt } = this.state;
+    const { src, alt } = this.props.item.content;
     return (
       <div className="cw-wysiwyg-image">
         <img
