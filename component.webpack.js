@@ -2,7 +2,20 @@ const path = require('path');
 const glob = require('glob');
 const webpack = require('webpack');
 
+require('dotenv').load();
+
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+const plugins = [
+  new ExtractTextPlugin('wysiwyg.css')
+];
+
+if (process.env.NODE_ENV === 'production') {
+  plugins.push(
+    new webpack.optimize.UglifyJsPlugin()
+  );
+}
+
 
 module.exports = {
   entry: path.resolve(__dirname, 'components/Wysiwyg/index.js'),
@@ -72,10 +85,7 @@ module.exports = {
       }
     ]
   },
-  plugins: [
-    new ExtractTextPlugin('wysiwyg.css'),
-    new webpack.optimize.UglifyJsPlugin()
-  ],
+  plugins,
   externals: {
     react: {
       root: 'React',
