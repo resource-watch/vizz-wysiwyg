@@ -30,12 +30,12 @@ module.exports = {
                 'module-resolver', {
                   root: ['.'],
                   alias: {
-                    components: './components',
-                    constants: './constants',
-                    css: './css',
-                    modules: './modules',
-                    services: './services',
-                    utils: './utils'
+                    components: path.resolve(__dirname, 'components'),
+                    constants: path.resolve(__dirname, 'constants'),
+                    css: path.resolve(__dirname, 'css'),
+                    modules: path.resolve(__dirname, 'modules'),
+                    services: path.resolve(__dirname, 'services'),
+                    utils: path.resolve(__dirname, 'utils')
                   }
                 }
               ]
