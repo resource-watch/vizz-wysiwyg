@@ -31,7 +31,7 @@ class Wysiwyg extends React.Component {
   state = {
     toolbar: this.props.toolbar,
     blocks: this.props.blocks,
-    items: this.props.items,
+    items: this.props.items || [],
     editionMode: false,
     cursor: 0
   }
@@ -56,7 +56,6 @@ class Wysiwyg extends React.Component {
   // Items
   setItems = (items) => {
     this.setState({ items }, () => {
-      console.log(this.state.items);
       this.props.onChange && this.props.onChange(this.state.items);
     });
   }

@@ -91,11 +91,11 @@
     "test": "eslint .",
     "build": "next build",
     "start": "node index.js",
-    "prepush": "npm run component:build",
+    "precommit": "npm run component:build && git add .",
     "styleguide": "styleguidist server",
     "styleguide:build": "styleguidist build",
-    "component": "webpack --config component.webpack.js --watch",
-    "component:build": "webpack --config component.webpack.js",
+    "component": "NODE_ENV=development webpack --config component.webpack.js --watch",
+    "component:build": "NODE_ENV=production webpack --config component.webpack.js",
     "heroku-postbuild": "next build"
   },
   "engines": {
