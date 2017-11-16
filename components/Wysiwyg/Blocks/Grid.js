@@ -4,6 +4,11 @@ import classnames from 'classnames';
 
 // Recompose
 import { getContext } from 'recompose';
+
+// Components
+import Icon from 'components/Wysiwyg/UI/Icon/Icon';
+
+// Blocks
 import Toolbar from 'components/Wysiwyg/Toolbar/Toolbar';
 import Text from 'components/Wysiwyg/Blocks/Text';
 import Image from 'components/Wysiwyg/Blocks/Image';
@@ -57,6 +62,15 @@ class Grid extends React.Component {
     });
   }
 
+  handleClose = (i) => {
+    const content = [...this.state.content];
+    content[i] = null;
+
+    this.setState({ content }, () => {
+      this.props.onChange && this.props.onChange({ content });
+    });
+  }
+
   render() {
     const { grid } = this.props.blocks;
     const { content } = this.state;
@@ -87,10 +101,38 @@ class Grid extends React.Component {
 
             return (
               <div key={item.id} className={`column ${gridClassNames}`}>
-                {React.createElement(
-                  this.BLOCK_TYPES[item.type],
-                  { item, onChange: payload => this.handleChange(payload, i) }
-                )}
+                <div className="wysiwyg-grid-column">
+                  {React.createElement(
+                    this.BLOCK_TYPES[item.type],
+                    { item, onChange: payload => this.handleChange(payload, i) }
+                  )}
+
+                  {/* Actions */}
+                  <div className="wysiwyg-grid-column-actions">
+                    <ul>
+                      {this.props.blocks[item.type].model &&
+                        <li>
+                          <button
+                            type="button"
+                            className="cw-button -small -round -primary"
+                            // onClick={() => this.handleClose(i)}
+                          >
+                            <Icon name="icon-add" />
+                          </button>
+                        </li>
+                      }
+                      <li>
+                        <button
+                          type="button"
+                          className="cw-button -small -round -close"
+                          onClick={() => this.handleClose(i)}
+                        >
+                          <Icon name="icon-close" />
+                        </button>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
               </div>
             );
           }))}
