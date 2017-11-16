@@ -32,6 +32,7 @@ class Wysiwyg extends React.Component {
     toolbar: this.props.toolbar,
     blocks: this.props.blocks,
     items: this.props.items || [],
+
     editionMode: false,
     cursor: 0
   }
