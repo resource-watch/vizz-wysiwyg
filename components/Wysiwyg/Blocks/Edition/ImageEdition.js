@@ -12,21 +12,17 @@ import { Form, Text, Select } from 'react-form';
 
 class ImageEdition extends React.Component {
   static propTypes = {
-    block: PropTypes.string,
-    blocks: PropTypes.object,
+    block: PropTypes.object,
     onSubmit: PropTypes.func
   }
 
   static defaultProps = {
-    blocks: {}
+    block: {}
   }
 
-  VALIDATIONS = mapValues(
-    this.props.blocks[this.props.block].model,
-    m => m.validations
-  )
+  VALIDATIONS = mapValues(this.props.block.model, m => m.validations)
 
-  MODEL = this.props.blocks[this.props.block].model
+  MODEL = this.props.block.model
 
   FORM_ELEMENTS = {
     text: Text,

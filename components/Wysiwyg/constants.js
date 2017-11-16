@@ -30,6 +30,7 @@ const DEFAULT_BLOCKS = {
   image: {
     Component: Image,
     EditionComponent: ImageEdition,
+    tooltip: true,
     model: {
       src: {
         type: 'text',
@@ -57,6 +58,7 @@ const DEFAULT_BLOCKS = {
   video: {
     Component: Video,
     EditionComponent: VideoEdition,
+    tooltip: true,
     model: {
       url: {
         type: 'text',
@@ -79,6 +81,7 @@ const DEFAULT_BLOCKS = {
   embed: {
     Component: Embed,
     EditionComponent: EmbedEdition,
+    tooltip: true,
     model: {
       src: {
         type: 'text',
@@ -98,6 +101,7 @@ const DEFAULT_BLOCKS = {
   grid: {
     Component: Grid,
     EditionComponent: GridEdition,
+    tooltip: true,
     model: {
       columns: {
         type: 'select',

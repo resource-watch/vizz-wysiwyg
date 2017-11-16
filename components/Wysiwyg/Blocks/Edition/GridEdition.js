@@ -5,28 +5,21 @@ import mapValues from 'lodash/mapValues';
 
 import validate from 'validate.js';
 
-// Recompose
-import { getContext } from 'recompose';
-
 import { Form, Text, Select } from 'react-form';
 
 class GridEdition extends React.Component {
   static propTypes = {
-    block: PropTypes.string,
-    blocks: PropTypes.object,
+    block: PropTypes.object,
     onSubmit: PropTypes.func
   }
 
   static defaultProps = {
-    blocks: {}
+    block: {}
   }
 
-  VALIDATIONS = mapValues(
-    this.props.blocks[this.props.block].model,
-    m => m.validations
-  )
+  VALIDATIONS = mapValues(this.props.block.model, m => m.validations)
 
-  MODEL = this.props.blocks[this.props.block].model
+  MODEL = this.props.block.model
 
   FORM_ELEMENTS = {
     text: Text,
@@ -116,6 +109,4 @@ class GridEdition extends React.Component {
   }
 }
 
-export default getContext({
-  blocks: PropTypes.object
-})(GridEdition);
+export default GridEdition;

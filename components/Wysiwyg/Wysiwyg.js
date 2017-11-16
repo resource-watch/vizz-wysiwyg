@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { DEFAULT_TOOLBAR, DEFAULT_BLOCKS } from 'components/Wysiwyg/constants';
+import { DEFAULT_BLOCKS } from 'components/Wysiwyg/constants';
 
 // Provider
 import WysiwygProvider from 'components/Wysiwyg/WysiwygProvider';

@@ -103,7 +103,8 @@ class Toolbar extends React.Component {
     return (
       <div className={`cw-wysiwyg-toolbar ${classNames}`}>
         <div className="toolbar-handler">
-          {/* Drag handler */}
+
+          {/* Add button */}
           <Transition in={(!opened)} timeout={150}>
             {status => (
               <div className={`toolbar-handler-button -${status}`}>
@@ -119,9 +120,11 @@ class Toolbar extends React.Component {
             )}
           </Transition>
 
+          {/* Toolbar buttons */}
           <Transition in={(opened)} timeout={150}>
             {status => (
               <ul className={`toolbar-handler-list -${status}`}>
+                {/* Map blocks to set the buttons (filtered thanks to exclude prop) */}
                 {Object.keys(blocks).filter(block => !exclude.includes(block)).map((block) => {
                   const btnClassNames = classnames({
                     '-active': block === edition
@@ -159,8 +162,8 @@ class Toolbar extends React.Component {
                           </Popper>
                         }
 
-                        {/* Model tooltip */}
-                        {block === tooltip && block === edition &&
+                        {/* Edition mode tooltip */}
+                        {block === tooltip && block === edition && blocks[block].tooltip &&
                           <Popper
                             className="cw-tooltip -light"
                             placement="bottom"
@@ -173,17 +176,30 @@ class Toolbar extends React.Component {
                             {React.createElement(
                               blocks[block].EditionComponent,
                               {
-                                onSubmit: content => this.triggerSubmitBlock(block, content),
-                                block: block
+                                block: blocks[block],
+                                onSubmit: content => this.triggerSubmitBlock(block, content)
                               }
                             )}
                             <Arrow className="tooltip-arrow" />
                           </Popper>
                         }
+
+                        {/* Edition mode without tooltip */}
+                        {block === tooltip && block === edition && !blocks[block].tooltip &&
+                          React.createElement(
+                            blocks[block].EditionComponent,
+                            {
+                              block: blocks[block],
+                              onSubmit: content => this.triggerSubmitBlock(block, content)
+                            }
+                          )
+                        }
                       </Manager>
                     </li>
                   );
                 })}
+
+                {/* Close button */}
                 <li key="close">
                   <button
                     type="button"
