@@ -10,7 +10,7 @@ class WysiwygProvider extends React.Component {
 
   render() {
     return (
-      <div className="c-wysiwyg-provider">
+      <div className="cw-wysiwyg-provider">
         {React.Children.map(this.props.children, (child) => {
           return child;
         })}

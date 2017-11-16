@@ -32,7 +32,7 @@ class List extends React.Component {
   render() {
     const { items } = this.props;
     return (
-      <ul className="c-wysiwyg-list">
+      <ul className="cw-wysiwyg-list">
         {items.map((item, index) => (
           <ListItem
             key={`item-${item.id}`}

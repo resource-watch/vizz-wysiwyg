@@ -21,7 +21,7 @@ class Spinner extends React.Component {
     });
 
     return (
-      <div className={`c-spinner ${classNames}`}>
+      <div className={`cw-spinner ${classNames}`}>
         <div className="spinner-box">
           <div className="icon" />
         </div>

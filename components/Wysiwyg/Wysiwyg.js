@@ -17,13 +17,15 @@ class Wysiwyg extends React.Component {
   static propTypes = {
     toolbar: PropTypes.object,
     blocks: PropTypes.object,
-    items: PropTypes.array
+    items: PropTypes.array,
+    onChange: PropTypes.func
   }
 
   static defaultProps = {
     toolbar: DEFAULT_TOOLBAR,
     blocks: DEFAULT_BLOCKS,
-    items: []
+    items: [],
+    onChange: null
   }
 
   state = {
@@ -54,7 +56,8 @@ class Wysiwyg extends React.Component {
   // Items
   setItems = (items) => {
     this.setState({ items }, () => {
-      console.info(this.state.items);
+      console.log(this.state.items);
+      this.props.onChange && this.props.onChange(this.state.items);
     });
   }
 
@@ -87,7 +90,7 @@ class Wysiwyg extends React.Component {
   render() {
     return (
       <div
-        className="c-wysiwyg"
+        className="cw-wysiwyg"
         onMouseLeave={() => {
           !this.state.editionMode && this.setCursor(null);
         }}

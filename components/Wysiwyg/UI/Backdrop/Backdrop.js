@@ -20,7 +20,7 @@ class Backdrop extends React.Component {
     return (
       /* eslint-disable */
       <div
-        className="c-wysiwyg-backdrop"
+        className="cw-wysiwyg-backdrop"
         onClick={this.props.onClick}
         role="button"
       />

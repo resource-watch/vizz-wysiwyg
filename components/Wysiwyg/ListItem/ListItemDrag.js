@@ -28,12 +28,12 @@ class ListItemDrag extends React.Component {
     });
 
     return (
-      <div className={`c-wysiwyg-item-drag ${classNames}`}>
+      <div className={`cw-wysiwyg-item-drag ${classNames}`}>
         <ul className="item-drag">
           <li>
             <button
               type="button"
-              className="c-button -primary -round -small"
+              className="cw-button -primary -round -small"
               {...prov.dragHandleProps}
             >
               <Icon name="icon-drag_handle" />

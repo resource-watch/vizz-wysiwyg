@@ -29,12 +29,12 @@ class ListItemActions extends React.Component {
     });
 
     return (
-      <div className={`c-wysiwyg-item-actions ${classNames}`}>
+      <div className={`cw-wysiwyg-item-actions ${classNames}`}>
         <ul className="item-actions">
           <li>
             <button
               type="button"
-              className="c-button -primary -round -small"
+              className="cw-button -primary -round -small"
               onClick={() => { this.props.removeItem(item); }}
             >
               <Icon name="icon-delete" />
