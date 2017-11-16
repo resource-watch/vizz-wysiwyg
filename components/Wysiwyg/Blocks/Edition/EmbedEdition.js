@@ -53,7 +53,6 @@ class EmbedEdition extends React.Component {
         <Form
           defaultValues={mapValues(this.MODEL, m => m.defaultValue)}
           onSubmit={this.handleSubmit}
-          // validateSuccess={this.handleValidate}
           validateError={this.handleValidateError}
         >
           {(formApi) => {
