@@ -91,14 +91,10 @@
     "test": "eslint .",
     "build": "next build",
     "start": "node index.js",
-    "postinstall": "npm run component:build",
-
     "styleguide": "styleguidist server",
     "styleguide:build": "styleguidist build",
-
     "component": "webpack --config component.webpack.js --watch",
     "component:build": "webpack --config component.webpack.js",
-
     "heroku-postbuild": "next build"
   },
   "engines": {
