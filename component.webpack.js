@@ -5,7 +5,7 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  entry: './components/Wysiwyg/index.js',
+  entry: path.resolve(__dirname, 'components/Wysiwyg/index.js'),
 
   output: {
     path: path.resolve(__dirname, 'build'),
