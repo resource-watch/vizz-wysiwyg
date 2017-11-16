@@ -22,7 +22,7 @@
   }
 
   // Blocks
-  &.-grid {
+  &.-grid, &.-embed {
     .list-item-container {
       position: relative;
       display: block;

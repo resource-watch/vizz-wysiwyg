@@ -34,7 +34,7 @@ class ListItemActions extends React.Component {
           <li>
             <button
               type="button"
-              className="cw-button -primary -round -small"
+              className="cw-button -close -round -small"
               onClick={() => { this.props.removeItem(item); }}
             >
               <Icon name="icon-delete" />
