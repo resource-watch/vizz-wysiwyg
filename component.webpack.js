@@ -90,6 +90,27 @@ module.exports = {
       commonjs: 'react-dom',
       amd: 'react-dom',
       umd: 'react-dom'
+    },
+    redux: {
+      root: 'redux',
+      commonjs2: 'redux',
+      commonjs: 'redux',
+      amd: 'redux',
+      umd: 'redux'
+    },
+    'redux-thunk': {
+      root: 'redux-thunk',
+      commonjs2: 'redux-thunk',
+      commonjs: 'redux-thunk',
+      amd: 'redux-thunk',
+      umd: 'redux-thunk'
+    },
+    reselect: {
+      root: 'reselect',
+      commonjs2: 'reselect',
+      commonjs: 'reselect',
+      amd: 'reselect',
+      umd: 'reselect'
     }
   }
 };
