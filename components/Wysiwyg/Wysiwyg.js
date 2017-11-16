@@ -15,34 +15,32 @@ import 'css/components/wysiwyg/index.scss';
 
 class Wysiwyg extends React.Component {
   static propTypes = {
-    toolbar: PropTypes.object,
     blocks: PropTypes.object,
     items: PropTypes.array,
     onChange: PropTypes.func
   }
 
   static defaultProps = {
-    toolbar: DEFAULT_TOOLBAR,
     blocks: DEFAULT_BLOCKS,
     items: [],
     onChange: null
   }
 
   state = {
-    toolbar: this.props.toolbar,
-    blocks: this.props.blocks,
     items: this.props.items || [],
+    blocks: { ...DEFAULT_BLOCKS, ...this.props.blocks },
     editionMode: false,
     cursor: 0
   }
 
-  // Toolbar
-  setToolbar = (toolbar) => {
+  // Blocks
+  setBlocks = (blocks) => {
     this.setState({
-      toolbar: { ...this.state.toolbar, ...toolbar }
+      blocks: { ...this.state.blocks, ...blocks }
     });
   }
 
+  // Toolbar
   setCursor = (cursor) => {
     this.setState({ cursor });
   }

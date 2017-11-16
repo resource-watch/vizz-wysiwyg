@@ -1,31 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// Recompose
-import { getContext } from 'recompose';
-
 // Components
 import ReactPlayer from 'react-player';
 
 class Video extends React.Component {
   static propTypes = {
     item: PropTypes.object,
-    blocks: PropTypes.object
+    block: PropTypes.object
   }
 
   static defaultProps = {
     item: {},
-    blocks: {}
+    block: {}
   }
 
   render() {
-    const { video } = this.props.blocks;
+    const { block } = this.props;
     const { url } = this.props.item.content;
 
     return (
       <div className="cw-wysiwyg-video">
         <ReactPlayer
-          {...video.options}
+          {...block.options}
           url={url}
         />
       </div>
@@ -33,6 +30,4 @@ class Video extends React.Component {
   }
 }
 
-export default getContext({
-  blocks: PropTypes.object
-})(Video);
+export default Video;

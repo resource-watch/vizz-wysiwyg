@@ -1,15 +1,19 @@
-const DEFAULT_TOOLBAR = {
-  buttons: [
-    { block: 'text' },
-    { block: 'image' },
-    { block: 'video' },
-    { block: 'embed' },
-    { block: 'grid' }
-  ]
-};
+// Visual Blocks
+import Text from 'components/Wysiwyg/Blocks/Text';
+import Image from 'components/Wysiwyg/Blocks/Image';
+import Video from 'components/Wysiwyg/Blocks/Video';
+import Embed from 'components/Wysiwyg/Blocks/Embed';
+import Grid from 'components/Wysiwyg/Blocks/Grid';
+
+// Edition Blocks
+import ImageEdition from 'components/Wysiwyg/Blocks/Edition/ImageEdition';
+import VideoEdition from 'components/Wysiwyg/Blocks/Edition/VideoEdition';
+import EmbedEdition from 'components/Wysiwyg/Blocks/Edition/EmbedEdition';
+import GridEdition from 'components/Wysiwyg/Blocks/Edition/GridEdition';
 
 const DEFAULT_BLOCKS = {
   text: {
+    Component: Text,
     // Placeholder
     placeholder: 'Type your text',
     theme: 'bubble',
@@ -24,12 +28,8 @@ const DEFAULT_BLOCKS = {
   },
 
   image: {
-    // Placeholder
-    placeholder: {
-      src: '/static/images/placeholder.png',
-      alt: 'Placeholder image'
-    },
-
+    Component: Image,
+    EditionComponent: ImageEdition,
     model: {
       src: {
         type: 'text',
@@ -55,11 +55,8 @@ const DEFAULT_BLOCKS = {
   },
 
   video: {
-    // Placeholder
-    placeholder: {
-      url: 'https://vimeo.com/90509568'
-    },
-
+    Component: Video,
+    EditionComponent: VideoEdition,
     model: {
       url: {
         type: 'text',
@@ -80,13 +77,8 @@ const DEFAULT_BLOCKS = {
   },
 
   embed: {
-    // Placeholder
-    placeholder: {
-      src: 'https://staging.resourcewatch.org/embed/widget/acf093a0-c627-4ca7-9963-9cf1cc0c563e',
-      width: '100%',
-      height: '400px'
-    },
-
+    Component: Embed,
+    EditionComponent: EmbedEdition,
     model: {
       src: {
         type: 'text',
@@ -104,10 +96,8 @@ const DEFAULT_BLOCKS = {
   },
 
   grid: {
-    // Placeholder
-    placeholder: {
-    },
-
+    Component: Grid,
+    EditionComponent: GridEdition,
     model: {
       columns: {
         type: 'select',
@@ -129,4 +119,4 @@ const DEFAULT_BLOCKS = {
   }
 };
 
-export { DEFAULT_TOOLBAR, DEFAULT_BLOCKS };
+export { DEFAULT_BLOCKS };

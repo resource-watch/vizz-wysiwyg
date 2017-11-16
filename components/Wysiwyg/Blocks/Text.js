@@ -1,9 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// Recompose
-import { getContext } from 'recompose';
-
 // Components
 let Editor;
 if (typeof document !== 'undefined') {
@@ -15,13 +12,13 @@ if (typeof document !== 'undefined') {
 class Text extends React.Component {
   static propTypes = {
     item: PropTypes.object,
-    blocks: PropTypes.object,
+    block: PropTypes.object,
     onChange: PropTypes.func
   }
 
   static defaultProps = {
     item: {},
-    blocks: {},
+    block: {},
     onChange: null
   }
 
@@ -38,14 +35,14 @@ class Text extends React.Component {
   }
 
   render() {
-    const { text } = this.props.blocks;
+    const { block } = this.props;
     const { content } = this.state;
 
     return (
       <div className="cw-wysiwyg-text">
         {!!Editor &&
           <Editor
-            {...text}
+            {...block}
             className="cw-quill"
             defaultValue={content}
             onChange={this.handleChange}
@@ -56,6 +53,4 @@ class Text extends React.Component {
   }
 }
 
-export default getContext({
-  blocks: PropTypes.object
-})(Text);
+export default Text;

@@ -1,9 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// Recompose
-import { getContext } from 'recompose';
-
 class Embed extends React.Component {
   static propTypes = {
     item: PropTypes.object
@@ -29,6 +26,4 @@ class Embed extends React.Component {
   }
 }
 
-export default getContext({
-  blocks: PropTypes.object
-})(Embed);
+export default Embed;

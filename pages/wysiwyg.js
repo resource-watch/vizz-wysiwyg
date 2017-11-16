@@ -10,6 +10,7 @@ import Page from 'components/layout/page';
 import Layout from 'components/layout/layout';
 
 import Wysiwyg from 'components/Wysiwyg/Wysiwyg';
+import Widget from 'components/Custom/Widget/Widget';
 
 class WysiwygPage extends Page {
   static propTypes = {
@@ -29,6 +30,11 @@ class WysiwygPage extends Page {
         description="Wysiwyg description..."
       >
         <Wysiwyg
+          blocks={{
+            widget: {
+              Component: Widget
+            }
+          }}
           items={[
             { id: 1, type: 'text', content: '<h1>This is a title</h1>' },
             { id: 2, type: 'text', content: '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>' },
