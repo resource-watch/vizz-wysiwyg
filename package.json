@@ -97,8 +97,5 @@
     "component": "NODE_ENV=development webpack --config component.webpack.js --watch",
     "component:build": "NODE_ENV=production webpack --config component.webpack.js",
     "heroku-postbuild": "next build"
-  },
-  "engines": {
-    "node": "8.x.x"
   }
 }

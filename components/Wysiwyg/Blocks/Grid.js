@@ -172,7 +172,7 @@ class Grid extends React.Component {
                                 className={`cw-button -small -round -primary ${btnClassNames}`}
                                 onClick={() => this.triggerEdit(item.type, i)}
                               >
-                                <Icon name={`icon-${item.type}`} />
+                                <Icon name="icon-edit" />
                               </button>
                             </Target>
 
@@ -190,8 +190,8 @@ class Grid extends React.Component {
                                 {React.createElement(
                                   this.BLOCK_EDITION_TYPES[item.type],
                                   {
-                                    onSubmit: c => this.triggerSubmit({ content: c }, i),
-                                    block: item.type
+                                    block: item.type,
+                                    onSubmit: c => this.triggerSubmit({ content: c }, i)
                                   }
                                 )}
                                 <Arrow className="tooltip-arrow" />
