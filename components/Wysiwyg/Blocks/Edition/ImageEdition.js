@@ -5,9 +5,6 @@ import mapValues from 'lodash/mapValues';
 
 import validate from 'validate.js';
 
-// Recompose
-import { getContext } from 'recompose';
-
 import { Form, Text, Select } from 'react-form';
 
 class ImageEdition extends React.Component {
@@ -110,6 +107,4 @@ class ImageEdition extends React.Component {
   }
 }
 
-export default getContext({
-  blocks: PropTypes.object
-})(ImageEdition);
+export default ImageEdition;
