@@ -5,41 +5,34 @@ import mapValues from 'lodash/mapValues';
 
 import validate from 'validate.js';
 
-// Recompose
-import { getContext } from 'recompose';
-
 import { Form, Text, Select } from 'react-form';
 
 class GridEdition extends React.Component {
   static propTypes = {
-    block: PropTypes.string,
-    blocks: PropTypes.object,
+    block: PropTypes.object,
     onSubmit: PropTypes.func
   }
 
   static defaultProps = {
-    blocks: {}
+    block: {}
   }
 
-  VALIDATIONS = mapValues(
-    this.props.blocks[this.props.block].model,
-    m => m.validations
-  )
+  VALIDATIONS = mapValues(this.props.block.model, m => m.validations)
 
-  MODEL = this.props.blocks[this.props.block].model
+  MODEL = this.props.block.model
 
   FORM_ELEMENTS = {
     text: Text,
     select: Select
   }
 
-  handleSubmit = (values) => {
+  triggerSubmit = (values) => {
     const content = Array(values.columns).fill();
 
     if (this.props.onSubmit) this.props.onSubmit(content);
   }
 
-  handleValidateError = (values) => {
+  triggerValidateError = (values) => {
     const errors = {};
     const errorValidations = validate(values, this.VALIDATIONS);
 
@@ -54,9 +47,8 @@ class GridEdition extends React.Component {
       <div className="cw-wysiwyg-edition">
         <Form
           defaultValues={mapValues(this.MODEL, m => m.defaultValue)}
-          onSubmit={this.handleSubmit}
-          // validateSuccess={this.handleValidate}
-          validateError={this.handleValidateError}
+          onSubmit={this.triggerSubmit}
+          validateError={this.triggerValidateError}
         >
           {(formApi) => {
             const { touched, errors } = formApi;
@@ -116,6 +108,4 @@ class GridEdition extends React.Component {
   }
 }
 
-export default getContext({
-  blocks: PropTypes.object
-})(GridEdition);
+export default GridEdition;

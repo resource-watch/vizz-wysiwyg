@@ -13,14 +13,6 @@ import Icon from 'components/Wysiwyg/UI/Icon/Icon';
 
 // Blocks
 import Toolbar from 'components/Wysiwyg/Toolbar/Toolbar';
-import Text from 'components/Wysiwyg/Blocks/Text';
-import Image from 'components/Wysiwyg/Blocks/Image';
-import Video from 'components/Wysiwyg/Blocks/Video';
-import Embed from 'components/Wysiwyg/Blocks/Embed';
-
-import ImageEdition from 'components/Wysiwyg/Blocks/Edition/ImageEdition';
-import VideoEdition from 'components/Wysiwyg/Blocks/Edition/VideoEdition';
-import EmbedEdition from 'components/Wysiwyg/Blocks/Edition/EmbedEdition';
 
 class Grid extends React.Component {
   static propTypes = {
@@ -42,19 +34,6 @@ class Grid extends React.Component {
     // Change it
     content: this.props.item.content || [null, null],
     edition: null
-  }
-
-  BLOCK_TYPES = {
-    text: Text,
-    image: Image,
-    video: Video,
-    embed: Embed
-  }
-
-  BLOCK_EDITION_TYPES = {
-    image: ImageEdition,
-    video: VideoEdition,
-    embed: EmbedEdition
   }
 
   componentWillReceiveProps(nextProps) {
@@ -121,7 +100,7 @@ class Grid extends React.Component {
   }
 
   render() {
-    const { grid } = this.props.blocks;
+    const { blocks } = this.props;
     const { content, edition } = this.state;
 
     const gridClassNames = classnames({
@@ -156,14 +135,18 @@ class Grid extends React.Component {
               <div key={item.id} className={`column ${gridClassNames}`}>
                 <div className="wysiwyg-grid-column">
                   {React.createElement(
-                    this.BLOCK_TYPES[item.type],
-                    { item, onChange: payload => this.triggerChange(payload, i) }
+                    blocks[item.type].Component,
+                    {
+                      item,
+                      block: blocks[item.type].Component,
+                      onChange: payload => this.triggerChange(payload, i)
+                    }
                   )}
 
                   {/* Actions */}
                   <div className={`wysiwyg-grid-column-actions ${btnClassNames}`}>
                     <ul>
-                      {this.props.blocks[item.type].model &&
+                      {blocks[item.type] && blocks[item.type].EditionComponent &&
                         <li>
                           <Manager>
                             <Target>
@@ -176,8 +159,8 @@ class Grid extends React.Component {
                               </button>
                             </Target>
 
-                            {/* Model tooltip */}
-                            {item.type + i === edition &&
+                            {/* Edition mode tooltip */}
+                            {item.type + i === edition && blocks[item.type].tooltip &&
                               <Popper
                                 className="cw-tooltip -light"
                                 placement="bottom"
@@ -188,18 +171,30 @@ class Grid extends React.Component {
                                 }}
                               >
                                 {React.createElement(
-                                  this.BLOCK_EDITION_TYPES[item.type],
+                                  blocks[item.type].EditionComponent,
                                   {
-                                    block: item.type,
+                                    block: blocks[item.type],
                                     onSubmit: c => this.triggerSubmit({ content: c }, i)
                                   }
                                 )}
                                 <Arrow className="tooltip-arrow" />
                               </Popper>
                             }
+
+                            {/* Edition mode without tooltip */}
+                            {item.type + i === edition && !blocks[item.type].tooltip &&
+                              React.createElement(
+                                blocks[item.type].EditionComponent,
+                                {
+                                  block: blocks[item.type],
+                                  onSubmit: c => this.triggerSubmit({ content: c }, i)
+                                }
+                              )
+                            }
                           </Manager>
                         </li>
                       }
+
                       <li>
                         <button
                           type="button"

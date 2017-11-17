@@ -39,7 +39,7 @@
   // Colors
   &.-primary {
     color: $color-primary;
-    background: $color-bg-cream;
+    background: $color-white;
     border-color: $color-primary;
     svg { fill: $color-primary; }
 
@@ -53,7 +53,7 @@
   // Colors
   &.-close {
     color: $color-error;
-    background: $color-bg-cream;
+    background: $color-white;
     border-color: $color-error;
     svg { fill: $color-error; }
 

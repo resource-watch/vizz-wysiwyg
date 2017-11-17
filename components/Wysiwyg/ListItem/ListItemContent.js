@@ -5,23 +5,17 @@ import classnames from 'classnames';
 // Recompose
 import { getContext } from 'recompose';
 
-// Blocks
-import Text from 'components/Wysiwyg/Blocks/Text';
-import Image from 'components/Wysiwyg/Blocks/Image';
-import Video from 'components/Wysiwyg/Blocks/Video';
-import Embed from 'components/Wysiwyg/Blocks/Embed';
-import Grid from 'components/Wysiwyg/Blocks/Grid';
-
-
 class ListItemContent extends React.Component {
   static propTypes = {
     item: PropTypes.object,
     className: PropTypes.string,
+    blocks: PropTypes.object,
     updateItem: PropTypes.func
   }
 
   static defaultProps = {
     item: {},
+    blocks: {},
     className: ''
   }
 
@@ -32,7 +26,7 @@ class ListItemContent extends React.Component {
   }
 
   render() {
-    const { item, className } = this.props;
+    const { blocks, item, className } = this.props;
 
     const classNames = classnames({
       [className]: !!className
@@ -40,30 +34,20 @@ class ListItemContent extends React.Component {
 
     return (
       <div className={`cw-wysiwyg-item-content ${classNames}`}>
-        {item.type === 'text' &&
-          <Text item={item} onChange={this.onChange} />
-        }
-
-        {item.type === 'image' &&
-          <Image item={item} onChange={this.onChange} />
-        }
-
-        {item.type === 'video' &&
-          <Video item={item} onChange={this.onChange} />
-        }
-
-        {item.type === 'embed' &&
-          <Embed item={item} onChange={this.onChange} />
-        }
-
-        {item.type === 'grid' &&
-          <Grid item={item} onChange={this.onChange} />
-        }
+        {React.createElement(
+          blocks[item.type].Component,
+          {
+            item,
+            block: blocks[item.type],
+            onChange: this.onChange
+          }
+        )}
       </div>
     );
   }
 }
 
 export default getContext({
+  blocks: PropTypes.object,
   updateItem: PropTypes.func
 })(ListItemContent);

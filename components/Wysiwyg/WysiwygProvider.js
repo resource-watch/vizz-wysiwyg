@@ -20,7 +20,6 @@ class WysiwygProvider extends React.Component {
 }
 
 export default withContext({
-  toolbar: PropTypes.object,
   blocks: PropTypes.object,
   items: PropTypes.array,
   cursor: PropTypes.number,
@@ -34,7 +33,6 @@ export default withContext({
   removeItem: PropTypes.func
 },
   props => ({
-    toolbar: props.toolbar,
     blocks: props.blocks,
     items: props.items,
     cursor: props.cursor,
