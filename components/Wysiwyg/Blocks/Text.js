@@ -26,7 +26,7 @@ class Text extends React.Component {
     content: this.props.item.content
   }
 
-  handleChange = (content) => {
+  triggerChange = (content) => {
     this.setState({ content }, () => {
       if (this.props.onChange) {
         this.props.onChange({ content });
@@ -45,7 +45,7 @@ class Text extends React.Component {
             {...block}
             className="cw-quill"
             defaultValue={content}
-            onChange={this.handleChange}
+            onChange={this.triggerChange}
           />
         }
       </div>

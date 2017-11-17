@@ -26,11 +26,11 @@ class EmbedEdition extends React.Component {
     select: Select
   }
 
-  handleSubmit = (values) => {
+  triggerSubmit = (values) => {
     if (this.props.onSubmit) this.props.onSubmit(values);
   }
 
-  handleValidateError = (values) => {
+  triggerValidateError = (values) => {
     const errors = {};
     const errorValidations = validate(values, this.VALIDATIONS);
 
@@ -45,8 +45,8 @@ class EmbedEdition extends React.Component {
       <div className="cw-wysiwyg-edition">
         <Form
           defaultValues={mapValues(this.MODEL, m => m.defaultValue)}
-          onSubmit={this.handleSubmit}
-          validateError={this.handleValidateError}
+          onSubmit={this.triggerSubmit}
+          validateError={this.triggerValidateError}
         >
           {(formApi) => {
             const { touched, errors } = formApi;

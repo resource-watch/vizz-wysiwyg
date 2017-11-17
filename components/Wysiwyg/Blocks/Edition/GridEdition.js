@@ -26,13 +26,13 @@ class GridEdition extends React.Component {
     select: Select
   }
 
-  handleSubmit = (values) => {
+  triggerSubmit = (values) => {
     const content = Array(values.columns).fill();
 
     if (this.props.onSubmit) this.props.onSubmit(content);
   }
 
-  handleValidateError = (values) => {
+  triggerValidateError = (values) => {
     const errors = {};
     const errorValidations = validate(values, this.VALIDATIONS);
 
@@ -47,9 +47,8 @@ class GridEdition extends React.Component {
       <div className="cw-wysiwyg-edition">
         <Form
           defaultValues={mapValues(this.MODEL, m => m.defaultValue)}
-          onSubmit={this.handleSubmit}
-          // validateSuccess={this.handleValidate}
-          validateError={this.handleValidateError}
+          onSubmit={this.triggerSubmit}
+          validateError={this.triggerValidateError}
         >
           {(formApi) => {
             const { touched, errors } = formApi;

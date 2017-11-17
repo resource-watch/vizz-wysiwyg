@@ -11,10 +11,12 @@ class Widget extends React.Component {
   }
 
   render() {
+    const { content } = this.props.item;
+
     return (
       <div className="cw-wysiwyg-widget">
         <header>
-          Widget name
+          {content.name}
         </header>
 
         <img src="/static/images/placeholder.png" alt="placeholder" />
