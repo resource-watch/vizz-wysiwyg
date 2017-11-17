@@ -10,7 +10,10 @@ import Page from 'components/layout/page';
 import Layout from 'components/layout/layout';
 
 import Wysiwyg from 'components/Wysiwyg/Wysiwyg';
+
+// Custom block
 import Widget from 'components/Custom/Widget/Widget';
+import WidgetEdition from 'components/Custom/Widget/Edition/WidgetEdition';
 
 class WysiwygPage extends Page {
   static propTypes = {
@@ -32,7 +35,8 @@ class WysiwygPage extends Page {
         <Wysiwyg
           blocks={{
             widget: {
-              Component: Widget
+              Component: Widget,
+              EditionComponent: WidgetEdition
             }
           }}
           items={[

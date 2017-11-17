@@ -25,8 +25,8 @@ class ImageEdition extends React.Component {
 
   render() {
     return (
-      <div className="cw-wysiwyg-edition">
-        Custom edition
+      <div className="c-widget-edition">
+        <p>Custom edition bla bla bla</p>
 
         <button
           className="cw-button -primary"
