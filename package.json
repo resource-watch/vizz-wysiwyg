@@ -96,6 +96,14 @@
     "styleguide:build": "styleguidist build",
     "component": "NODE_ENV=development webpack --config component.webpack.js --watch",
     "component:build": "NODE_ENV=production webpack --config component.webpack.js",
-    "heroku-postbuild": "next build"
+    "heroku-postbuild": "next build",
+    "documentation": "gh-pages-deploy"
+  },
+  "gh-pages-deploy": {
+    "staticpath": "styleguide/build",
+    "prep": [
+      "styleguide:build"
+    ],
+    "noprompt": false
   }
 }

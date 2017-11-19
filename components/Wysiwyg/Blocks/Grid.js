@@ -138,7 +138,7 @@ class Grid extends React.Component {
                     blocks[item.type].Component,
                     {
                       item,
-                      block: blocks[item.type].Component,
+                      block: blocks[item.type],
                       onChange: payload => this.triggerChange(payload, i)
                     }
                   )}

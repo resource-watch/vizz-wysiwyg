@@ -9,11 +9,11 @@ module.exports = {
     {
       name: 'Wysiwyg',
       components: 'components/Wysiwyg/Wysiwyg.js'
-    },
-    {
-      name: 'UI Components',
-      components: 'components/Wysiwyg/UI/**/[A-Z]*.js'
     }
+    // {
+    //   name: 'UI Components',
+    //   components: 'components/Wysiwyg/UI/**/[A-Z]*.js'
+    // }
   ],
   // Custom webpack config
   /* eslint-disable */
