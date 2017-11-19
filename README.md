@@ -1,7 +1,8 @@
 # Wysiswyg
 Description?...
 
-Link?...
+## Documentation
+Check [the docs](https://resource-watch.github.io/wysiwyg/styleguide/)
 
 ## Running locally in development mode
 
