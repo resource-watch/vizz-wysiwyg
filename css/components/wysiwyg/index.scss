@@ -151,6 +151,9 @@ $ease-in-out-sine: cubic-bezier(0.445, 0.050, 0.550, 0.950);
 @import 'blocks/embed';
 @import 'blocks/grid';
 
+// Wysiwyg edition blocks
+@import 'blocks/edition/grid-edition';
+
 // Quill editor
 @import '../../../node_modules/react-quill/dist/quill.bubble';
 @import 'quill';

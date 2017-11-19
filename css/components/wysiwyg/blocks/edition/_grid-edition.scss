@@ -1,0 +1,21 @@
+.cw-wysiwyg-grid-edition {
+  display: block;
+  min-width: 300px;
+  padding: $space-1 * 2;
+
+  .grid-edition-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .grid-edition-column {
+    width: calc(50% - #{$space-1 * 2});
+  }
+
+  .grid-edition-placeholder {
+    text-align: center;
+    padding: $space-1;
+    border: 1px solid $border-color-3;
+  }
+}

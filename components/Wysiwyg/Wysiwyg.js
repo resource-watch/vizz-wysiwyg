@@ -15,8 +15,11 @@ import 'css/components/wysiwyg/index.scss';
 
 class Wysiwyg extends React.Component {
   static propTypes = {
-    blocks: PropTypes.object,
+    /** items: Initial state of wysiwyg [Check item types](#wysiwyg-items) */
     items: PropTypes.array,
+    /** blocks: Different types of blocks handled by wysiwyg [Check block types](#wysiwyg-blocks) */
+    blocks: PropTypes.object,
+    /** function is called each time there is change in state of wysiwyg. */
     onChange: PropTypes.func
   }
 
