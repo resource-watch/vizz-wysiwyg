@@ -1,7 +1,7 @@
 .cw-wysiwyg-item-content {
   margin: 0 $space-1 * 4;
   padding: $space-1;
-  display: inline-flex;
+  display: flex;
   box-shadow: 0 0 0 1px transparent;
   transition: all $animation-time $ease-in-out-sine;
 
@@ -9,7 +9,7 @@
     box-shadow: 0 0 0 1px $color-primary;
   }
 
-  &.-grid, &.-embed {
-    display: flex;
+  &.-text, &.-image {
+    display: inline-flex;
   }
 }

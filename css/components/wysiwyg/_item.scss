@@ -18,14 +18,13 @@
 
   .list-item-container {
     position: relative;
-    display: inline-block;
+    display: block;
   }
 
   // Blocks
-  &.-grid, &.-embed {
+  &.-text, &.-image {
     .list-item-container {
-      position: relative;
-      display: block;
+      display: inline-block;
     }
   }
 }
