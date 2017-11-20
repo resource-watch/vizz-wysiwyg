@@ -5,7 +5,7 @@ import mapValues from 'lodash/mapValues';
 
 import validate from 'validate.js';
 
-import { Form, Text, Select } from 'react-form';
+import { Form } from 'react-form';
 
 class EmbedEdition extends React.Component {
   static propTypes = {
@@ -20,11 +20,6 @@ class EmbedEdition extends React.Component {
   VALIDATIONS = mapValues(this.props.block.model, m => m.validations)
 
   MODEL = this.props.block.model
-
-  FORM_ELEMENTS = {
-    text: Text,
-    select: Select
-  }
 
   triggerSubmit = (values) => {
     if (this.props.onSubmit) this.props.onSubmit(values);
@@ -74,11 +69,10 @@ class EmbedEdition extends React.Component {
                         </label>
 
                         {React.createElement(
-                          this.FORM_ELEMENTS[this.MODEL[f].type],
+                          this.MODEL[f].Component,
                           {
                             field: this.MODEL[f].id,
-                            id: this.MODEL[f].id,
-                            ...this.MODEL[f].type === 'select' && { options: this.MODEL[f].options || [] }
+                            id: this.MODEL[f].id
                           }
                         )}
 

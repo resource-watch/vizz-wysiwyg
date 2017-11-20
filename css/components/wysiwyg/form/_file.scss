@@ -1,0 +1,10 @@
+.cw-file {
+  position: relative;
+
+  button {
+    position: absolute;
+    right: $space-1;
+    top: 50%;
+    transform: translate(0, -50%);
+  }
+}

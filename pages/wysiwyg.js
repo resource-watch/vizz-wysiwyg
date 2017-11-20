@@ -46,6 +46,7 @@ class WysiwygPage extends Page {
             { id: 5, type: 'image', content: { src: 'https://media.istockphoto.com/photos/jordanian-dessert-at-sunrise-picture-id185099703?s=2048x2048', alt: 'Testing' } },
             { id: 6, type: 'text', content: '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>' }
           ]}
+          onChange={items => console.info(items)}
         />
       </Layout>
     );

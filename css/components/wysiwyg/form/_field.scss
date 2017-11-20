@@ -23,16 +23,16 @@
     font-size: 12px;
   }
 
-  > input[type=text],
-  > input[type=password],
-  > input[type=email],
-  > input[type=number],
-  > input[type=tel],
-  > input[type=date],
-  > input[type=time],
-  > input[type=url],
-  > input,
-  > textarea {
+  input[type=text],
+  input[type=password],
+  input[type=email],
+  input[type=number],
+  input[type=tel],
+  input[type=date],
+  input[type=time],
+  input[type=url],
+  input,
+  textarea {
     display: inline-block;
     border: 1px solid $border-color-2;
     box-shadow: none;
@@ -51,34 +51,34 @@
   }
 
   &.-valid {
-    > input[type=text],
-    > input[type=password],
-    > input[type=email],
-    > input[type=number],
-    > input[type=tel],
-    > input[type=date],
-    > input[type=time],
-    > input[type=url],
-    > input,
-    > textarea,
-    > select {
+    input[type=text],
+    input[type=password],
+    input[type=email],
+    input[type=number],
+    input[type=tel],
+    input[type=date],
+    input[type=time],
+    input[type=url],
+    input,
+    textarea,
+    select {
       border-color: $color-success;
     }
   }
 
 
   &.-error {
-    > input[type=text],
-    > input[type=password],
-    > input[type=email],
-    > input[type=number],
-    > input[type=tel],
-    > input[type=date],
-    > input[type=time],
-    > input[type=url],
-    > input,
-    > textarea,
-    > select {
+    input[type=text],
+    input[type=password],
+    input[type=email],
+    input[type=number],
+    input[type=tel],
+    input[type=date],
+    input[type=time],
+    input[type=url],
+    input,
+    textarea,
+    select {
       border-color: $color-error;
     }
   }
