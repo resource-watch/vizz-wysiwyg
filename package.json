@@ -1,7 +1,7 @@
 {
-  "name": "wysiwyg",
+  "name": "vizz-wysiwyg",
   "version": "1.0.0",
-  "description": "React Wysiwyg",
+  "description": "Vizzuality Wysiwyg",
   "author": "barrenechea.miguel@gmail.com",
   "license": "ISC",
   "repository": "https://github.com/resource-watch/wysiwyg.git",
