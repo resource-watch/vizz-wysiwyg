@@ -6,7 +6,7 @@
   .grid-edition-row {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
   }
 
   .grid-edition-column {
@@ -14,8 +14,30 @@
   }
 
   .grid-edition-placeholder {
-    text-align: center;
     padding: $space-1;
-    border: 1px solid $border-color-3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    &:hover {
+      > span {
+        height: $space-1 * 4;
+        background: $color-primary;
+      }
+    }
+
+    > span {
+      height: $space-1 * 3;
+      background: $color-primary;
+      transition: all .16s ease-in-out;
+
+      &.-small-6 {
+        width: 47.5%;
+      }
+      &.-small-4 {
+        width: 30%;
+      }
+    }
   }
 }

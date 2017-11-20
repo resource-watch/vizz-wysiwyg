@@ -27,6 +27,7 @@ export default class Wrapper extends React.Component {
         className="styleguide-wrapper"
       >
         <style dangerouslySetInnerHTML={{ __html: css }} />
+
         <Icons />
 
         {this.props.children}

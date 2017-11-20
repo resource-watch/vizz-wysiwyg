@@ -27,20 +27,26 @@ class GridEdition extends React.Component {
         <div className="grid-edition-row">
           <div className="grid-edition-column">
             <button
-              className="cw-button -primary -full grid-edition-placeholder"
+              className="cw-button -clean -full"
               onClick={() => this.triggerSubmit(2)}
             >
-              <span>2</span>
-              <Icon name="icon-add" />
+              <div className="grid-edition-placeholder">
+                <span className="-small-6" />
+                <span className="-small-6" />
+              </div>
             </button>
           </div>
+
           <div className="grid-edition-column">
             <button
-              className="cw-button -primary -full grid-edition-placeholder"
+              className="cw-button -clean -full"
               onClick={() => this.triggerSubmit(3)}
             >
-              <span>3</span>
-              <Icon name="icon-add" />
+              <div className="grid-edition-placeholder">
+                <span className="-small-4" />
+                <span className="-small-4" />
+                <span className="-small-4" />
+              </div>
             </button>
           </div>
         </div>
