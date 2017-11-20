@@ -6879,6 +6879,12 @@ react-popper@^0.7.4:
     popper.js "^1.12.5"
     prop-types "^15.5.10"
 
+react-portal@3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/react-portal/-/react-portal-3.2.0.tgz#4224e19b2b05d5cbe730a7ba0e34ec7585de0043"
+  dependencies:
+    prop-types "^15.5.8"
+
 react-proxy@^3.0.0-alpha.0:
   version "3.0.0-alpha.1"
   resolved "https://registry.yarnpkg.com/react-proxy/-/react-proxy-3.0.0-alpha.1.tgz#4400426bcfa80caa6724c7755695315209fa4b07"

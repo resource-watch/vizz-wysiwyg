@@ -8,8 +8,12 @@ import { getContext } from 'recompose';
 // Popper
 import { Manager, Target, Popper, Arrow } from 'react-popper';
 
+// React Portal
+import Portal from 'react-portal';
+
 // Components
 import Icon from 'components/Wysiwyg/UI/Icon/Icon';
+import Modal from 'components/Wysiwyg/UI/Modal/Modal';
 
 // Blocks
 import Toolbar from 'components/Wysiwyg/Toolbar/Toolbar';
@@ -160,7 +164,7 @@ class Grid extends React.Component {
                             </Target>
 
                             {/* Edition mode tooltip */}
-                            {item.type + i === edition && blocks[item.type].tooltip &&
+                            {item.type + i === edition && blocks[item.type].renderer === 'tooltip' &&
                               <Popper
                                 className="cw-tooltip -light"
                                 placement="bottom"
@@ -182,14 +186,24 @@ class Grid extends React.Component {
                             }
 
                             {/* Edition mode without tooltip */}
-                            {item.type + i === edition && !blocks[item.type].tooltip &&
-                              React.createElement(
-                                blocks[item.type].EditionComponent,
-                                {
-                                  block: blocks[item.type],
-                                  onSubmit: c => this.triggerSubmit({ content: c }, i)
-                                }
-                              )
+                            {item.type + i === edition && blocks[item.type].renderer === 'modal' &&
+                              <Portal
+                                closeOnEsc
+                                isOpened
+                                onClose={this.triggerClose}
+                              >
+                                <Modal
+                                  onClickClose={this.triggerClose}
+                                >
+                                  {React.createElement(
+                                    blocks[item.type].EditionComponent,
+                                    {
+                                      block: blocks[item.type],
+                                      onSubmit: c => this.triggerSubmit({ content: c }, i)
+                                    }
+                                  )}
+                                </Modal>
+                              </Portal>
                             }
                           </Manager>
                         </li>
