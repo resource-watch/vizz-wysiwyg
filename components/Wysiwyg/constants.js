@@ -1,19 +1,23 @@
 // Visual Blocks
-import Text from 'components/Wysiwyg/Blocks/Text';
-import Image from 'components/Wysiwyg/Blocks/Image';
-import Video from 'components/Wysiwyg/Blocks/Video';
-import Embed from 'components/Wysiwyg/Blocks/Embed';
-import Grid from 'components/Wysiwyg/Blocks/Grid';
+import TextBlock from 'components/Wysiwyg/Blocks/Text';
+import ImageBlock from 'components/Wysiwyg/Blocks/Image';
+import VideoBlock from 'components/Wysiwyg/Blocks/Video';
+import EmbedBlock from 'components/Wysiwyg/Blocks/Embed';
+import GridBlock from 'components/Wysiwyg/Blocks/Grid';
 
 // Edition Blocks
-import ImageEdition from 'components/Wysiwyg/Blocks/Edition/ImageEdition';
-import VideoEdition from 'components/Wysiwyg/Blocks/Edition/VideoEdition';
-import EmbedEdition from 'components/Wysiwyg/Blocks/Edition/EmbedEdition';
-import GridEdition from 'components/Wysiwyg/Blocks/Edition/GridEdition';
+import ImageBlockEdition from 'components/Wysiwyg/Blocks/Edition/ImageEdition';
+import VideoBlockEdition from 'components/Wysiwyg/Blocks/Edition/VideoEdition';
+import EmbedBlockEdition from 'components/Wysiwyg/Blocks/Edition/EmbedEdition';
+import GridBlockEdition from 'components/Wysiwyg/Blocks/Edition/GridEdition';
+
+// Form
+import { Text } from 'react-form';
+import { File } from 'components/Wysiwyg/Form';
 
 const DEFAULT_BLOCKS = {
   text: {
-    Component: Text,
+    Component: TextBlock,
     // Placeholder
     placeholder: 'Type your text',
     theme: 'bubble',
@@ -28,12 +32,12 @@ const DEFAULT_BLOCKS = {
   },
 
   image: {
-    Component: Image,
-    EditionComponent: ImageEdition,
+    Component: ImageBlock,
+    EditionComponent: ImageBlockEdition,
     tooltip: true,
     model: {
       src: {
-        type: 'text',
+        Component: File,
         id: 'src',
         label: 'Src',
         validations: {
@@ -42,7 +46,7 @@ const DEFAULT_BLOCKS = {
         }
       },
       alt: {
-        type: 'text',
+        Component: Text,
         id: 'alt',
         label: 'Alt',
         validations: {
@@ -56,12 +60,12 @@ const DEFAULT_BLOCKS = {
   },
 
   video: {
-    Component: Video,
-    EditionComponent: VideoEdition,
+    Component: VideoBlock,
+    EditionComponent: VideoBlockEdition,
     tooltip: true,
     model: {
       url: {
-        type: 'text',
+        Component: Text,
         id: 'url',
         label: 'Url',
         validations: {
@@ -79,12 +83,12 @@ const DEFAULT_BLOCKS = {
   },
 
   embed: {
-    Component: Embed,
-    EditionComponent: EmbedEdition,
+    Component: EmbedBlock,
+    EditionComponent: EmbedBlockEdition,
     tooltip: true,
     model: {
       src: {
-        type: 'text',
+        Component: Text,
         id: 'src',
         label: 'Src',
         validations: {
@@ -99,23 +103,23 @@ const DEFAULT_BLOCKS = {
   },
 
   grid: {
-    Component: Grid,
-    EditionComponent: GridEdition,
+    Component: GridBlock,
+    EditionComponent: GridBlockEdition,
     tooltip: true,
     model: {
-      columns: {
-        type: 'select',
-        id: 'columns',
-        label: 'Columns',
-        defaultValue: 2,
-        options: [
-          { label: 2, value: 2 },
-          { label: 3, value: 3 }
-        ],
-        validations: {
-          presence: { allowEmpty: false }
-        }
-      }
+      // columns: {
+      //   type: 'select',
+      //   id: 'columns',
+      //   label: 'Columns',
+      //   defaultValue: 2,
+      //   options: [
+      //     { label: 2, value: 2 },
+      //     { label: 3, value: 3 }
+      //   ],
+      //   validations: {
+      //     presence: { allowEmpty: false }
+      //   }
+      // }
     },
 
     options: {
