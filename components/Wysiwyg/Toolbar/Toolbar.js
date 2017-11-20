@@ -12,8 +12,12 @@ import { Transition } from 'react-transition-group';
 // Popper
 import { Manager, Target, Popper, Arrow } from 'react-popper';
 
+// React Portal
+import Portal from 'react-portal';
+
 // Components
 import Icon from 'components/Wysiwyg/UI/Icon/Icon';
+import Modal from 'components/Wysiwyg/UI/Modal/Modal';
 
 class Toolbar extends React.Component {
   static propTypes = {
@@ -163,7 +167,7 @@ class Toolbar extends React.Component {
                         }
 
                         {/* Edition mode tooltip */}
-                        {block === tooltip && block === edition && blocks[block].tooltip &&
+                        {block === tooltip && block === edition && blocks[block].renderer === 'tooltip' &&
                           <Popper
                             className="cw-tooltip -light"
                             placement="bottom"
@@ -185,14 +189,24 @@ class Toolbar extends React.Component {
                         }
 
                         {/* Edition mode without tooltip */}
-                        {block === tooltip && block === edition && !blocks[block].tooltip &&
-                          React.createElement(
-                            blocks[block].EditionComponent,
-                            {
-                              block: blocks[block],
-                              onSubmit: content => this.triggerSubmitBlock(block, content)
-                            }
-                          )
+                        {block === tooltip && block === edition && blocks[block].renderer === 'modal' &&
+                          <Portal
+                            closeOnEsc
+                            isOpened
+                            onClose={this.triggerClose}
+                          >
+                            <Modal
+                              onClickClose={this.triggerClose}
+                            >
+                              {React.createElement(
+                                blocks[block].EditionComponent,
+                                {
+                                  block: blocks[block],
+                                  onSubmit: content => this.triggerSubmitBlock(block, content)
+                                }
+                              )}
+                            </Modal>
+                          </Portal>
                         }
                       </Manager>
                     </li>

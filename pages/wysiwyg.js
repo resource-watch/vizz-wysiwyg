@@ -36,7 +36,8 @@ class WysiwygPage extends Page {
           blocks={{
             widget: {
               Component: Widget,
-              EditionComponent: WidgetEdition
+              EditionComponent: WidgetEdition,
+              renderer: 'modal'
             }
           }}
           items={[
