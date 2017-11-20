@@ -15,6 +15,9 @@ module.exports = {
     //   components: 'components/Wysiwyg/UI/**/[A-Z]*.js'
     // }
   ],
+  showUsage: true,
+  showCode: true,
+  showSidebar: false,
   // Custom webpack config
   /* eslint-disable */
   webpackConfig: require('./styleguide.webpack.js'),
