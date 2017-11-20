@@ -30,7 +30,8 @@ export default withContext({
   setItems: PropTypes.func,
   addItem: PropTypes.func,
   updateItem: PropTypes.func,
-  removeItem: PropTypes.func
+  removeItem: PropTypes.func,
+  onUploadImage: PropTypes.func
 },
   props => ({
     blocks: props.blocks,
@@ -43,6 +44,7 @@ export default withContext({
     setItems: props.setItems,
     addItem: props.addItem,
     updateItem: props.updateItem,
-    removeItem: props.removeItem
+    removeItem: props.removeItem,
+    onUploadImage: props.onUploadImage
   })
 )(WysiwygProvider);

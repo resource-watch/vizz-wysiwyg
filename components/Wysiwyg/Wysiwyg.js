@@ -20,13 +20,16 @@ class Wysiwyg extends React.Component {
     /** blocks: Different types of blocks handled by wysiwyg [Check block types](#wysiwyg-blocks) */
     blocks: PropTypes.object,
     /** function is called each time there is change in state of wysiwyg. */
-    onChange: PropTypes.func
+    onChange: PropTypes.func,
+    /** function is called each time there is an upload of an image. It must return a promise */
+    onUploadImage: PropTypes.func
   }
 
   static defaultProps = {
     blocks: DEFAULT_BLOCKS,
     items: [],
-    onChange: null
+    onChange: null,
+    onUploadImage: null
   }
 
   state = {
@@ -106,6 +109,7 @@ class Wysiwyg extends React.Component {
           addItem={this.addItem}
           updateItem={this.updateItem}
           removeItem={this.removeItem}
+          onUploadImage={this.props.onUploadImage}
         >
           <Content />
         </WysiwygProvider>
