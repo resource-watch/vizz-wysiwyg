@@ -1,6 +1,10 @@
 {
   "name": "vizz-wysiwyg",
+<<<<<<< HEAD
   "version": "1.0.0",
+=======
+  "version": "1.0.1",
+>>>>>>> develop
   "description": "Vizzuality Wysiwyg",
   "author": "barrenechea.miguel@gmail.com",
   "license": "ISC",
@@ -94,7 +98,7 @@
     "test": "eslint .",
     "build": "next build",
     "start": "node index.js",
-    "precommit": "npm run component:build && git add .",
+    "prepublish": "npm run component:build",
     "styleguide": "styleguidist server",
     "styleguide:build": "styleguidist build",
     "component": "NODE_ENV=development webpack --config component.webpack.js --watch",
