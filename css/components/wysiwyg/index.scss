@@ -147,9 +147,9 @@ $ease-in-out-sine: cubic-bezier(0.445, 0.050, 0.550, 0.950);
 @import 'form/file';
 
 // Wysiwyg blocks
-@import 'blocks/title';
 @import 'blocks/text';
 @import 'blocks/image';
+@import 'blocks/video';
 @import 'blocks/embed';
 @import 'blocks/grid';
 

@@ -78,7 +78,8 @@ const DEFAULT_BLOCKS = {
     // react player props
     // https://github.com/CookPete/react-player#props
     options: {
-      controls: true
+      controls: true,
+      width: '100%'
     }
   },
 
