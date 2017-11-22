@@ -121,6 +121,20 @@ module.exports = {
       commonjs: 'reselect',
       amd: 'reselect',
       umd: 'reselect'
+    },
+    quill: {
+      root: 'quill',
+      commonjs2: 'quill',
+      commonjs: 'quill',
+      amd: 'quill',
+      umd: 'quill'
+    },
+    'react-quill': {
+      root: 'react-quill',
+      commonjs2: 'react-quill',
+      commonjs: 'react-quill',
+      amd: 'react-quill',
+      umd: 'react-quill'
     }
   }
 };
