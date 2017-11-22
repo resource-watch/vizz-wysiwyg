@@ -150,7 +150,8 @@ class Grid extends React.Component {
                   {/* Actions */}
                   <div className={`wysiwyg-grid-column-actions ${btnClassNames}`}>
                     <ul>
-                      {blocks[item.type] && blocks[item.type].EditionComponent &&
+                      {/* {blocks[item.type] && blocks[item.type].EditionComponent &&
+
                         <li>
                           <Manager>
                             <Target>
@@ -163,7 +164,6 @@ class Grid extends React.Component {
                               </button>
                             </Target>
 
-                            {/* Edition mode tooltip */}
                             {item.type + i === edition && blocks[item.type].renderer === 'tooltip' &&
                               <Popper
                                 className="cw-tooltip -light"
@@ -185,7 +185,7 @@ class Grid extends React.Component {
                               </Popper>
                             }
 
-                            {/* Edition mode without tooltip */}
+
                             {item.type + i === edition && blocks[item.type].renderer === 'modal' &&
                               <Portal
                                 closeOnEsc
@@ -207,7 +207,7 @@ class Grid extends React.Component {
                             }
                           </Manager>
                         </li>
-                      }
+                      } */}
 
                       <li>
                         <button
