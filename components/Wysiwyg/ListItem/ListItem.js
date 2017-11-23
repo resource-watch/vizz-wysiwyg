@@ -22,6 +22,7 @@ class ListItem extends React.Component {
     item: PropTypes.object,
     cursor: PropTypes.number,
     position: PropTypes.number,
+    readOnly: PropTypes.bool,
     addItem: PropTypes.func,
     setCursor: PropTypes.func
   }
@@ -30,6 +31,7 @@ class ListItem extends React.Component {
     item: {},
     cursor: 0,
     position: 0,
+    readOnly: false,
     addItem: null,
     setCursor: null
   }
@@ -48,27 +50,33 @@ class ListItem extends React.Component {
    * - getContentClasses
   */
   getClasses = () => {
-    const { item, cursor, position } = this.props;
+    const { item, cursor, position, readOnly } = this.props;
+    const isCurrent = (position === cursor) && !readOnly;
 
     return classnames({
       '-isDragging': false,
-      '-isHover': (position === cursor),
+      '-isHover': isCurrent,
+      '-isReadOnly': readOnly,
       [`-${item.type}`]: !!item.type
     });
   }
 
   getContentClasses = () => {
-    const { item, cursor, position } = this.props;
+    const { item, cursor, position, readOnly } = this.props;
+    const isCurrent = (position === cursor) && !readOnly;
 
     return classnames({
       '-isDragging': false,
-      '-isHover': (position === cursor),
+      '-isHover': isCurrent,
+      '-isReadOnly': readOnly,
       [`-${item.type}`]: !!item.type
     });
   }
 
   render() {
-    const { item, cursor, position } = this.props;
+    const { item, cursor, position, readOnly } = this.props;
+
+    const isCurrent = (position === cursor) && !readOnly;
 
     return (
       <li
@@ -78,7 +86,7 @@ class ListItem extends React.Component {
         }}
       >
         {/* Toolbar */}
-        {(position === cursor) &&
+        {isCurrent &&
           <Toolbar onAdd={this.onAddItem} />
         }
 
@@ -86,7 +94,7 @@ class ListItem extends React.Component {
           className="list-item-container"
         >
           {/* Drag handler */}
-          <Transition in={(position === cursor)} timeout={150}>
+          <Transition in={isCurrent} timeout={150}>
             {status => (
               <ListItemDrag
                 item={item}
@@ -96,7 +104,7 @@ class ListItem extends React.Component {
           </Transition>
 
           {/* Block Actions */}
-          <Transition in={(position === cursor)} timeout={150}>
+          <Transition in={isCurrent} timeout={150}>
             {status => (
               <ListItemActions
                 item={item}
@@ -118,6 +126,7 @@ class ListItem extends React.Component {
 
 export default SortableElement(getContext({
   cursor: PropTypes.number,
+  readOnly: PropTypes.bool,
   addItem: PropTypes.func,
   setCursor: PropTypes.func
 })(ListItem));

@@ -10,12 +10,14 @@ class ListItemContent extends React.Component {
     item: PropTypes.object,
     className: PropTypes.string,
     blocks: PropTypes.object,
+    readOnly: PropTypes.bool,
     updateItem: PropTypes.func
   }
 
   static defaultProps = {
     item: {},
     blocks: {},
+    readOnly: false,
     className: ''
   }
 
@@ -26,7 +28,7 @@ class ListItemContent extends React.Component {
   }
 
   render() {
-    const { blocks, item, className } = this.props;
+    const { blocks, item, readOnly, className } = this.props;
 
     const classNames = classnames({
       [className]: !!className
@@ -38,6 +40,7 @@ class ListItemContent extends React.Component {
           blocks[item.type].Component,
           {
             item,
+            readOnly,
             block: blocks[item.type],
             onChange: this.onChange
           }
@@ -49,5 +52,6 @@ class ListItemContent extends React.Component {
 
 export default getContext({
   blocks: PropTypes.object,
+  readOnly: PropTypes.bool,
   updateItem: PropTypes.func
 })(ListItemContent);

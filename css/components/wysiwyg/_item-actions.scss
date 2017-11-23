@@ -3,6 +3,7 @@
   top: 50%;
   right: 0;
   z-index: 2;
+  opacity: 0;
   transition: all $animation-time-2 $ease-in-out-sine;
   transform: translate(4px, -50%);
 
