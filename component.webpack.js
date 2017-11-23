@@ -12,7 +12,9 @@ const plugins = [
 
 if (process.env.NODE_ENV === 'production') {
   plugins.push(
-    new webpack.optimize.UglifyJsPlugin()
+    new webpack.optimize.UglifyJsPlugin({
+      mangle: false
+    })
   );
 }
 
