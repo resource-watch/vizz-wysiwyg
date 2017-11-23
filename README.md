@@ -4,6 +4,11 @@ Welcome to the most amazing Wysiwyg.
 ## Documentation
 Check [the docs](https://resource-watch.github.io/vizz-wysiwyg/styleguide/)
 
+## Dependencies
+    npm install -S react@15.6.2
+    npm install -S react-dom@15.6.2    
+    npm install -S react-quill@1.1.0
+
 ## Running locally in development mode
 To get started in development mode, just clone the repository and run:
 
