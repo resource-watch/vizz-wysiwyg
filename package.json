@@ -1,6 +1,6 @@
 {
   "name": "vizz-wysiwyg",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Vizzuality Wysiwyg",
   "author": "barrenechea.miguel@gmail.com",
   "license": "ISC",
@@ -98,7 +98,7 @@
     "styleguide": "styleguidist server",
     "styleguide:build": "styleguidist build",
     "component": "NODE_ENV=development webpack --config component.webpack.js --watch",
-    "component:build": "NODE_ENV=production webpack --config component.webpack.js",
+    "component:build": "NODE_ENV=development webpack --config component.webpack.js",
     "heroku-postbuild": "next build",
     "documentation": "gh-pages-deploy"
   },
