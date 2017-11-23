@@ -13,12 +13,14 @@ class Text extends React.Component {
   static propTypes = {
     item: PropTypes.object,
     block: PropTypes.object,
+    readOnly: PropTypes.bool,
     onChange: PropTypes.func
   }
 
   static defaultProps = {
     item: {},
     block: {},
+    readOnly: false,
     onChange: null
   }
 
@@ -35,7 +37,7 @@ class Text extends React.Component {
   }
 
   render() {
-    const { block } = this.props;
+    const { block, readOnly } = this.props;
     const { content } = this.state;
 
     return (
@@ -43,6 +45,7 @@ class Text extends React.Component {
         {!!Editor &&
           <Editor
             {...block}
+            readOnly={readOnly}
             className="cw-quill"
             defaultValue={content}
             onChange={this.triggerChange}

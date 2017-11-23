@@ -13,11 +13,13 @@ import ListItem from 'components/Wysiwyg/ListItem/ListItem';
 class List extends React.Component {
   static propTypes = {
     items: PropTypes.array,
+    readOnly: PropTypes.bool,
     addItem: PropTypes.func
   }
 
   static defaultProps = {
-    items: []
+    items: [],
+    readOnly: false
   }
 
   /**
@@ -30,7 +32,8 @@ class List extends React.Component {
   }
 
   render() {
-    const { items } = this.props;
+    const { items, readOnly } = this.props;
+
     return (
       <ul className="cw-wysiwyg-list">
         {items.map((item, index) => (
@@ -42,7 +45,9 @@ class List extends React.Component {
           />
         ))}
 
-        <Toolbar onAdd={this.onAddItem} />
+        {!readOnly &&
+          <Toolbar onAdd={this.onAddItem} />
+        }
       </ul>
     );
   }
@@ -50,5 +55,6 @@ class List extends React.Component {
 
 export default SortableContainer(getContext({
   items: PropTypes.array,
+  readOnly: PropTypes.bool,
   addItem: PropTypes.func
 })(List));

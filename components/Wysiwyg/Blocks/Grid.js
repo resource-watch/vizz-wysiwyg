@@ -5,15 +5,8 @@ import classnames from 'classnames';
 // Recompose
 import { getContext } from 'recompose';
 
-// Popper
-import { Manager, Target, Popper, Arrow } from 'react-popper';
-
-// React Portal
-import Portal from 'react-portal';
-
 // Components
 import Icon from 'components/Wysiwyg/UI/Icon/Icon';
-import Modal from 'components/Wysiwyg/UI/Modal/Modal';
 
 // Blocks
 import Toolbar from 'components/Wysiwyg/Toolbar/Toolbar';
@@ -22,6 +15,7 @@ class Grid extends React.Component {
   static propTypes = {
     item: PropTypes.object,
     blocks: PropTypes.object,
+    readOnly: PropTypes.bool,
     editionMode: PropTypes.bool,
     setEditionMode: PropTypes.func,
     onChange: PropTypes.func
@@ -30,6 +24,7 @@ class Grid extends React.Component {
   static defaultProps = {
     item: {},
     blocks: {},
+    readOnly: false,
     editionMode: false,
     setEditionMode: null
   }
@@ -104,7 +99,7 @@ class Grid extends React.Component {
   }
 
   render() {
-    const { blocks } = this.props;
+    const { blocks, readOnly } = this.props;
     const { content, edition } = this.state;
 
     const gridClassNames = classnames({
@@ -142,84 +137,28 @@ class Grid extends React.Component {
                     blocks[item.type].Component,
                     {
                       item,
+                      readOnly,
                       block: blocks[item.type],
                       onChange: payload => this.triggerChange(payload, i)
                     }
                   )}
 
                   {/* Actions */}
-                  <div className={`wysiwyg-grid-column-actions ${btnClassNames}`}>
-                    <ul>
-                      {/* {blocks[item.type] && blocks[item.type].EditionComponent &&
-
+                  {!readOnly &&
+                    <div className={`wysiwyg-grid-column-actions ${btnClassNames}`}>
+                      <ul>
                         <li>
-                          <Manager>
-                            <Target>
-                              <button
-                                type="button"
-                                className={`cw-button -small -round -primary ${btnClassNames}`}
-                                onClick={() => this.triggerEdit(item.type, i)}
-                              >
-                                <Icon name="icon-edit" />
-                              </button>
-                            </Target>
-
-                            {item.type + i === edition && blocks[item.type].renderer === 'tooltip' &&
-                              <Popper
-                                className="cw-tooltip -light"
-                                placement="bottom"
-                                modifiers={{
-                                  preventOverflow: {
-                                    boundariesElement: 'viewport'
-                                  }
-                                }}
-                              >
-                                {React.createElement(
-                                  blocks[item.type].EditionComponent,
-                                  {
-                                    block: blocks[item.type],
-                                    onSubmit: c => this.triggerSubmit({ content: c }, i)
-                                  }
-                                )}
-                                <Arrow className="tooltip-arrow" />
-                              </Popper>
-                            }
-
-
-                            {item.type + i === edition && blocks[item.type].renderer === 'modal' &&
-                              <Portal
-                                closeOnEsc
-                                isOpened
-                                onClose={this.triggerClose}
-                              >
-                                <Modal
-                                  onClickClose={this.triggerClose}
-                                >
-                                  {React.createElement(
-                                    blocks[item.type].EditionComponent,
-                                    {
-                                      block: blocks[item.type],
-                                      onSubmit: c => this.triggerSubmit({ content: c }, i)
-                                    }
-                                  )}
-                                </Modal>
-                              </Portal>
-                            }
-                          </Manager>
+                          <button
+                            type="button"
+                            className="cw-button -small -round -close"
+                            onClick={() => this.triggerRemove(i)}
+                          >
+                            <Icon name="icon-close" />
+                          </button>
                         </li>
-                      } */}
-
-                      <li>
-                        <button
-                          type="button"
-                          className="cw-button -small -round -close"
-                          onClick={() => this.triggerRemove(i)}
-                        >
-                          <Icon name="icon-close" />
-                        </button>
-                      </li>
-                    </ul>
-                  </div>
+                      </ul>
+                    </div>
+                  }
                 </div>
               </div>
             );
@@ -232,6 +171,7 @@ class Grid extends React.Component {
 
 export default getContext({
   blocks: PropTypes.object,
+  readOnly: PropTypes.bool,
   editionMode: PropTypes.bool,
   setEditionMode: PropTypes.func
 })(Grid);
