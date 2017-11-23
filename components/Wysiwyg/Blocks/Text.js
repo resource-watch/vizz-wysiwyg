@@ -1,14 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// Components
-let Editor;
-if (typeof document !== 'undefined') {
-  /* eslint-disable */
-  Editor = require('react-quill');
-  /* eslint-enable */
-}
-
 class Text extends React.Component {
   static propTypes = {
     item: PropTypes.object,
@@ -22,6 +14,15 @@ class Text extends React.Component {
     block: {},
     readOnly: false,
     onChange: null
+  }
+
+  constructor(props) {
+    super(props);
+    if (typeof window !== 'undefined') {
+      /* eslint-disable */
+      this.Editor = require('react-quill');
+      /* eslint-enable */
+    }
   }
 
   state = {
@@ -42,8 +43,8 @@ class Text extends React.Component {
 
     return (
       <div className="cw-wysiwyg-text">
-        {!!Editor &&
-          <Editor
+        {(typeof document !== 'undefined') &&
+          <this.Editor
             {...block}
             readOnly={readOnly}
             className="cw-quill"

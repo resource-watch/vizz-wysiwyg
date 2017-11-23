@@ -40,7 +40,7 @@ class Wysiwyg extends React.Component {
     blocks: { ...DEFAULT_BLOCKS, ...this.props.blocks },
     readOnly: this.props.readOnly,
     editionMode: false,
-    cursor: 0
+    cursor: null
   }
 
   // Blocks
