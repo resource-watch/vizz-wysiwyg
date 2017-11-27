@@ -10,19 +10,16 @@ import Icon from 'components/Wysiwyg/UI/Icon/Icon';
 
 class ListItemDrag extends React.Component {
   static propTypes = {
-    prov: PropTypes.object,
     className: PropTypes.string
   }
 
   static defaultProps = {
-    item: {},
-    prov: {},
-    className: '',
-    removeItem: null
+    className: ''
   }
 
   render() {
-    const { prov, className } = this.props;
+    const { className } = this.props;
+
     const classNames = classnames({
       [className]: !!className
     });
@@ -34,7 +31,6 @@ class ListItemDrag extends React.Component {
             <button
               type="button"
               className="cw-button -primary -round -small"
-              {...prov.dragHandleProps}
             >
               <Icon name="icon-drag_handle" />
             </button>
