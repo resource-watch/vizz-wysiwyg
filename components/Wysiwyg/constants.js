@@ -43,6 +43,14 @@ const DEFAULT_BLOCKS = {
         validations: {
           presence: { allowEmpty: false },
           url: true
+        },
+        options: {
+          // https://react-dropzone.netlify.com/#proptypes
+          multiple: false,
+          disableClick: true,
+          disablePreview: true,
+          maxSize: 1000000,
+          accept: ['image/jpeg', 'image/png', 'image/gif']
         }
       },
       alt: {

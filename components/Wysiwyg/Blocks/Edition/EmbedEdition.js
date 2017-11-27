@@ -72,7 +72,8 @@ class EmbedEdition extends React.Component {
                           this.MODEL[f].Component,
                           {
                             field: this.MODEL[f].id,
-                            id: this.MODEL[f].id
+                            id: this.MODEL[f].id,
+                            options: this.MODEL[f].options || {}
                           }
                         )}
 

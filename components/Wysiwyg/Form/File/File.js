@@ -16,6 +16,7 @@ import Spinner from 'components/Wysiwyg/UI/Spinner/Spinner';
 class File extends React.Component {
   static propTypes = {
     fieldApi: PropTypes.object,
+    options: PropTypes.object,
     onChange: PropTypes.func,
     onBlur: PropTypes.func,
     onUploadImage: PropTypes.func
@@ -71,11 +72,43 @@ class File extends React.Component {
               }
             })
             .catch((e) => {
-              this.setState({ accepted: [], rejected: [], loading: false });
               console.error(e);
+
+              this.setState({
+                accepted: [],
+                rejected: [
+                  { error: e.toString() }
+                ],
+                loading: false
+              });
             });
         }
       }
+    });
+  }
+
+  /**
+   * HELPERS
+   * - getRejectedErrors
+  */
+  getRejectedErrors() {
+    const { rejected } = this.state;
+    const { options } = this.props;
+
+    return rejected.map((r) => {
+      if (r.error) {
+        return r.error;
+      }
+
+      if (r.size > options.maxSize) {
+        return `Image is over ${options.maxSize / 1000000} MB`;
+      }
+
+      if (!options.accept.includes(r.type)) {
+        return `Image is not ${options.accept.join(', ')}`;
+      }
+
+      return 'Unexpected error';
     });
   }
 
@@ -104,7 +137,6 @@ class File extends React.Component {
     }
   }
 
-
   render() {
     const { accepted, loading, dropzoneActive } = this.state;
 
@@ -116,15 +148,15 @@ class File extends React.Component {
       ...rest
     } = this.props;
 
+    const errors = this.getRejectedErrors();
+
     return (
       <div className="cw-file">
         <Dropzone
           ref={(node) => { this.dropzone = node; }}
           className="file-dropzone"
-          multiple={false}
+          {...this.props.options}
           disabled={!onUploadImage}
-          disableClick
-          disablePreview
           onDrop={this.onDrop}
           onDragEnter={this.onDragEnter}
           onDragLeave={this.onDragLeave}
@@ -163,6 +195,12 @@ class File extends React.Component {
             >
               {(accepted.length) ? 'Cancel' : 'Browse file'}
             </button>
+          }
+
+          {!!errors.length &&
+            <div className="error">
+              {errors.map(e => e)}
+            </div>
           }
         </Dropzone>
       </div>
