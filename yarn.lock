@@ -8986,6 +8986,10 @@ webpack-dev-server@^2.8.2:
     webpack-dev-middleware "^1.11.0"
     yargs "^6.6.0"
 
+webpack-extraneous-file-cleanup-plugin@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/webpack-extraneous-file-cleanup-plugin/-/webpack-extraneous-file-cleanup-plugin-1.0.5.tgz#92b534011f8c26b91a6a9861e978c4ecd3eefe04"
+
 webpack-hot-middleware@2.18.2:
   version "2.18.2"
   resolved "https://registry.yarnpkg.com/webpack-hot-middleware/-/webpack-hot-middleware-2.18.2.tgz#84dee643f037c3d59c9de142548430371aa8d3b2"

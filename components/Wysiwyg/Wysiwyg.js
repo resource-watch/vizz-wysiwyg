@@ -11,8 +11,6 @@ import Content from 'components/Wysiwyg/Content/Content';
 import Icons from 'components/Wysiwyg/UI/Icons/Icons';
 import Backdrop from 'components/Wysiwyg/UI/Backdrop/Backdrop';
 
-import 'css/components/wysiwyg/index.scss';
-
 class Wysiwyg extends React.Component {
   static propTypes = {
     /** items: Initial state of wysiwyg [Check item types](#wysiwyg-items) */

@@ -1,13 +1,18 @@
 const path = require('path');
 const glob = require('glob');
 const webpack = require('webpack');
+const ExtraneousFileCleanupPlugin = require('webpack-extraneous-file-cleanup-plugin');
 
 require('dotenv').load();
 
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const plugins = [
-  new ExtractTextPlugin('wysiwyg.css')
+  new ExtractTextPlugin('[name].css'),
+  new ExtraneousFileCleanupPlugin({
+    extensions: ['.js'],
+    minBytes: 4096
+  })
 ];
 
 if (process.env.NODE_ENV === 'production') {
@@ -20,11 +25,15 @@ if (process.env.NODE_ENV === 'production') {
 
 
 module.exports = {
-  entry: path.resolve(__dirname, 'components/Wysiwyg/index.js'),
+  entry: {
+    wysiwyg: path.resolve(__dirname, 'components/Wysiwyg/index.js'),
+    rw: path.resolve(__dirname, 'css/components/wysiwyg/index_rw.scss'),
+    prep: path.resolve(__dirname, 'css/components/wysiwyg/index_prep.scss')
+  },
 
   output: {
     path: path.resolve(__dirname, 'build'),
-    filename: 'wysiwyg.js',
+    filename: '[name].js',
     libraryTarget: 'commonjs2' // THIS IS THE MOST IMPORTANT LINE! :mindblow: I wasted more than 2 days until realize this was the line most important in all this guide.
   },
 

@@ -154,7 +154,7 @@ class Toolbar extends React.Component {
                               !editionMode && this.setState({ tooltip: block, edition: null })
                             }
                           >
-                            <Icon name={`icon-${block}`} />
+                            <Icon name={blocks[block].icon || `icon-${block}`} />
                           </button>
                         </Target>
 
