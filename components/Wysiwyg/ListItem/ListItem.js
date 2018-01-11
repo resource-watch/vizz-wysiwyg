@@ -94,24 +94,28 @@ class ListItem extends React.Component {
           className="list-item-container"
         >
           {/* Drag handler */}
-          <Transition in={isCurrent} timeout={150}>
-            {status => (
-              <ListItemDrag
-                item={item}
-                className={`-${status}`}
-              />
-            )}
-          </Transition>
+          {!readOnly &&
+            <Transition in={isCurrent} timeout={150}>
+              {status => (
+                <ListItemDrag
+                  item={item}
+                  className={`-${status}`}
+                />
+              )}
+            </Transition>
+          }
 
           {/* Block Actions */}
-          <Transition in={isCurrent} timeout={150}>
-            {status => (
-              <ListItemActions
-                item={item}
-                className={`-${status}`}
-              />
-            )}
-          </Transition>
+          {!readOnly &&
+            <Transition in={isCurrent} timeout={150}>
+              {status => (
+                <ListItemActions
+                  item={item}
+                  className={`-${status}`}
+                />
+              )}
+            </Transition>
+          }
 
           {/* Content */}
           <ListItemContent
