@@ -13,6 +13,8 @@ import Backdrop from 'components/Wysiwyg/UI/Backdrop/Backdrop';
 
 class Wysiwyg extends React.Component {
   static propTypes = {
+    /** id: Will handle re-renders */
+    id: PropTypes.array,
     /** items: Initial state of wysiwyg [Check item types](#wysiwyg-items) */
     items: PropTypes.array,
     /** blocks: Different types of blocks handled by wysiwyg [Check block types](#wysiwyg-blocks) */
@@ -26,6 +28,7 @@ class Wysiwyg extends React.Component {
   }
 
   static defaultProps = {
+    id: undefined,
     items: [],
     blocks: DEFAULT_BLOCKS,
     readOnly: false,
@@ -39,6 +42,16 @@ class Wysiwyg extends React.Component {
     readOnly: this.props.readOnly,
     editionMode: false,
     cursor: null
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.id !== this.props.id) {
+      // Set items
+      this.setItems(nextProps.items);
+
+      // Set blocks
+      this.setBlocks({ ...DEFAULT_BLOCKS, ...nextProps.blocks });
+    }
   }
 
   // Blocks
