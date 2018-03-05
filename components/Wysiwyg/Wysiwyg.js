@@ -14,7 +14,7 @@ import Backdrop from 'components/Wysiwyg/UI/Backdrop/Backdrop';
 class Wysiwyg extends React.Component {
   static propTypes = {
     /** id: Will handle re-renders */
-    id: PropTypes.array,
+    id: PropTypes.string,
     /** items: Initial state of wysiwyg [Check item types](#wysiwyg-items) */
     items: PropTypes.array,
     /** blocks: Different types of blocks handled by wysiwyg [Check block types](#wysiwyg-blocks) */
