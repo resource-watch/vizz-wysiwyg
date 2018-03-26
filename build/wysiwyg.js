@@ -4221,7 +4221,7 @@ var Toolbar = (_temp2 = _class = function (_React$Component) {
                             lineNumber: 163
                           }
                         },
-                        __WEBPACK_IMPORTED_MODULE_10_lodash_upperFirst___default()(block),
+                        blocks[block].label || __WEBPACK_IMPORTED_MODULE_10_lodash_upperFirst___default()(block),
                         __WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_13_react_popper__["Arrow"], { className: 'tooltip-arrow', __source: {
                             fileName: _jsxFileName,
                             lineNumber: 165
@@ -8926,8 +8926,8 @@ var Wysiwyg = (_temp2 = _class = function (_React$Component) {
         // Set items
         this.setItems(nextProps.items);
 
-        // Set blocks
-        this.setBlocks(__WEBPACK_IMPORTED_MODULE_1_next_node_modules_babel_runtime_helpers_extends___default()({}, __WEBPACK_IMPORTED_MODULE_9__constants__["a" /* DEFAULT_BLOCKS */], nextProps.blocks));
+        // // Set blocks
+        // this.setBlocks({ ...DEFAULT_BLOCKS, ...nextProps.blocks });
       }
     }
 
@@ -10503,6 +10503,19 @@ var DEFAULT_BLOCKS = {
         validations: {
           presence: { allowEmpty: false },
           url: true
+        }
+      },
+      height: {
+        Component: __WEBPACK_IMPORTED_MODULE_9_react_form__["Text"],
+        id: 'height',
+        label: 'Height',
+        defaultValue: 400,
+        inputProps: {
+          min: 300,
+          type: 'number'
+        },
+        validations: {
+          presence: { allowEmpty: false }
         }
       }
     },
@@ -13808,19 +13821,23 @@ var Grid = (_temp2 = _class = function (_React$Component) {
             }
           },
           content.map(function (item, i) {
+            if (!item && readOnly) {
+              return null;
+            }
+
             if (!item) {
               return __WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement(
                 'div',
                 { key: i, className: 'column ' + gridClassNames, __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 117
+                    lineNumber: 121
                   }
                 },
                 __WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement(
                   'div',
                   { className: 'wysiwyg-grid-placeholder', __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 118
+                      lineNumber: 122
                     }
                   },
                   __WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_12__Toolbar_Toolbar__["a" /* default */], {
@@ -13831,7 +13848,7 @@ var Grid = (_temp2 = _class = function (_React$Component) {
                     },
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 119
+                      lineNumber: 123
                     }
                   })
                 )
@@ -13846,14 +13863,14 @@ var Grid = (_temp2 = _class = function (_React$Component) {
               'div',
               { key: item.id, className: 'column ' + gridClassNames, __source: {
                   fileName: _jsxFileName,
-                  lineNumber: 134
+                  lineNumber: 138
                 }
               },
               __WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement(
                 'div',
                 { className: 'wysiwyg-grid-column', __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 135
+                    lineNumber: 139
                   }
                 },
                 __WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement(blocks[item.type].Component, {
@@ -13868,7 +13885,7 @@ var Grid = (_temp2 = _class = function (_React$Component) {
                   'div',
                   { className: 'wysiwyg-grid-column-actions ' + btnClassNames, __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 148
+                      lineNumber: 152
                     }
                   },
                   __WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement(
@@ -13876,7 +13893,7 @@ var Grid = (_temp2 = _class = function (_React$Component) {
                     {
                       __source: {
                         fileName: _jsxFileName,
-                        lineNumber: 149
+                        lineNumber: 153
                       }
                     },
                     __WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement(
@@ -13884,7 +13901,7 @@ var Grid = (_temp2 = _class = function (_React$Component) {
                       {
                         __source: {
                           fileName: _jsxFileName,
-                          lineNumber: 150
+                          lineNumber: 154
                         }
                       },
                       __WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement(
@@ -13897,12 +13914,12 @@ var Grid = (_temp2 = _class = function (_React$Component) {
                           },
                           __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 151
+                            lineNumber: 155
                           }
                         },
                         __WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11__UI_Icon_Icon__["a" /* default */], { name: 'icon-close', __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 156
+                            lineNumber: 160
                           }
                         })
                       )
@@ -26671,32 +26688,35 @@ VideoEdition.displayName = 'VideoEdition';
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_next_node_modules_babel_runtime_helpers_defineProperty__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_next_node_modules_babel_runtime_helpers_defineProperty___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_next_node_modules_babel_runtime_helpers_defineProperty__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_node_modules_babel_runtime_core_js_object_keys__ = __webpack_require__(55);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_node_modules_babel_runtime_core_js_object_keys___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_next_node_modules_babel_runtime_core_js_object_keys__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_next_node_modules_babel_runtime_core_js_object_get_prototype_of__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_next_node_modules_babel_runtime_core_js_object_get_prototype_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_next_node_modules_babel_runtime_core_js_object_get_prototype_of__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_next_node_modules_babel_runtime_helpers_classCallCheck__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_next_node_modules_babel_runtime_helpers_classCallCheck___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_next_node_modules_babel_runtime_helpers_classCallCheck__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_next_node_modules_babel_runtime_helpers_createClass__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_next_node_modules_babel_runtime_helpers_createClass___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_next_node_modules_babel_runtime_helpers_createClass__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_next_node_modules_babel_runtime_helpers_possibleConstructorReturn__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_next_node_modules_babel_runtime_helpers_possibleConstructorReturn___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_next_node_modules_babel_runtime_helpers_possibleConstructorReturn__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_next_node_modules_babel_runtime_helpers_inherits__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_next_node_modules_babel_runtime_helpers_inherits___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_next_node_modules_babel_runtime_helpers_inherits__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_prop_types__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_prop_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_classnames__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_classnames__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_lodash_mapValues__ = __webpack_require__(89);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_lodash_mapValues___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_lodash_mapValues__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_validate_js__ = __webpack_require__(97);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_validate_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_validate_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_react_form__ = __webpack_require__(48);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_react_form___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12_react_form__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_next_node_modules_babel_runtime_helpers_extends__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_next_node_modules_babel_runtime_helpers_extends___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_next_node_modules_babel_runtime_helpers_extends__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_node_modules_babel_runtime_helpers_defineProperty__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_next_node_modules_babel_runtime_helpers_defineProperty___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_next_node_modules_babel_runtime_helpers_defineProperty__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_next_node_modules_babel_runtime_core_js_object_keys__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_next_node_modules_babel_runtime_core_js_object_keys___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_next_node_modules_babel_runtime_core_js_object_keys__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_next_node_modules_babel_runtime_core_js_object_get_prototype_of__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_next_node_modules_babel_runtime_core_js_object_get_prototype_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_next_node_modules_babel_runtime_core_js_object_get_prototype_of__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_next_node_modules_babel_runtime_helpers_classCallCheck__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_next_node_modules_babel_runtime_helpers_classCallCheck___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_next_node_modules_babel_runtime_helpers_classCallCheck__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_next_node_modules_babel_runtime_helpers_createClass__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_next_node_modules_babel_runtime_helpers_createClass___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_next_node_modules_babel_runtime_helpers_createClass__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_next_node_modules_babel_runtime_helpers_possibleConstructorReturn__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_next_node_modules_babel_runtime_helpers_possibleConstructorReturn___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_next_node_modules_babel_runtime_helpers_possibleConstructorReturn__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_next_node_modules_babel_runtime_helpers_inherits__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_next_node_modules_babel_runtime_helpers_inherits___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_next_node_modules_babel_runtime_helpers_inherits__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_prop_types__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_prop_types__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_classnames__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_classnames__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_lodash_mapValues__ = __webpack_require__(89);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_lodash_mapValues___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_lodash_mapValues__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_validate_js__ = __webpack_require__(97);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_validate_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12_validate_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_react_form__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_react_form___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13_react_form__);
+
 
 
 
@@ -26721,52 +26741,52 @@ var _class,
 
 
 var EmbedEdition = (_temp2 = _class = function (_React$Component) {
-  __WEBPACK_IMPORTED_MODULE_6_next_node_modules_babel_runtime_helpers_inherits___default()(EmbedEdition, _React$Component);
+  __WEBPACK_IMPORTED_MODULE_7_next_node_modules_babel_runtime_helpers_inherits___default()(EmbedEdition, _React$Component);
 
   function EmbedEdition() {
     var _ref;
 
     var _temp, _this, _ret;
 
-    __WEBPACK_IMPORTED_MODULE_3_next_node_modules_babel_runtime_helpers_classCallCheck___default()(this, EmbedEdition);
+    __WEBPACK_IMPORTED_MODULE_4_next_node_modules_babel_runtime_helpers_classCallCheck___default()(this, EmbedEdition);
 
     for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = __WEBPACK_IMPORTED_MODULE_5_next_node_modules_babel_runtime_helpers_possibleConstructorReturn___default()(this, (_ref = EmbedEdition.__proto__ || __WEBPACK_IMPORTED_MODULE_2_next_node_modules_babel_runtime_core_js_object_get_prototype_of___default()(EmbedEdition)).call.apply(_ref, [this].concat(args))), _this), _this.VALIDATIONS = __WEBPACK_IMPORTED_MODULE_10_lodash_mapValues___default()(_this.props.block.model, function (m) {
+    return _ret = (_temp = (_this = __WEBPACK_IMPORTED_MODULE_6_next_node_modules_babel_runtime_helpers_possibleConstructorReturn___default()(this, (_ref = EmbedEdition.__proto__ || __WEBPACK_IMPORTED_MODULE_3_next_node_modules_babel_runtime_core_js_object_get_prototype_of___default()(EmbedEdition)).call.apply(_ref, [this].concat(args))), _this), _this.VALIDATIONS = __WEBPACK_IMPORTED_MODULE_11_lodash_mapValues___default()(_this.props.block.model, function (m) {
       return m.validations;
     }), _this.MODEL = _this.props.block.model, _this.triggerSubmit = function (values) {
       if (_this.props.onSubmit) _this.props.onSubmit(values);
     }, _this.triggerValidateError = function (values) {
       var errors = {};
-      var errorValidations = __WEBPACK_IMPORTED_MODULE_11_validate_js___default()(values, _this.VALIDATIONS);
+      var errorValidations = __WEBPACK_IMPORTED_MODULE_12_validate_js___default()(values, _this.VALIDATIONS);
 
       // Map throuhg the model keys to set the errors
-      __WEBPACK_IMPORTED_MODULE_1_next_node_modules_babel_runtime_core_js_object_keys___default()(_this.MODEL).map(function (k) {
+      __WEBPACK_IMPORTED_MODULE_2_next_node_modules_babel_runtime_core_js_object_keys___default()(_this.MODEL).map(function (k) {
         return errors[k] = errorValidations && errorValidations[k];
       });
 
       return errors;
-    }, _temp), __WEBPACK_IMPORTED_MODULE_5_next_node_modules_babel_runtime_helpers_possibleConstructorReturn___default()(_this, _ret);
+    }, _temp), __WEBPACK_IMPORTED_MODULE_6_next_node_modules_babel_runtime_helpers_possibleConstructorReturn___default()(_this, _ret);
   }
 
-  __WEBPACK_IMPORTED_MODULE_4_next_node_modules_babel_runtime_helpers_createClass___default()(EmbedEdition, [{
+  __WEBPACK_IMPORTED_MODULE_5_next_node_modules_babel_runtime_helpers_createClass___default()(EmbedEdition, [{
     key: 'render',
     value: function render() {
       var _this2 = this;
 
-      return __WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement(
+      return __WEBPACK_IMPORTED_MODULE_8_react___default.a.createElement(
         'div',
         { className: 'cw-wysiwyg-edition', __source: {
             fileName: _jsxFileName,
             lineNumber: 40
           }
         },
-        __WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement(
-          __WEBPACK_IMPORTED_MODULE_12_react_form__["Form"],
+        __WEBPACK_IMPORTED_MODULE_8_react___default.a.createElement(
+          __WEBPACK_IMPORTED_MODULE_13_react_form__["Form"],
           {
-            defaultValues: __WEBPACK_IMPORTED_MODULE_10_lodash_mapValues___default()(this.MODEL, function (m) {
+            defaultValues: __WEBPACK_IMPORTED_MODULE_11_lodash_mapValues___default()(this.MODEL, function (m) {
               return m.defaultValue;
             }),
             onSubmit: this.triggerSubmit,
@@ -26781,7 +26801,7 @@ var EmbedEdition = (_temp2 = _class = function (_React$Component) {
                 errors = formApi.errors;
 
 
-            return __WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement(
+            return __WEBPACK_IMPORTED_MODULE_8_react___default.a.createElement(
               'form',
               {
                 id: 'form',
@@ -26793,24 +26813,24 @@ var EmbedEdition = (_temp2 = _class = function (_React$Component) {
                   lineNumber: 50
                 }
               },
-              __WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement(
+              __WEBPACK_IMPORTED_MODULE_8_react___default.a.createElement(
                 'fieldset',
                 { className: 'cw-fieldset', __source: {
                     fileName: _jsxFileName,
                     lineNumber: 56
                   }
                 },
-                __WEBPACK_IMPORTED_MODULE_1_next_node_modules_babel_runtime_core_js_object_keys___default()(_this2.MODEL).map(function (f) {
-                  var fieldClassNames = __WEBPACK_IMPORTED_MODULE_9_classnames___default()(__WEBPACK_IMPORTED_MODULE_0_next_node_modules_babel_runtime_helpers_defineProperty___default()({}, '-' + _this2.MODEL[f].type, !!_this2.MODEL[f].type));
+                __WEBPACK_IMPORTED_MODULE_2_next_node_modules_babel_runtime_core_js_object_keys___default()(_this2.MODEL).map(function (f) {
+                  var fieldClassNames = __WEBPACK_IMPORTED_MODULE_10_classnames___default()(__WEBPACK_IMPORTED_MODULE_1_next_node_modules_babel_runtime_helpers_defineProperty___default()({}, '-' + _this2.MODEL[f].type, !!_this2.MODEL[f].type));
 
-                  return __WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement(
+                  return __WEBPACK_IMPORTED_MODULE_8_react___default.a.createElement(
                     'div',
                     { key: _this2.MODEL[f].id, className: 'cw-field ' + fieldClassNames, __source: {
                         fileName: _jsxFileName,
                         lineNumber: 63
                       }
                     },
-                    __WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement(
+                    __WEBPACK_IMPORTED_MODULE_8_react___default.a.createElement(
                       'label',
                       {
                         className: 'label',
@@ -26822,17 +26842,17 @@ var EmbedEdition = (_temp2 = _class = function (_React$Component) {
                       },
                       _this2.MODEL[f].label
                     ),
-                    __WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement(_this2.MODEL[f].Component, {
+                    __WEBPACK_IMPORTED_MODULE_8_react___default.a.createElement(_this2.MODEL[f].Component, __WEBPACK_IMPORTED_MODULE_0_next_node_modules_babel_runtime_helpers_extends___default()({
                       field: _this2.MODEL[f].id,
                       id: _this2.MODEL[f].id,
                       options: _this2.MODEL[f].options || {}
-                    }),
+                    }, _this2.MODEL[f].inputProps)),
                     !!touched[f] && !!errors[f] && errors[f].map(function (e, i) {
-                      return __WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement(
+                      return __WEBPACK_IMPORTED_MODULE_8_react___default.a.createElement(
                         'div',
                         { key: i, className: 'error', __source: {
                             fileName: _jsxFileName,
-                            lineNumber: 80
+                            lineNumber: 81
                           }
                         },
                         e
@@ -26841,14 +26861,14 @@ var EmbedEdition = (_temp2 = _class = function (_React$Component) {
                   );
                 })
               ),
-              __WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement(
+              __WEBPACK_IMPORTED_MODULE_8_react___default.a.createElement(
                 'div',
                 { className: 'form-actions', __source: {
                     fileName: _jsxFileName,
-                    lineNumber: 86
+                    lineNumber: 87
                   }
                 },
-                __WEBPACK_IMPORTED_MODULE_7_react___default.a.createElement(
+                __WEBPACK_IMPORTED_MODULE_8_react___default.a.createElement(
                   'button',
                   {
                     type: 'button',
@@ -26856,7 +26876,7 @@ var EmbedEdition = (_temp2 = _class = function (_React$Component) {
                     onClick: formApi.submitForm,
                     __source: {
                       fileName: _jsxFileName,
-                      lineNumber: 87
+                      lineNumber: 88
                     }
                   },
                   'Submit'
@@ -26870,9 +26890,9 @@ var EmbedEdition = (_temp2 = _class = function (_React$Component) {
   }]);
 
   return EmbedEdition;
-}(__WEBPACK_IMPORTED_MODULE_7_react___default.a.Component), _class.propTypes = {
-  block: __WEBPACK_IMPORTED_MODULE_8_prop_types___default.a.object,
-  onSubmit: __WEBPACK_IMPORTED_MODULE_8_prop_types___default.a.func
+}(__WEBPACK_IMPORTED_MODULE_8_react___default.a.Component), _class.propTypes = {
+  block: __WEBPACK_IMPORTED_MODULE_9_prop_types___default.a.object,
+  onSubmit: __WEBPACK_IMPORTED_MODULE_9_prop_types___default.a.func
 }, _class.defaultProps = {
   block: {}
 }, _temp2);

@@ -104,6 +104,19 @@ const DEFAULT_BLOCKS = {
           presence: { allowEmpty: false },
           url: true
         }
+      },
+      height: {
+        Component: Text,
+        id: 'height',
+        label: 'Height',
+        defaultValue: 400,
+        inputProps: {
+          min: 300,
+          type: 'number'
+        },
+        validations: {
+          presence: { allowEmpty: false }
+        }
       }
     },
 
