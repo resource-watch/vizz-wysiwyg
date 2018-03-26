@@ -112,6 +112,10 @@ class Grid extends React.Component {
       <div className="cw-wysiwyg-grid">
         <div className="wysiwyg-grid-row row">
           {content.map(((item, i) => {
+            if (!item && readOnly) {
+              return null;
+            }
+
             if (!item) {
               return (
                 <div key={i} className={`column ${gridClassNames}`}>
