@@ -52,15 +52,18 @@ class Grid extends React.Component {
   */
   triggerAdd = (payload, i) => {
     const content = [...this.state.content];
-    content[i] = payload;
+    if (!content[i]) {
+      content[i] = [];
+    }
+    content[i].push(payload);
     this.setState({ content }, () => {
       this.props.onChange && this.props.onChange({ content });
     });
   }
 
-  triggerChange = (payload, i) => {
+  triggerChange = (payload, i, j) => {
     const content = [...this.state.content];
-    content[i] = { ...content[i], ...payload };
+    content[i][j] = { ...content[i][j], ...payload };
 
     this.setState({ content }, () => {
       this.props.onChange && this.props.onChange({ content });
@@ -100,7 +103,7 @@ class Grid extends React.Component {
 
   render() {
     const { blocks, readOnly } = this.props;
-    const { content, edition } = this.state;
+    const { content } = this.state;
 
     const gridClassNames = classnames({
       'small-12': true,
@@ -112,40 +115,40 @@ class Grid extends React.Component {
       <div className="cw-wysiwyg-grid">
         <div className="wysiwyg-grid-row row">
           {content.map(((item, i) => {
-            if (!item) {
-              return (
-                <div key={i} className={`column ${gridClassNames}`}>
-                  <div className="wysiwyg-grid-placeholder">
-                    <Toolbar
-                      className="-no-cursor"
-                      exclude={['grid']}
-                      onAdd={payload => this.triggerAdd(payload, i)}
-                    />
-                  </div>
-                </div>
-              );
-            }
-
-            const btnClassNames = classnames({
-              '-active': item.type + i === edition
-            });
-
+            const items = Array.isArray(item) ? item : [item];
             return (
-              <div key={item.id} className={`column ${gridClassNames}`}>
+              <div key={i} className={`column ${gridClassNames}`}>
                 <div className="wysiwyg-grid-column">
-                  {React.createElement(
-                    blocks[item.type].Component,
-                    {
-                      item,
-                      readOnly,
-                      block: blocks[item.type],
-                      onChange: payload => this.triggerChange(payload, i)
+                  {items.map(((element, j) => {
+                    if (!element) {
+                      return null;
                     }
-                  )}
-
+                    return (
+                      <div key={element.id}>
+                        {React.createElement(
+                          blocks[element.type].Component,
+                          {
+                            item: element,
+                            readOnly,
+                            block: blocks[element.type],
+                            onChange: payload => this.triggerChange(payload, i, j)
+                          }
+                        )}
+                      </div>
+                    );
+                  }))}
+                  {!readOnly &&
+                    <div className="wysiwyg-grid-placeholder">
+                      <Toolbar
+                        className="-no-cursor"
+                        exclude={['grid']}
+                        onAdd={payload => this.triggerAdd(payload, i)}
+                      />
+                    </div>
+                  }
                   {/* Actions */}
                   {!readOnly &&
-                    <div className={`wysiwyg-grid-column-actions ${btnClassNames}`}>
+                    <div className="wysiwyg-grid-column-actions">
                       <ul>
                         <li>
                           <button
