@@ -1,3 +1,5 @@
 .cw-wysiwyg-image {
-  box-shadow: 0 0px 4px rgba($color-dark, 0.25);
+  img {
+    box-shadow: 0 0px 4px rgba($color-dark, 0.25);
+  }
 }
