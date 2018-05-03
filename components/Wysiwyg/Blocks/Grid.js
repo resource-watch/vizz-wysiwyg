@@ -52,10 +52,17 @@ class Grid extends React.Component {
   */
   triggerAdd = (payload, i) => {
     const content = [...this.state.content];
+
     if (!content[i]) {
       content[i] = [];
     }
+
+    if (!Array.isArray(content[i])) {
+      content[i] = [content[i]];
+    }
+
     content[i].push(payload);
+
     this.setState({ content }, () => {
       this.props.onChange && this.props.onChange({ content });
     });
