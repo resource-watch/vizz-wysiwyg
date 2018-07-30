@@ -1,3 +1,5 @@
+
+
 // Visual Blocks
 import TextBlock from 'components/Wysiwyg/Blocks/Text';
 import ImageBlock from 'components/Wysiwyg/Blocks/Image';
@@ -27,7 +29,13 @@ const DEFAULT_BLOCKS = {
         ['bold', 'italic', 'underline'],
         [{ list: 'ordered' }, { list: 'bullet' }],
         ['link']
-      ]
+      ],
+      magicUrl: {
+        // Regex used to check URLs during typing
+        urlRegularExpression: /((http(s?)|ftp):\/\/)?(www\.)?(\w+)(\.\w+)+/,
+        // Regex used to check URLs on paste
+        globalRegularExpression: /((http(s?)|ftp):\/\/)?(www\.)?(\w+)(\.\w+)+/g
+      }
     }
   },
 

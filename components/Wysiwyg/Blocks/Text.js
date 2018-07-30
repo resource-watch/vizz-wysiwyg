@@ -21,6 +21,12 @@ class Text extends React.Component {
     if (typeof window !== 'undefined') {
       /* eslint-disable */
       this.Editor = require('react-quill');
+
+      // include any custom quill plugins here
+      if (this.Editor) {
+        const MagicUrl = require('quill-magic-url').default;
+        this.Editor.Quill.register('modules/magicUrl', MagicUrl);
+      }
       /* eslint-enable */
     }
   }
