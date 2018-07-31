@@ -1,3 +1,5 @@
+
+
 // Visual Blocks
 import TextBlock from 'components/Wysiwyg/Blocks/Text';
 import ImageBlock from 'components/Wysiwyg/Blocks/Image';
@@ -27,7 +29,8 @@ const DEFAULT_BLOCKS = {
         ['bold', 'italic', 'underline'],
         [{ list: 'ordered' }, { list: 'bullet' }],
         ['link']
-      ]
+      ],
+      magicUrl: true
     }
   },
 
