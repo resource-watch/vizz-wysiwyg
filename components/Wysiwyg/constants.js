@@ -30,12 +30,7 @@ const DEFAULT_BLOCKS = {
         [{ list: 'ordered' }, { list: 'bullet' }],
         ['link']
       ],
-      magicUrl: {
-        // Regex used to check URLs during typing
-        urlRegularExpression: /((http(s?)|ftp):\/\/)?(www\.)?(\w+)(\.\w+)+/,
-        // Regex used to check URLs on paste
-        globalRegularExpression: /((http(s?)|ftp):\/\/)?(www\.)?(\w+)(\.\w+)+/g
-      }
+      magicUrl: true
     }
   },
 
