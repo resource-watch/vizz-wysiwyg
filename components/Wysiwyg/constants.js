@@ -29,8 +29,7 @@ const DEFAULT_BLOCKS = {
         ['bold', 'italic', 'underline'],
         [{ list: 'ordered' }, { list: 'bullet' }],
         ['link']
-      ],
-      magicUrl: true
+      ]
     }
   },
 
