@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+
 class Text extends React.Component {
   static propTypes = {
     item: PropTypes.object,
@@ -24,8 +25,8 @@ class Text extends React.Component {
 
       // include any custom quill plugins here
       if (this.Editor) {
-        const MagicUrl = require('quill-magic-url').default;
-        this.Editor.Quill.register('modules/magicUrl', MagicUrl);
+        //const MagicUrl = require('quill-magic-url').default;
+        //this.Editor.Quill.register('modules/magicUrl', MagicUrl);
       }
       /* eslint-enable */
     }
