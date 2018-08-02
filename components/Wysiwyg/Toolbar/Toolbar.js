@@ -161,7 +161,7 @@ class Toolbar extends React.Component {
                         {/* Info tooltip */}
                         {block === tooltip && !edition &&
                           <Popper placement="top" className="cw-tooltip">
-                            {upperFirst(block)}
+                            {blocks[block].label || upperFirst(block)}
                             <Arrow className="tooltip-arrow" />
                           </Popper>
                         }

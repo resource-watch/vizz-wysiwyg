@@ -1,3 +1,5 @@
+
+
 // Visual Blocks
 import TextBlock from 'components/Wysiwyg/Blocks/Text';
 import ImageBlock from 'components/Wysiwyg/Blocks/Image';
@@ -27,7 +29,8 @@ const DEFAULT_BLOCKS = {
         ['bold', 'italic', 'underline'],
         [{ list: 'ordered' }, { list: 'bullet' }],
         ['link']
-      ]
+      ],
+      magicUrl: true
     }
   },
 
@@ -103,6 +106,19 @@ const DEFAULT_BLOCKS = {
         validations: {
           presence: { allowEmpty: false },
           url: true
+        }
+      },
+      height: {
+        Component: Text,
+        id: 'height',
+        label: 'Height',
+        defaultValue: 400,
+        inputProps: {
+          min: 300,
+          type: 'number'
+        },
+        validations: {
+          presence: { allowEmpty: false }
         }
       }
     },

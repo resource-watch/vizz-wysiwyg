@@ -49,8 +49,11 @@ class Wysiwyg extends React.Component {
       // Set items
       this.setItems(nextProps.items);
 
-      // Set blocks
-      this.setBlocks({ ...DEFAULT_BLOCKS, ...nextProps.blocks });
+      // // Set blocks
+      // this.setBlocks({ ...DEFAULT_BLOCKS, ...nextProps.blocks });
+    }
+    if (nextProps.readOnly !== this.state.readOnly) {
+      this.setState({ readOnly: nextProps.readOnly });
     }
   }
 
