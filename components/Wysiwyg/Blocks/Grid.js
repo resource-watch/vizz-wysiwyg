@@ -92,9 +92,13 @@ class Grid extends React.Component {
     this.props.setEditionMode && this.props.setEditionMode(true);
   }
 
-  triggerRemove = (i) => {
+  triggerRemove = (i, j = null) => {
     const content = [...this.state.content];
-    content[i] = null;
+    if (j !== null) {
+      content[i][j] = null;
+    } else {
+      content[i] = null;
+    }
 
     this.setState({ content }, () => {
       this.props.onChange && this.props.onChange({ content });
@@ -152,7 +156,7 @@ class Grid extends React.Component {
                               <button
                                 type="button"
                                 className="cw-button -small -round -close"
-                                onClick={() => this.triggerRemove(i)}
+                                onClick={() => this.triggerRemove(i, j)}
                               >
                                 <Icon name="icon-delete" />
                               </button>
