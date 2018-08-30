@@ -92,9 +92,13 @@ class Grid extends React.Component {
     this.props.setEditionMode && this.props.setEditionMode(true);
   }
 
-  triggerRemove = (i) => {
+  triggerRemove = (i, j = null) => {
     const content = [...this.state.content];
-    content[i] = null;
+    if (j !== null) {
+      content[i][j] = null;
+    } else {
+      content[i] = null;
+    }
 
     this.setState({ content }, () => {
       this.props.onChange && this.props.onChange({ content });
@@ -118,6 +122,11 @@ class Grid extends React.Component {
       'medium-4': content.length === 3
     });
 
+    const columnItemClasses = classnames({
+      'wysiwyg-grid-column__item': true,
+      'wysiwyg-grid-column__item--with-actions': !readOnly
+    });
+
     return (
       <div className="cw-wysiwyg-grid">
         <div className="wysiwyg-grid-row row">
@@ -131,7 +140,7 @@ class Grid extends React.Component {
                       return null;
                     }
                     return (
-                      <div key={element.id}>
+                      <div key={element.id} className={columnItemClasses}>
                         {React.createElement(
                           blocks[element.type].Component,
                           {
@@ -141,6 +150,19 @@ class Grid extends React.Component {
                             onChange: payload => this.triggerChange(payload, i, j)
                           }
                         )}
+                        <div className="wysiwyg-grid-column-actions -inline">
+                          <ul>
+                            <li>
+                              <button
+                                type="button"
+                                className="cw-button -small -round -close"
+                                onClick={() => this.triggerRemove(i, j)}
+                              >
+                                <Icon name="icon-delete" />
+                              </button>
+                            </li>
+                          </ul>
+                        </div>
                       </div>
                     );
                   }))}
