@@ -29,16 +29,24 @@ class Text extends React.Component {
       }
       /* eslint-enable */
     }
-  }
 
-  state = {
-    content: this.props.item.content
+    let content;
+
+    try {
+      content = JSON.parse(this.props.item.content);
+    } catch (error) {
+      content = this.props.item.content;
+    }
+
+    this.state = { content };
   }
 
   triggerChange = (content) => {
     this.setState({ content }, () => {
       if (this.props.onChange) {
-        this.props.onChange({ content });
+        this.props.onChange({
+          content: JSON.stringify(content)
+        });
       }
     });
   }
