@@ -26,7 +26,7 @@ const DEFAULT_BLOCKS = {
     modules: {
       toolbar: [
         [{ header: [1, 2, false] }],
-        ['bold', 'italic', 'underline'],
+        ['bold', 'italic', 'underline', 'blockquote'],
         [{ list: 'ordered' }, { list: 'bullet' }],
         ['link']
       ]
