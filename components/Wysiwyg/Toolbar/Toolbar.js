@@ -1,4 +1,5 @@
 import React from 'react';
+import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import upperFirst from 'lodash/upperFirst';
@@ -11,9 +12,6 @@ import { Transition } from 'react-transition-group';
 
 // Popper
 import { Manager, Target, Popper, Arrow } from 'react-popper';
-
-// React Portal
-import Portal from 'react-portal';
 
 // Components
 import Icon from 'components/Wysiwyg/UI/Icon/Icon';
@@ -190,11 +188,7 @@ class Toolbar extends React.Component {
 
                         {/* Edition mode without tooltip */}
                         {block === tooltip && block === edition && blocks[block].renderer === 'modal' &&
-                          <Portal
-                            closeOnEsc
-                            isOpened
-                            onClose={this.triggerClose}
-                          >
+                          createPortal(
                             <Modal
                               onClickClose={this.triggerClose}
                             >
@@ -206,7 +200,7 @@ class Toolbar extends React.Component {
                                 }
                               )}
                             </Modal>
-                          </Portal>
+                          , document.body)
                         }
                       </Manager>
                     </li>
