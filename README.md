@@ -6,7 +6,9 @@ Check [the docs](https://resource-watch.github.io/vizz-wysiwyg/styleguide/)
 
 ## Dependencies
     yarn add react@15.6.2
-    yarn add react-dom@15.6.2    
+    yarn add react-dom@15.6.2
+
+## Peer dependencies
     yarn add react-quill@1.1.0
 
 ## Running locally in development mode
