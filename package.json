@@ -1,7 +1,7 @@
 {
-  "name": "vizz-wysiwyg",
+  "name": "@vizzuality/wysiwyg",
   "version": "3.0.0",
-  "description": "Vizzuality Wysiwyg",
+  "description": "An interactive WYSIWYG editor",
   "homepage": "https://resource-watch.github.io/vizz-wysiwyg",
   "author": "Vizzuality <hello@vizzuality.com>",
   "license": "ISC",
