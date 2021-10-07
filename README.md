@@ -25,7 +25,7 @@ If you want to debug the Wysiwyg within another project, please execute the foll
 
 In your other project, run this:
 
-    yarn link "vizz-wysiwyg"
+    yarn link "@vizzuality/wysiwyg"
 
 Every change in the Wysiwyg's codebase will be reflected in your other project (might need a page reload). The Wysiwyg will also be built using the development environment so it's easier to debug.
 
