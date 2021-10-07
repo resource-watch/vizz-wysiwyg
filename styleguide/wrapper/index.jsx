@@ -4,8 +4,6 @@ import PropTypes from 'prop-types';
 import styles from 'css/index.scss';
 import Icons from './icons';
 
-console.log('styles', styles);
-
 class Wrapper extends PureComponent {
   render() {
     const { children } = this.props;
