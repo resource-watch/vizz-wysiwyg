@@ -1,6 +1,6 @@
 {
   "name": "@vizzuality/wysiwyg",
-  "version": "3.1.3",
+  "version": "3.1.4",
   "description": "An interactive WYSIWYG editor",
   "homepage": "https://resource-watch.github.io/vizz-wysiwyg",
   "author": "Vizzuality <hello@vizzuality.com>",
@@ -78,7 +78,8 @@
     "documentation": "gh-pages",
     "predeploy": "yarn styleguide:build",
     "deploy": "gh-pages -d homepage",
-    "postdeploy": "rm -rf homepage"
+    "postdeploy": "rm -rf homepage",
+    "prepublish": "yarn build"
   },
   "gh-pages-deploy": {
     "staticpath": "styleguide/build",
